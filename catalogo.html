@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Catálogo Minorista — Pescando a Pleno</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;900&family=Roboto:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <style>
+        /* ── Reset & Base ── */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --azul: #1A3A5C;
+            --teal: #6BADA0;
+            --arena: #CBB68E;
+            --negro: #1C1C1C;
+            --crema: #F5F0EB;
+            --blanco: #FFFFFF;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: var(--negro);
+            background: var(--crema);
+        }
+
+        /* ── Print / Page Setup ── */
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            padding: 0;
+            position: relative;
+            overflow: hidden;
+            page-break-after: always;
+            background: var(--crema);
+        }
+
+        .page:last-child {
+            page-break-after: auto;
+        }
+
+        /* ══════════════════════════════
+       PAGE 1 — PORTADA
+       ══════════════════════════════ */
+        .cover {
+            background: var(--azul);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--blanco);
+        }
+
+        .cover-top-stripe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 8mm;
+            background: var(--teal);
+        }
+
+        .cover-bottom-stripe {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 8mm;
+            background: var(--arena);
+        }
+
+        .cover-logo {
+            width: 120mm;
+            max-width: 80%;
+            margin-bottom: 12mm;
+            filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
+        }
+
+        .cover h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 14mm;
+            text-transform: uppercase;
+            letter-spacing: 3mm;
+            color: var(--blanco);
+            margin-bottom: 5mm;
+        }
+
+        .cover h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 6mm;
+            text-transform: uppercase;
+            letter-spacing: 1.5mm;
+            color: var(--teal);
+            margin-bottom: 8mm;
+        }
+
+        .cover .date-badge {
+            display: inline-block;
+            background: var(--arena);
+            color: var(--azul);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 4.5mm;
+            padding: 3mm 8mm;
+            border-radius: 2mm;
+            text-transform: uppercase;
+            letter-spacing: 1mm;
+            margin-bottom: 6mm;
+        }
+
+        .cover .tagline {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 400;
+            font-size: 4mm;
+            color: rgba(255, 255, 255, 0.7);
+            letter-spacing: 0.5mm;
+        }
+
+        /* ══════════════════════════════
+       PAGE 2 — PRODUCTOS (Reels)
+       ══════════════════════════════ */
+        .products-page {
+            background: var(--crema);
+            padding: 10mm 12mm;
+        }
+
+        .products-header {
+            text-align: center;
+            margin-bottom: 6mm;
+            padding-bottom: 4mm;
+            border-bottom: 0.8mm solid var(--teal);
+        }
+
+        .products-header h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 7mm;
+            text-transform: uppercase;
+            letter-spacing: 1.5mm;
+            color: var(--azul);
+            margin-bottom: 1mm;
+        }
+
+        .products-header p {
+            font-size: 3.2mm;
+            color: var(--teal);
+            font-weight: 500;
+            letter-spacing: 0.5mm;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 5mm;
+        }
+
+        .product-card {
+            background: var(--blanco);
+            border-radius: 3mm;
+            overflow: hidden;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 4mm;
+            text-align: center;
+        }
+
+        .product-card .img-wrap {
+            width: 100%;
+            height: 48mm;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 3mm;
+            background: #f8f6f2;
+            border-radius: 2mm;
+            overflow: hidden;
+        }
+
+        .product-card .img-wrap img {
+            max-width: 90%;
+            max-height: 44mm;
+            object-fit: contain;
+        }
+
+        .product-card .product-name {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 2.8mm;
+            color: var(--azul);
+            text-transform: uppercase;
+            letter-spacing: 0.3mm;
+            margin-bottom: 1mm;
+            line-height: 1.3;
+            min-height: 10mm;
+            display: flex;
+            align-items: center;
+        }
+
+        .product-card .product-code {
+            font-size: 2.2mm;
+            color: #999;
+            margin-bottom: 2mm;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .product-card .product-price {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 5.5mm;
+            color: var(--negro);
+            margin-bottom: 1mm;
+        }
+
+        .product-card .product-price-label {
+            font-size: 2.2mm;
+            color: var(--teal);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.3mm;
+        }
+
+        /* ══════════════════════════════
+       PAGE 3 — VARA CANNON + CONTACTO
+       ══════════════════════════════ */
+        .vara-section {
+            background: var(--crema);
+            padding: 10mm 12mm 6mm;
+        }
+
+        .vara-header {
+            text-align: center;
+            margin-bottom: 6mm;
+            padding-bottom: 4mm;
+            border-bottom: 0.8mm solid var(--teal);
+        }
+
+        .vara-header h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 7mm;
+            text-transform: uppercase;
+            letter-spacing: 1.5mm;
+            color: var(--azul);
+            margin-bottom: 1mm;
+        }
+
+        .vara-card {
+            background: var(--blanco);
+            border-radius: 3mm;
+            overflow: hidden;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+            display: flex;
+            align-items: center;
+            padding: 6mm;
+            gap: 6mm;
+            margin-bottom: 8mm;
+        }
+
+        .vara-images {
+            flex: 0 0 55%;
+            display: flex;
+            flex-direction: column;
+            gap: 3mm;
+        }
+
+        .vara-images img {
+            width: 100%;
+            border-radius: 2mm;
+            object-fit: contain;
+        }
+
+        .vara-info {
+            flex: 1;
+            text-align: center;
+        }
+
+        .vara-info .product-name {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 4.5mm;
+            color: var(--azul);
+            text-transform: uppercase;
+            letter-spacing: 0.3mm;
+            margin-bottom: 2mm;
+            line-height: 1.4;
+        }
+
+        .vara-info .product-specs {
+            font-size: 3mm;
+            color: #666;
+            margin-bottom: 3mm;
+            line-height: 1.5;
+        }
+
+        .vara-info .product-code {
+            font-size: 2.5mm;
+            color: #999;
+            margin-bottom: 4mm;
+        }
+
+        .vara-info .product-price {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 8mm;
+            color: var(--negro);
+            margin-bottom: 1mm;
+        }
+
+        .vara-info .product-price-label {
+            font-size: 2.8mm;
+            color: var(--teal);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.3mm;
+        }
+
+        /* ── Footer / Contact Section ── */
+        .contact-section {
+            background: var(--azul);
+            padding: 10mm 12mm;
+            color: var(--blanco);
+            text-align: center;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+
+        .contact-section h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 5.5mm;
+            text-transform: uppercase;
+            letter-spacing: 1.5mm;
+            color: var(--teal);
+            margin-bottom: 5mm;
+        }
+
+        .contact-grid {
+            display: flex;
+            justify-content: center;
+            gap: 12mm;
+            margin-bottom: 5mm;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5mm;
+        }
+
+        .contact-item .contact-icon {
+            font-size: 5mm;
+        }
+
+        .contact-item .contact-label {
+            font-size: 2.5mm;
+            color: var(--arena);
+            text-transform: uppercase;
+            letter-spacing: 0.3mm;
+            font-weight: 500;
+        }
+
+        .contact-item .contact-value {
+            font-size: 3.2mm;
+            font-weight: 500;
+            color: var(--blanco);
+        }
+
+        .contact-divider {
+            width: 40mm;
+            height: 0.3mm;
+            background: var(--teal);
+            margin: 0 auto 4mm;
+            opacity: 0.5;
+        }
+
+        .contact-footer-text {
+            font-size: 2.8mm;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 2mm;
+        }
+
+        .contact-tagline {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 3.5mm;
+            color: var(--arena);
+            letter-spacing: 0.5mm;
+        }
+
+        .envio-badge {
+            display: inline-block;
+            background: var(--teal);
+            color: var(--blanco);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 3mm;
+            padding: 2mm 6mm;
+            border-radius: 1.5mm;
+            text-transform: uppercase;
+            letter-spacing: 0.5mm;
+            margin-bottom: 5mm;
+        }
+
+        /* ── Print-specific ── */
+        @media print {
+            body {
+                background: white;
+            }
+
+            .page {
+                box-shadow: none;
+                margin: 0;
+            }
+        }
+
+        /* ── Screen preview ── */
+        @media screen {
+            body {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 10mm;
+                padding: 10mm;
+                background: #888;
+            }
+
+            .page {
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ═══ PAGE 1: PORTADA ═══ -->
+    <div class="page cover">
+        <div class="cover-top-stripe"></div>
+        <img src="logo-pescando-a-pleno.png" alt="Pescando a Pleno" class="cover-logo">
+        <h1>Catálogo</h1>
+        <h2>Precios Minoristas</h2>
+        <div class="date-badge">📋 Precios Marzo 2026</div>
+        <p class="tagline">Equipate con los mejores · Envío a todo el país</p>
+        <div class="cover-bottom-stripe"></div>
+    </div>
+
+    <!-- ═══ PAGE 2: MOLINETES ═══ -->
+    <div class="page products-page">
+        <div class="products-header">
+            <h2>Molinetes Marine Sports</h2>
+            <p>Línea completa · Importados de Brasil</p>
+        </div>
+
+        <div class="products-grid">
+
+            <!-- Jimmy Blue -->
+            <div class="product-card">
+                <div class="img-wrap">
+                    <img src="imagenes/jimmy_blue.jpg" alt="Jimmy Blue">
+                </div>
+                <div class="product-name">Reel Jimmy Blue FD<br>1 Rol · 5.2:1 c/ Linha</div>
+                <div class="product-code">Cód. 20042956</div>
+                <div class="product-price">$9.800</div>
+                <div class="product-price-label">Precio minorista</div>
+            </div>
+
+            <!-- Jimmy Green -->
+            <div class="product-card">
+                <div class="img-wrap">
+                    <img src="imagenes/jimmy_green.jpg" alt="Jimmy Green">
+                </div>
+                <div class="product-name">Reel Jimmy Green FD<br>1 Rol · 5.2:1 c/ Linha</div>
+                <div class="product-code">Cód. 20042957</div>
+                <div class="product-price">$9.800</div>
+                <div class="product-price-label">Precio minorista</div>
+            </div>
+
+            <!-- Jimmy Grey -->
+            <div class="product-card">
+                <div class="img-wrap">
+                    <img src="imagenes/jimmy_grey.jpg" alt="Jimmy Grey">
+                </div>
+                <div class="product-name">Reel Jimmy Grey FD<br>1 Rol · 5.2:1 c/ Linha</div>
+                <div class="product-code">Cód. 20042958</div>
+                <div class="product-price">$9.800</div>
+                <div class="product-price-label">Precio minorista</div>
+            </div>
+
+            <!-- Arena 2000 -->
+            <div class="product-card">
+                <div class="img-wrap">
+                    <img src="imagenes/arena_2000.jpg" alt="Arena 2000">
+                </div>
+                <div class="product-name">Reel Arena 2000 FD<br>1 Rol · 5.1:1</div>
+                <div class="product-code">Cód. 20043702</div>
+                <div class="product-price">$11.800</div>
+                <div class="product-price-label">Precio minorista</div>
+            </div>
+
+            <!-- Arena Blue 2000 -->
+            <div class="product-card">
+                <div class="img-wrap">
+                    <img src="imagenes/arena_blue_2000.jpg" alt="Arena Blue 2000">
+                </div>
+                <div class="product-name">Reel Arena Blue 2000 FD<br>1 Rol · 5.1:1</div>
+                <div class="product-code">Cód. 20043726</div>
+                <div class="product-price">$11.800</div>
+                <div class="product-price-label">Precio minorista</div>
+            </div>
+
+            <!-- Arena Red 2000 -->
+            <div class="product-card">
+                <div class="img-wrap">
+                    <img src="imagenes/arena_red_2000.jpg" alt="Arena Red 2000">
+                </div>
+                <div class="product-name">Reel Arena Red 2000 FD<br>1 Rol · 5.1:1</div>
+                <div class="product-code">Cód. 20043730</div>
+                <div class="product-price">$11.800</div>
+                <div class="product-price-label">Precio minorista</div>
+            </div>
+
+            <!-- Elite Gold 1000 -->
+            <div class="product-card">
+                <div class="img-wrap">
+                    <img src="imagenes/elite_gold_1000.jpg" alt="Elite Gold 1000">
+                </div>
+                <div class="product-name">Reel Elite Gold 1000 FD<br>3 Rol · 5.1:1</div>
+                <div class="product-code">Cód. 20043716</div>
+                <div class="product-price">$16.700</div>
+                <div class="product-price-label">Precio minorista</div>
+            </div>
+
+            <!-- Arena 4000 RD -->
+            <div class="product-card">
+                <div class="img-wrap">
+                    <img src="imagenes/arena_4000_rd.jpg" alt="Arena 4000 RD">
+                </div>
+                <div class="product-name">Reel Arena 4000 RD<br>1 Rol · 5.0:1</div>
+                <div class="product-code">Cód. 20043709</div>
+                <div class="product-price">$14.000</div>
+                <div class="product-price-label">Precio minorista</div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ═══ PAGE 3: VARA + CONTACTO ═══ -->
+    <div class="page" style="position: relative;">
+        <div class="vara-section">
+            <div class="vara-header">
+                <h2>Vara de Playa Marine Cannon</h2>
+            </div>
+
+            <div class="vara-card">
+                <div class="vara-images">
+                    <img src="imagenes/cannon_rod_2.jpg" alt="Cannon CNKW-3903 Vista General">
+                    <img src="imagenes/cannon_rod_3.jpg" alt="Cannon CNKW-3903 Detalle">
+                </div>
+                <div class="vara-info">
+                    <div class="product-name">Vara Cannon<br>CNKW-3903</div>
+                    <div class="product-specs">
+                        3.90m · 100-200g<br>
+                        3 tramos · Carbon MT2400<br>
+                        Ponteira Solid Carbon Hybrid Tip
+                    </div>
+                    <div class="product-code">Cód. 12101106</div>
+                    <div class="product-price">$78.100</div>
+                    <div class="product-price-label">Precio minorista</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-section">
+            <h3>Contacto</h3>
+            <div class="envio-badge">📦 Envío a todo el país</div>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <div class="contact-icon">📱</div>
+                    <div class="contact-label">WhatsApp</div>
+                    <div class="contact-value">+54 9 11 2249-0329</div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📸</div>
+                    <div class="contact-label">Instagram</div>
+                    <div class="contact-value">@pescandoapleno</div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📘</div>
+                    <div class="contact-label">Facebook</div>
+                    <div class="contact-value">/pescandoapleno</div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">🎬</div>
+                    <div class="contact-label">TikTok</div>
+                    <div class="contact-value">@pescandoapleno</div>
+                </div>
+            </div>
+            <div class="contact-divider"></div>
+            <div class="contact-footer-text">Precios válidos Marzo 2026 · Sujetos a variación del tipo de cambio</div>
+            <div class="contact-tagline">Pescando a Pleno · Mayorista y Minorista</div>
+        </div>
+    </div>
+
+</body>
+
+</html>

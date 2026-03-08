@@ -1,0 +1,77 @@
+🎨 GUÍA DE ESTILO — PESCANDO A PLENO
+======================================
+
+## 1. PALETA DE COLORES
+
+| Rol                  | Nombre              | HEX       |
+|----------------------|---------------------|-----------|
+| Primario             | Azul Marino Profundo| #1A3A5C   |
+| Secundario           | Verde Agua / Teal   | #6BADA0   |
+| Acento               | Arena / Tan         | #CBB68E   |
+| Texto principal      | Negro Carbón        | #1C1C1C   |
+| Fondo principal      | Crema / Off-white   | #F5F0EB   |
+| Fondo cards          | Blanco Puro         | #FFFFFF   |
+
+Usos:
+- #1A3A5C → Navbar, footer, botones CTA, títulos principales
+- #6BADA0 → Iconos, hover, bordes decorativos, botón "Comprar"
+- #CBB68E → Etiquetas "Mayorista", badges, detalles banners
+- #1C1C1C → Texto corrido, descripciones, precios
+- #F5F0EB → Fondo general del sitio
+- #FFFFFF → Fondo de cards de producto
+
+
+## 2. TIPOGRAFÍA (Google Fonts)
+
+- Títulos:   Montserrat — Bold (700) / Black (900) — UPPERCASE
+- Cuerpo:    Roboto — Regular (400) / Medium (500)
+
+Importar:
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Roboto:wght@400;500&display=swap');
+
+
+## 3. ESTILO VISUAL
+
+- Estética: "Outdoor Profesional" — rústica pero limpia
+- Fondos: textura sutil de papel kraft o madera clara en banners y sección Nosotros
+- Bordes: border-radius 4px–8px en cards de producto
+- Fotos producto: fondo neutro gris claro o crema, sombras naturales
+- Fotos lifestyle: pescadores en acción, tonos cálidos ligeramente desaturados
+
+
+## 4. TONO DE COMUNICACIÓN
+
+- Voseo argentino: "Encontrá lo que necesitás", "Equipate con los mejores"
+- Identidad: el pescador que le habla a otro pescador
+- Nivel técnico: alto pero accesible
+- Palabras clave: Pasión · Equipamiento · Resistencia · Experiencia · Confianza
+
+
+## 5. COMPONENTES UI
+
+NAVBAR
+- Fondo: #1A3A5C
+- Logo: izquierda
+- Links: #FFFFFF → hover: #6BADA0
+
+BOTONES
+- CTA principal "Comprar":     fondo #6BADA0 · texto #FFFFFF · sin borde
+- CTA secundario "Mayoristas": ghost button · borde #1A3A5C · texto #1A3A5C
+
+CARDS DE PRODUCTO
+- Fondo: #FFFFFF sobre fondo #F5F0EB
+- Precio: #1C1C1C bold
+- Badge "Oferta" / "Nuevo": #CBB68E
+
+FOOTER
+- Fondo: #1A3A5C
+- Texto: #FFFFFF
+- Incluir: redes sociales · Mercado Pago · acceso rápido a Venta Mayorista
+
+
+## 6. ICONOGRAFÍA
+
+- Estilo: lineal (outline)
+- Color: #6BADA0
+- Temática: tipos de pesca por categoría
+  → Spinning · Bait Cast · Lance · Embarcada · Costa · Pejerrey
