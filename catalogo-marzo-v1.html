@@ -1,0 +1,701 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Catálogo de Productos — Pescando a Pleno</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&family=Roboto:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Impact&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Helvetica&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Gobold&display=swap" rel="stylesheet">
+    <style>
+        /* ── Reset & Base ── */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --azul: #1A3A5C;
+            --teal: #6BADA0;
+            --arena: #CBB68E;
+            --negro: #1C1C1C;
+            --crema: #F5F0EB;
+            --blanco: #FFFFFF;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: var(--negro);
+            background: #000;
+        }
+
+        /* ── Print / Page Setup ── */
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        .portada {
+            width: 210mm;
+            height: 297mm;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #b2a18d;
+            color: #c4b6a2;
+
+            text-align: center;
+            background-image: url('bg-pesca2.jpg');
+            background-size: cover;
+            background-position: right;
+            page-break-after: always;
+        }
+
+        .portada:last-child {
+            page-break-after: auto;
+        }
+
+        /* Overlay oscuro con gradiente */
+        .background-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.70) 100%);
+            z-index: 1;
+        }
+
+        .contenido {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* ── Logo ── */
+        .logo-container {
+            margin-bottom: 25px;
+        }
+
+        .logo {
+            width: 450px;
+            filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.5));
+        }
+
+        /* ── Textos ── */
+        .textos {
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .separador {
+            width: 60px;
+            height: 3px;
+            background-color: var(--arena);
+            margin: 0 auto 20px;
+        }
+
+        .titulo-catalogo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 5rem;
+            font-weight: 400;
+            letter-spacing: 2px;
+            text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.6);
+        }
+
+        .subtitulo-catalogo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 4.5rem;
+            font-weight: 400;
+            letter-spacing: 2px;
+            margin-bottom: 60px;
+            text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.6);
+        }
+
+        .slogan {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 4px;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 15px 0;
+            display: inline-block;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+            line-height: 1.8;
+        }
+
+        /* ── Product Pages ── */
+        .pagina {
+            width: 210mm;
+            height: 297mm;
+            position: relative;
+            overflow: hidden;
+            background: var(--crema);
+            page-break-after: always;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pagina:last-child {
+            page-break-after: auto;
+        }
+
+        /* Header bar on each product page */
+        .pagina-header {
+            background: var(--azul);
+            padding: 14px 35px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-shrink: 0;
+        }
+
+        .pagina-header .logo-mini {
+            height: 40px;
+            filter: brightness(10);
+        }
+
+        .pagina-header .categoria-titulo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.6rem;
+            letter-spacing: 3px;
+            color: var(--arena);
+        }
+
+        /* Product grid area */
+        .productos-grid {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 18px;
+            padding: 20px 30px;
+        }
+
+        /* Individual product card */
+        .producto-card {
+            background: var(--blanco);
+            border-radius: 8px;
+            display: flex;
+            align-items: stretch;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            flex: 1;
+            max-height: 230px;
+        }
+
+        .producto-img-wrapper {
+            width: 220px;
+            min-width: 220px;
+            background: #f8f8f8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            position: relative;
+        }
+
+        .producto-img-wrapper img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .producto-id-badge {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            background: var(--azul);
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 0.65rem;
+            padding: 3px 8px;
+            border-radius: 3px;
+            letter-spacing: 1px;
+        }
+
+        .producto-info {
+            flex: 1;
+            padding: 18px 22px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .producto-codigo {
+            font-family: 'Roboto', sans-serif;
+            font-size: 0.7rem;
+            color: #999;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        .producto-nombre {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: var(--azul);
+            text-transform: uppercase;
+            line-height: 1.3;
+            margin-bottom: 8px;
+        }
+
+        .producto-descripcion {
+            font-family: 'Roboto', sans-serif;
+            font-size: 0.8rem;
+            line-height: 1.55;
+            color: #555;
+            margin-bottom: 12px;
+            flex: 1;
+        }
+
+        .producto-specs {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+        }
+
+        .spec-tag {
+            font-family: 'Roboto', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 500;
+            background: rgba(107, 173, 160, 0.12);
+            color: var(--teal);
+            padding: 3px 10px;
+            border-radius: 20px;
+            letter-spacing: 0.5px;
+        }
+
+        .producto-precio-row {
+            display: flex;
+            align-items: baseline;
+            gap: 14px;
+        }
+
+        .producto-precio {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 1.35rem;
+            color: var(--negro);
+        }
+
+        .producto-precio-usd {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 500;
+            font-size: 0.75rem;
+            color: var(--teal);
+            background: rgba(107, 173, 160, 0.1);
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        /* Footer on each product page */
+        .pagina-footer {
+            background: var(--azul);
+            padding: 10px 35px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-shrink: 0;
+        }
+
+        .pagina-footer .contacto {
+            font-family: 'Roboto', sans-serif;
+            font-size: 0.7rem;
+            color: rgba(255, 255, 255, 0.7);
+            letter-spacing: 0.5px;
+        }
+
+        .pagina-footer .pagina-num {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1rem;
+            color: var(--arena);
+            letter-spacing: 2px;
+        }
+
+        /* Card for the rod (horizontal layout) */
+        .producto-card.vara-card .producto-img-wrapper {
+            width: 100%;
+            min-width: unset;
+            height: 140px;
+            padding: 12px 25px;
+        }
+
+        .producto-card.vara-card {
+            flex-direction: column;
+        }
+
+        .producto-card.vara-card .producto-info {
+            padding: 12px 22px 16px;
+        }
+
+        /* ── Print-specific ── */
+        @media print {
+            body {
+                background: white;
+            }
+
+            .portada,
+            .pagina {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                box-shadow: none;
+                margin: 0;
+            }
+        }
+
+        /* ── Screen preview ── */
+        @media screen {
+            body {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 10mm;
+                padding: 10mm;
+                background: #555;
+            }
+
+            .portada,
+            .pagina {
+                box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- CARÁTULA (NO MODIFICAR)                        -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <div class="portada">
+
+        <div class="background-overlay"></div>
+
+        <div class="contenido">
+            <div class="logo-container">
+                <img src="logo-letras-claras-sin-fondo-cuadrado-pescando-a-pleno.png" alt="Pescando a Pleno"
+                    class="logo">
+            </div>
+
+            <div class="textos">
+                <div class="separador"></div>
+
+                <h2 class="titulo-catalogo">CATÁLOGO DE PRODUCTOS</h2>
+                <h3 class="subtitulo-catalogo">MARZO 2026</h3>
+
+                <p class="slogan">JUAN PABLO FRECCERO<br>+54 9 11 2249-0329</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- PÁGINA 2 — REELS JIMMY                         -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <div class="pagina">
+        <div class="pagina-header">
+            <img src="logo-letras-claras-sin-fondo-cuadrado-pescando-a-pleno.png" alt="Logo" class="logo-mini">
+            <span class="categoria-titulo">REELS · LÍNEA JIMMY</span>
+        </div>
+
+        <div class="productos-grid">
+
+            <!-- Producto 1 -->
+            <div class="producto-card">
+                <div class="producto-img-wrapper">
+                    <span class="producto-id-badge">ID 1</span>
+                    <img src="imagenes/1.jpg" alt="Reel Jimmy Blue">
+                </div>
+                <div class="producto-info">
+                    <span class="producto-codigo">CÓD. 20042956</span>
+                    <h3 class="producto-nombre">Reel Jimmy Blue FD</h3>
+                    <p class="producto-descripcion">
+                        Reel frontal ideal para spinning liviano y pesca de costa. Cuerpo compacto con ratio 5.2:1
+                        para una recuperación rápida. Incluye carretel con línea pre-cargada, listo para pescar.
+                    </p>
+                    <div class="producto-specs">
+                        <span class="spec-tag">1 Rulemán</span>
+                        <span class="spec-tag">Ratio 5.2:1</span>
+                        <span class="spec-tag">C/ Linha</span>
+                    </div>
+                    <div class="producto-precio-row">
+                        <span class="producto-precio">$9.800</span>
+                        <span class="producto-precio-usd">USD 3,98</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Producto 2 -->
+            <div class="producto-card">
+                <div class="producto-img-wrapper">
+                    <span class="producto-id-badge">ID 2</span>
+                    <img src="imagenes/2.jpg" alt="Reel Jimmy Green">
+                </div>
+                <div class="producto-info">
+                    <span class="producto-codigo">CÓD. 20042957</span>
+                    <h3 class="producto-nombre">Reel Jimmy Green FD</h3>
+                    <p class="producto-descripcion">
+                        Variante en verde de la línea Jimmy. Mismo rendimiento confiable con diseño fresco.
+                        Freno delantero suave y preciso, perfecto para pejerrey y especies medianas.
+                    </p>
+                    <div class="producto-specs">
+                        <span class="spec-tag">1 Rulemán</span>
+                        <span class="spec-tag">Ratio 5.2:1</span>
+                        <span class="spec-tag">C/ Linha</span>
+                    </div>
+                    <div class="producto-precio-row">
+                        <span class="producto-precio">$9.800</span>
+                        <span class="producto-precio-usd">USD 3,98</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Producto 3 -->
+            <div class="producto-card">
+                <div class="producto-img-wrapper">
+                    <span class="producto-id-badge">ID 3</span>
+                    <img src="imagenes/3.jpg" alt="Reel Jimmy Grey">
+                </div>
+                <div class="producto-info">
+                    <span class="producto-codigo">CÓD. 20042958</span>
+                    <h3 class="producto-nombre">Reel Jimmy Grey FD</h3>
+                    <p class="producto-descripcion">
+                        Versión gris de la línea Jimmy, con terminación sobria y elegante.
+                        Ideal como reel de inicio o de repuesto. Liviano y fácil de manejar.
+                    </p>
+                    <div class="producto-specs">
+                        <span class="spec-tag">1 Rulemán</span>
+                        <span class="spec-tag">Ratio 5.2:1</span>
+                        <span class="spec-tag">C/ Linha</span>
+                    </div>
+                    <div class="producto-precio-row">
+                        <span class="producto-precio">$9.800</span>
+                        <span class="producto-precio-usd">USD 3,98</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="pagina-footer">
+            <span class="contacto">+54 9 11 2249-0329 · Pescando a Pleno</span>
+            <span class="pagina-num">02</span>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- PÁGINA 3 — CAÑA CANNON + REELS ARENA           -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <div class="pagina">
+        <div class="pagina-header">
+            <img src="logo-letras-claras-sin-fondo-cuadrado-pescando-a-pleno.png" alt="Logo" class="logo-mini">
+            <span class="categoria-titulo">CAÑA · CANNON & REELS · ARENA</span>
+        </div>
+
+        <div class="productos-grid">
+
+            <!-- Producto 4 -->
+            <div class="producto-card vara-card">
+                <div class="producto-img-wrapper">
+                    <span class="producto-id-badge">ID 4</span>
+                    <img src="imagenes/4.jpg" alt="Vara Cannon">
+                </div>
+                <div class="producto-info">
+                    <span class="producto-codigo">CÓD. 12101106</span>
+                    <h3 class="producto-nombre">Caña Cannon CNKW-3903</h3>
+                    <p class="producto-descripcion">
+                        Caña de lance de 3,90 m con puntera sólida de carbono híbrido. Soporta entre 100 y 200 g
+                        de peso de lanzamiento, pensada para pesca de costa y embarcada liviana. Construcción robusta
+                        con terminaciones premium.
+                    </p>
+                    <div class="producto-specs">
+                        <span class="spec-tag">3.90 m</span>
+                        <span class="spec-tag">100–200 g</span>
+                        <span class="spec-tag">Carbono Híbrido</span>
+                    </div>
+                    <div class="producto-precio-row">
+                        <span class="producto-precio">$78.100</span>
+                        <span class="producto-precio-usd">USD 31,79</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Producto 5 -->
+            <div class="producto-card">
+                <div class="producto-img-wrapper">
+                    <span class="producto-id-badge">ID 5</span>
+                    <img src="imagenes/5.jpeg" alt="Reel Arena 2000">
+                </div>
+                <div class="producto-info">
+                    <span class="producto-codigo">CÓD. 20043702</span>
+                    <h3 class="producto-nombre">Reel Arena 2000 FD</h3>
+                    <p class="producto-descripcion">
+                        Reel frontal de la línea Arena, tamaño 2000. Compacto y versátil, ideal para spinning
+                        y pesca de costa. Freno delantero con ajuste fino y carretel de aluminio.
+                    </p>
+                    <div class="producto-specs">
+                        <span class="spec-tag">1 Rulemán</span>
+                        <span class="spec-tag">Ratio 5.1:1</span>
+                        <span class="spec-tag">Freno FD</span>
+                    </div>
+                    <div class="producto-precio-row">
+                        <span class="producto-precio">$11.800</span>
+                        <span class="producto-precio-usd">USD 4,82</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Producto 6 -->
+            <div class="producto-card">
+                <div class="producto-img-wrapper">
+                    <span class="producto-id-badge">ID 6</span>
+                    <img src="imagenes/6.jpeg" alt="Reel Arena Blue 2000">
+                </div>
+                <div class="producto-info">
+                    <span class="producto-codigo">CÓD. 20043726</span>
+                    <h3 class="producto-nombre">Reel Arena Blue 2000 FD</h3>
+                    <p class="producto-descripcion">
+                        Variante azul del Arena 2000 con las mismas prestaciones de la línea.
+                        Diseño moderno con detalles en color que lo destacan en el agua.
+                    </p>
+                    <div class="producto-specs">
+                        <span class="spec-tag">1 Rulemán</span>
+                        <span class="spec-tag">Ratio 5.1:1</span>
+                        <span class="spec-tag">Freno FD</span>
+                    </div>
+                    <div class="producto-precio-row">
+                        <span class="producto-precio">$11.800</span>
+                        <span class="producto-precio-usd">USD 4,82</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="pagina-footer">
+            <span class="contacto">+54 9 11 2249-0329 · Pescando a Pleno</span>
+            <span class="pagina-num">03</span>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- PÁGINA 4 — REELS ELITE & ARENA                 -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <div class="pagina">
+        <div class="pagina-header">
+            <img src="logo-letras-claras-sin-fondo-cuadrado-pescando-a-pleno.png" alt="Logo" class="logo-mini">
+            <span class="categoria-titulo">REELS · ELITE & ARENA</span>
+        </div>
+
+        <div class="productos-grid">
+
+            <!-- Producto 7 -->
+            <div class="producto-card">
+                <div class="producto-img-wrapper">
+                    <span class="producto-id-badge">ID 7</span>
+                    <img src="imagenes/7.jpeg" alt="Reel Elite Gold 1000">
+                </div>
+                <div class="producto-info">
+                    <span class="producto-codigo">CÓD. 20043716</span>
+                    <h3 class="producto-nombre">Reel Elite Gold 1000 FD</h3>
+                    <p class="producto-descripcion">
+                        El tope de gama de la selección. Equipado con 3 rulemanes para un giro ultra suave.
+                        Acabado dorado premium, ideal para ultralight y spinning de precisión.
+                    </p>
+                    <div class="producto-specs">
+                        <span class="spec-tag">3 Rulemanes</span>
+                        <span class="spec-tag">Ratio 5.1:1</span>
+                        <span class="spec-tag">Freno FD</span>
+                    </div>
+                    <div class="producto-precio-row">
+                        <span class="producto-precio">$16.700</span>
+                        <span class="producto-precio-usd">USD 6,81</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Producto 8 -->
+            <div class="producto-card">
+                <div class="producto-img-wrapper">
+                    <span class="producto-id-badge">ID 8</span>
+                    <img src="imagenes/8.jpeg" alt="Reel Arena Red 2000">
+                </div>
+                <div class="producto-info">
+                    <span class="producto-codigo">CÓD. 20043730</span>
+                    <h3 class="producto-nombre">Reel Arena Red 2000 FD</h3>
+                    <p class="producto-descripcion">
+                        Variante roja de la línea Arena 2000. Mismo mecanismo confiable con
+                        un look audaz y llamativo. Perfecto para quienes quieren estilo en la costa.
+                    </p>
+                    <div class="producto-specs">
+                        <span class="spec-tag">1 Rulemán</span>
+                        <span class="spec-tag">Ratio 5.1:1</span>
+                        <span class="spec-tag">Freno FD</span>
+                    </div>
+                    <div class="producto-precio-row">
+                        <span class="producto-precio">$11.800</span>
+                        <span class="producto-precio-usd">USD 4,82</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Producto 9 -->
+            <div class="producto-card">
+                <div class="producto-img-wrapper">
+                    <span class="producto-id-badge">ID 9</span>
+                    <img src="imagenes/9.webp" alt="Reel Arena 4000">
+                </div>
+                <div class="producto-info">
+                    <span class="producto-codigo">CÓD. 20043709</span>
+                    <h3 class="producto-nombre">Reel Arena 4000 RD</h3>
+                    <p class="producto-descripcion">
+                        El más grande de la familia Arena. Tamaño 4000 con freno trasero (RD),
+                        pensado para especies más grandes y pesca embarcada. Mayor capacidad de línea
+                        y potencia de freno.
+                    </p>
+                    <div class="producto-specs">
+                        <span class="spec-tag">1 Rulemán</span>
+                        <span class="spec-tag">Ratio 5.0:1</span>
+                        <span class="spec-tag">Freno RD</span>
+                    </div>
+                    <div class="producto-precio-row">
+                        <span class="producto-precio">$14.000</span>
+                        <span class="producto-precio-usd">USD 5,70</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="pagina-footer">
+            <span class="contacto">+54 9 11 2249-0329 · Pescando a Pleno</span>
+            <span class="pagina-num">04</span>
+        </div>
+    </div>
+
+</body>
+
+</html>

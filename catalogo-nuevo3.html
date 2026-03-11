@@ -1,0 +1,3965 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Catálogo Mayorista — Pescando a Pleno</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ══════════════════════════════════════════════ */
+        /* RESET & BASE                                  */
+        /* ══════════════════════════════════════════════ */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --azul: #1A3A5C;
+            --azul-claro: #2a5a8c;
+            --teal: #6BADA0;
+            --arena: #CBB68E;
+            --arena-claro: #e8dcc8;
+            --negro: #1C1C1C;
+            --crema: #F5F0EB;
+            --blanco: #FFFFFF;
+            --madera: #d4c4a8;
+            --madera-oscuro: #8b7355;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: var(--negro);
+            background: #000;
+        }
+
+        /* ══════════════════════════════════════════════ */
+        /* PRINT / PAGE SETUP                            */
+        /* ══════════════════════════════════════════════ */
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        /* ══════════════════════════════════════════════ */
+        /* CARÁTULA                                      */
+        /* ══════════════════════════════════════════════ */
+        .portada {
+            width: 210mm;
+            height: 297mm;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #c4b6a2;
+            text-align: center;
+            background-image: url('bg-pesca2.jpg');
+            background-size: cover;
+            background-position: right;
+            page-break-after: always;
+        }
+
+        .background-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.70) 100%);
+            z-index: 1;
+        }
+
+        .contenido {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .logo-container { margin-bottom: 25px; }
+
+        .logo {
+            width: 450px;
+            filter: drop-shadow(0px 4px 10px rgba(0,0,0,0.5));
+        }
+
+        .textos {
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .separador {
+            width: 60px; height: 3px;
+            background-color: var(--arena);
+            margin: 0 auto 20px;
+        }
+
+        .titulo-catalogo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 5rem; font-weight: 400;
+            letter-spacing: 2px;
+            text-shadow: 1px 1px 6px rgba(0,0,0,0.6);
+        }
+
+        .subtitulo-catalogo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 4.5rem; font-weight: 400;
+            letter-spacing: 2px;
+            margin-bottom: 60px;
+            text-shadow: 1px 1px 6px rgba(0,0,0,0.6);
+        }
+
+        .slogan {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem; font-weight: 700;
+            letter-spacing: 4px;
+            border-top: 1px solid rgba(255,255,255,0.3);
+            border-bottom: 1px solid rgba(255,255,255,0.3);
+            padding: 15px 0;
+            display: inline-block;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+            line-height: 1.8;
+        }
+
+        /* ══════════════════════════════════════════════ */
+        /* PÁGINAS DE PRODUCTO                            */
+        /* ══════════════════════════════════════════════ */
+        .pagina {
+            width: 210mm; height: 297mm;
+            position: relative; overflow: hidden;
+            background: var(--crema);
+            page-break-after: always;
+            display: flex; flex-direction: column;
+        }
+
+        .pagina:last-child { page-break-after: auto; }
+
+        /* ── Wood strip top ── */
+        .wood-strip {
+            width: 100%; height: 18px;
+            background: url('wood-texture.png') center/cover;
+            flex-shrink: 0;
+            position: relative;
+        }
+        .wood-strip::after {
+            content: '';
+            position: absolute; bottom: 0; left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--arena), transparent);
+        }
+
+        /* ── Page header ── */
+        .pagina-header {
+            background: var(--azul);
+            padding: 12px 35px;
+            display: flex; align-items: center; justify-content: space-between;
+            flex-shrink: 0;
+            position: relative;
+        }
+        .pagina-header::after {
+            content: '';
+            position: absolute; bottom: -8px; left: 0; right: 0;
+            height: 8px;
+            background: linear-gradient(to bottom, rgba(26,58,92,0.15), transparent);
+        }
+        .pagina-header .logo-mini {
+            height: 32px;
+            filter: brightness(10);
+        }
+        .pagina-header .categoria-titulo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.4rem; letter-spacing: 4px;
+            color: var(--arena);
+        }
+
+        /* ── Product grid area (3 per page) ── */
+        .productos-area {
+            flex: 1;
+            display: flex; flex-direction: column;
+            gap: 10px;
+            padding: 10px 28px 14px;
+        }
+
+        /* ── Family banner ── */
+        .familia-banner {
+            background: linear-gradient(135deg, rgba(26,58,92,0.06) 0%, rgba(107,173,160,0.06) 100%);
+            border-left: 3px solid var(--teal);
+            padding: 6px 14px;
+            border-radius: 0 6px 6px 0;
+            margin-bottom: -4px;
+        }
+        .familia-banner strong {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.7rem; font-weight: 800;
+            color: var(--azul);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: block;
+        }
+        .familia-banner span {
+            font-family: 'Roboto', sans-serif;
+            font-size: 0.6rem; font-weight: 300;
+            color: #666;
+            line-height: 1.4;
+            display: block;
+            margin-top: 2px;
+        }
+
+        /* ── Product card — magazine style ── */
+        .producto {
+            flex: 1;
+            display: flex;
+            background: var(--blanco);
+            border-radius: 6px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.06);
+        }
+        .producto::before {
+            content: '';
+            position: absolute; top: 0; left: 0;
+            width: 5px; height: 100%;
+            background: linear-gradient(to bottom, var(--teal), var(--azul));
+            border-radius: 6px 0 0 6px;
+        }
+
+        /* Image zone */
+        .producto-foto {
+            width: 195px; min-width: 195px;
+            display: flex; align-items: center; justify-content: center;
+            padding: 12px;
+            position: relative;
+            background: linear-gradient(135deg, #fafafa 0%, #f0ede8 100%);
+        }
+        .producto-foto img {
+            max-width: 100%; max-height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.1));
+        }
+        .producto-foto .id-tag {
+            position: absolute; top: 8px; right: 8px;
+            background: var(--azul); color: white;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700; font-size: 0.55rem;
+            padding: 2px 7px; border-radius: 3px;
+            letter-spacing: 1px; opacity: 0.85;
+        }
+        .producto-foto .no-image {
+            font-family: 'Caveat', cursive;
+            font-size: 0.85rem; color: #ccc;
+        }
+
+        /* Info zone */
+        .producto-detalle {
+            flex: 1;
+            padding: 14px 18px 14px 16px;
+            display: flex; flex-direction: column; justify-content: center;
+            position: relative;
+        }
+        .producto-detalle .codigo {
+            font-family: 'Roboto', sans-serif;
+            font-size: 0.6rem; font-weight: 500;
+            color: #aaa; letter-spacing: 1.5px;
+            text-transform: uppercase; margin-bottom: 2px;
+        }
+        .producto-detalle h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800; font-size: 0.95rem;
+            color: var(--azul); text-transform: uppercase;
+            line-height: 1.25; margin-bottom: 4px;
+        }
+        .producto-detalle .descripcion {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 300; font-size: 0.72rem;
+            line-height: 1.5; color: #555; margin-bottom: 6px;
+        }
+        .producto-detalle .marca-label {
+            color: var(--teal); font-weight: 500;
+            font-size: 0.65rem;
+        }
+        .producto-detalle .specs {
+            display: flex; gap: 6px; flex-wrap: wrap;
+            margin-bottom: 8px;
+        }
+        .producto-detalle .spec {
+            font-family: 'Roboto', sans-serif;
+            font-size: 0.58rem; font-weight: 500;
+            color: var(--azul);
+            background: rgba(26,58,92,0.07);
+            border: 1px solid rgba(26,58,92,0.12);
+            padding: 2px 8px; border-radius: 3px;
+            letter-spacing: 0.3px;
+        }
+        .producto-detalle .precio-zona {
+            display: flex; align-items: center; gap: 10px;
+        }
+        .producto-detalle .precio {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800; font-size: 1.2rem;
+            color: var(--negro);
+        }
+        .producto-detalle .precio-label {
+            font-family: 'Caveat', cursive;
+            font-size: 0.8rem; color: var(--teal);
+            font-weight: 700;
+        }
+
+        /* ── Diagonal accent on card ── */
+        .producto .diagonal-accent {
+            position: absolute; top: 0; right: 0;
+            width: 0; height: 0;
+            border-style: solid;
+            border-width: 0 45px 45px 0;
+            border-color: transparent var(--arena) transparent transparent;
+            opacity: 0.2;
+        }
+
+        /* ══════════════════════════════════════════════ */
+        /* PÁGINA ESTRELLA                                */
+        /* ══════════════════════════════════════════════ */
+        .pagina-estrella {
+            width: 210mm; height: 297mm;
+            position: relative; overflow: hidden;
+            background: var(--crema);
+            page-break-after: always;
+            display: flex; flex-direction: column;
+        }
+
+        .estrella-hero {
+            position: relative; height: 200px;
+            overflow: hidden; flex-shrink: 0;
+        }
+        .estrella-hero img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            filter: brightness(0.7) saturate(1.1);
+        }
+        .estrella-hero .hero-overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(to bottom, rgba(26,58,92,0.4) 0%, rgba(26,58,92,0.85) 100%);
+            display: flex; flex-direction: column;
+            justify-content: flex-end;
+            padding: 25px 35px;
+        }
+        .estrella-hero .hero-badge {
+            font-family: 'Caveat', cursive;
+            font-size: 1.1rem; color: var(--arena);
+            margin-bottom: 4px;
+        }
+        .estrella-hero .hero-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.8rem; color: white;
+            letter-spacing: 3px; line-height: 1;
+        }
+        .estrella-hero .hero-sub {
+            font-family: 'Roboto', sans-serif;
+            font-size: 0.85rem; font-weight: 300;
+            color: rgba(255,255,255,0.8);
+            margin-top: 6px; letter-spacing: 1px;
+        }
+
+        .estrella-content {
+            flex: 1;
+            display: flex; flex-direction: column;
+            padding: 25px 35px;
+        }
+        .estrella-descripcion {
+            flex: 1;
+            display: flex; flex-direction: column;
+            gap: 16px;
+        }
+        .estrella-descripcion h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem; color: var(--azul);
+        }
+        .estrella-descripcion .texto {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 300; font-size: 0.82rem;
+            line-height: 1.7; color: #444;
+            columns: 2; column-gap: 25px;
+        }
+
+        .estrella-specs-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px; margin-top: 20px;
+        }
+        .estrella-spec-item {
+            background: var(--blanco);
+            border-radius: 6px; padding: 10px 12px;
+            text-align: center;
+            border: 1px solid rgba(26,58,92,0.08);
+        }
+        .estrella-spec-item .spec-valor {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800; font-size: 1.1rem;
+            color: var(--azul); display: block;
+        }
+        .estrella-spec-item .spec-nombre {
+            font-family: 'Roboto', sans-serif;
+            font-size: 0.6rem; color: #888;
+            text-transform: uppercase; letter-spacing: 1px;
+            margin-top: 2px;
+        }
+
+        .estrella-precio-row {
+            display: flex; align-items: center; justify-content: space-between;
+            background: var(--azul);
+            border-radius: 8px; padding: 14px 22px;
+            margin-top: auto;
+        }
+        .estrella-precio-left {
+            display: flex; align-items: baseline; gap: 8px;
+        }
+        .estrella-precio-row .precio-big {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900; font-size: 1.3rem;
+            color: white; letter-spacing: 2px;
+        }
+        .estrella-precio-row .consultar {
+            font-family: 'Caveat', cursive;
+            font-size: 1.1rem; color: var(--arena);
+        }
+
+        /* ══════════════════════════════════════════════ */
+        /* ÍNDICE                                         */
+        /* ══════════════════════════════════════════════ */
+        .indice-content {
+            flex: 1;
+            padding: 30px 35px;
+            display: flex; flex-direction: column;
+        }
+        .indice-intro {
+            margin-bottom: 30px;
+        }
+        .indice-intro h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem; color: var(--azul);
+            margin-bottom: 12px;
+        }
+        .indice-intro p {
+            font-family: 'Roboto', sans-serif;
+            font-size: 0.82rem; font-weight: 300;
+            line-height: 1.7; color: #555;
+        }
+        .indice-categorias {
+            display: flex; flex-direction: column;
+            gap: 12px;
+        }
+        .indice-item {
+            display: flex; align-items: center;
+            gap: 16px;
+            background: var(--blanco);
+            padding: 14px 20px;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            border-left: 4px solid var(--teal);
+        }
+        .indice-item .indice-num {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.8rem; color: var(--arena);
+            min-width: 40px;
+        }
+        .indice-item .indice-nombre {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700; font-size: 0.9rem;
+            color: var(--azul); text-transform: uppercase;
+            flex: 1;
+        }
+        .indice-item .indice-desc {
+            font-family: 'Caveat', cursive;
+            font-size: 0.9rem; color: var(--madera-oscuro);
+        }
+
+        /* ══════════════════════════════════════════════ */
+        /* FOOTER                                         */
+        /* ══════════════════════════════════════════════ */
+        .pagina-footer {
+            background: var(--azul);
+            padding: 8px 35px;
+            display: flex; align-items: center; justify-content: space-between;
+            flex-shrink: 0;
+        }
+        .pagina-footer .contacto {
+            font-family: 'Roboto', sans-serif;
+            font-size: 0.65rem;
+            color: rgba(255,255,255,0.6);
+            letter-spacing: 0.5px;
+        }
+        .pagina-footer .pagina-num {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 0.95rem; color: var(--arena);
+            letter-spacing: 2px;
+        }
+
+        .wood-strip-bottom {
+            width: 100%; height: 12px;
+            background: url('wood-texture.png') center/cover;
+            flex-shrink: 0;
+        }
+
+        /* ══════════════════════════════════════════════ */
+        /* PRINT                                          */
+        /* ══════════════════════════════════════════════ */
+        @media print {
+            body { background: white; }
+            .portada, .pagina, .pagina-estrella {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                box-shadow: none; margin: 0;
+            }
+        }
+
+        /* ══════════════════════════════════════════════ */
+        /* SCREEN PREVIEW                                 */
+        /* ══════════════════════════════════════════════ */
+        @media screen {
+            body {
+                display: flex; flex-direction: column;
+                align-items: center;
+                gap: 12mm; padding: 12mm;
+                background: #444;
+            }
+            .portada, .pagina, .pagina-estrella {
+                box-shadow: 0 10px 50px rgba(0,0,0,0.5);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- CARÁTULA                                       -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <div class="portada">
+        <div class="background-overlay"></div>
+        <div class="contenido">
+            <div class="logo-container">
+                <img src="logo-letras-claras-sin-fondo-cuadrado-pescando-a-pleno.png" alt="Pescando a Pleno" class="logo">
+            </div>
+            <div class="textos">
+                <div class="separador"></div>
+                <h2 class="titulo-catalogo">CATÁLOGO DE PRODUCTOS</h2>
+                <h3 class="subtitulo-catalogo">MARZO 2026</h3>
+                <p class="slogan">JUAN PABLO FRECCERO<br>+54 9 11 2249-0329</p>
+            </div>
+        </div>
+    </div>
+
+    
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- PÁGINA 2 — ÍNDICE                     -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <div class="pagina">
+        <div class="wood-strip"></div>
+        <div class="pagina-header">
+            <img src="logo-letras-claras-sin-fondo-cuadrado-pescando-a-pleno.png" alt="Logo" class="logo-mini">
+            <span class="categoria-titulo">ÍNDICE</span>
+        </div>
+
+        <div class="indice-content">
+            <div class="indice-intro">
+                <h2>Catálogo Mayorista 2026</h2>
+                <p>Bienvenido a una selección diseñada para elevar el estándar de su local.
+En Pescando a Pleno nos apasiona acercarle lo mejor de la pesca mundial.
+Trabajamos para que su negocio crezca con productos líderes.</p>
+            </div>
+
+            <div class="indice-categorias">
+                <div class="indice-item">
+                    <span class="indice-num">01</span>
+                    <span class="indice-nombre">Señuelos Artificiales</span>
+                    <span class="indice-desc">96 familias · 101 productos</span>
+                </div>
+                <div class="indice-item">
+                    <span class="indice-num">02</span>
+                    <span class="indice-nombre">Cañas</span>
+                    <span class="indice-desc">Próximamente</span>
+                </div>
+                <div class="indice-item">
+                    <span class="indice-num">03</span>
+                    <span class="indice-nombre">Reels Baitcast</span>
+                    <span class="indice-desc">Próximamente</span>
+                </div>
+                <div class="indice-item">
+                    <span class="indice-num">04</span>
+                    <span class="indice-nombre">Reels Frontales</span>
+                    <span class="indice-desc">Próximamente</span>
+                </div>
+                <div class="indice-item">
+                    <span class="indice-num">05</span>
+                    <span class="indice-nombre">Líneas y Líders</span>
+                    <span class="indice-desc">Próximamente</span>
+                </div>
+                <div class="indice-item">
+                    <span class="indice-num">06</span>
+                    <span class="indice-nombre">Anzuelos y Terminal</span>
+                    <span class="indice-desc">Próximamente</span>
+                </div>
+                <div class="indice-item">
+                    <span class="indice-num">07</span>
+                    <span class="indice-nombre">Accesorios</span>
+                    <span class="indice-desc">Próximamente</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="wood-strip-bottom"></div>
+        <div class="pagina-footer">
+            <span class="contacto">+54 9 11 2249-0329 · Juan Pablo Freccero · Pescando a Pleno</span>
+            <span class="pagina-num">02</span>
+        </div>
+    </div>
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- PÁGINA 3 — SEÑUELOS INTRO              -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <div class="pagina-estrella">
+        <div class="estrella-hero">
+            <img src="fishing-lifestyle.png" alt="Pesca con señuelos">
+            <div class="hero-overlay">
+                <span class="hero-badge">★ Sección 01</span>
+                <h2 class="hero-title">SEÑUELOS ARTIFICIALES</h2>
+                <p class="hero-sub">El Arte del Engaño · Alta Performance</p>
+            </div>
+        </div>
+
+        <div class="estrella-content">
+            <div class="estrella-descripcion">
+                <h3>El Arte del Engaño</h3>
+                <div class="texto">
+                    <p>La diferencia entre el éxito y el fracaso reside en el engaño. Nuestra 
+selección reúne la elite de la ingeniería: Marine, Megabass, Yo-Zuri y OSP. 
+Herramientas de precisión con transferencia de peso y sonoridad específicas 
+para predadores activos. Una inversión segura para la rotación de su local.</p>
+                </div>
+            </div>
+
+            <div class="estrella-specs-grid">
+                <div class="estrella-spec-item">
+                    <span class="spec-valor">101</span>
+                    <span class="spec-nombre">Productos</span>
+                </div>
+                <div class="estrella-spec-item">
+                    <span class="spec-valor">96</span>
+                    <span class="spec-nombre">Familias</span>
+                </div>
+                <div class="estrella-spec-item">
+                    <span class="spec-valor">4</span>
+                    <span class="spec-nombre">Marcas</span>
+                </div>
+                <div class="estrella-spec-item">
+                    <span class="spec-valor">$4.1k</span>
+                    <span class="spec-nombre">Desde</span>
+                </div>
+            </div>
+
+            <div class="estrella-precio-row">
+                <div class="estrella-precio-left">
+                    <span class="precio-big">PRECIOS MAYORISTAS</span>
+                </div>
+                <span class="consultar">¡Consultá por volumen!</span>
+            </div>
+        </div>
+
+        <div class="pagina-footer">
+            <span class="contacto">+54 9 11 2249-0329 · Juan Pablo Freccero · Pescando a Pleno</span>
+            <span class="pagina-num">03</span>
+        </div>
+    </div>
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- PÁGINA 4                               -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <div class="pagina">
+        <div class="wood-strip"></div>
+        <div class="pagina-header">
+            <img src="logo-letras-claras-sin-fondo-cuadrado-pescando-a-pleno.png" alt="Logo" class="logo-mini">
+            <span class="categoria-titulo">SEÑUELOS · ANIMAL · BAY HUNTER</span>
+        </div>
+
+        <div class="productos-area">
+            
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>ANIMAL</strong>
+                    <span>Walking bait 10cm, superficie El señuelo Marine Animal, firmado por Johnny Hoffmann, es uno de los señuelos de superficie más versátiles y eficientes ...</span>
+                </div>
+            <!-- Producto 1 — Animal 100 -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#1</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/17010014_1.jpg" alt="Animal 100">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 17010014</span>
+                    <h3>Animal 100</h3>
+                    <p class="descripcion marca-label">Marine Sports</p>
+                    <div class="specs">
+                        <span class="spec">10.0cm</span><span class="spec">14.0g</span><span class="spec">Superficie</span>
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$8.400</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Producto 2 — Animal 130 -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#2</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/17010014_1.jpg" alt="Animal 130">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 17010014</span>
+                    <h3>Animal 130</h3>
+                    <p class="descripcion marca-label">Marine Sports</p>
+                    <div class="specs">
+                        <span class="spec">13.0cm</span><span class="spec">29.0g</span><span class="spec">Superficie</span>
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$8.400</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>BAY HUNTER</strong>
+                    <span>Minnow media agua, muy versátil El Marine Bay Hunter Minnow fue diseñado para pescadores que buscan eficiencia, precisión y alto rendimiento en la cap...</span>
+                </div>
+            <!-- Producto 3 — Bay Hunter 70 -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#3</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/17079014_1.jpg" alt="Bay Hunter 70">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 17079014</span>
+                    <h3>Bay Hunter 70</h3>
+                    <p class="descripcion marca-label">Marine Sports</p>
+                    <div class="specs">
+                        <span class="spec">7.0cm</span><span class="spec">7.0g</span><span class="spec">Media Agua</span>
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$8.400</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="wood-strip-bottom"></div>
+        <div class="pagina-footer">
+            <span class="contacto">+54 9 11 2249-0329 · Juan Pablo Freccero · Pescando a Pleno</span>
+            <span class="pagina-num">04</span>
+        </div>
+    </div>
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- PÁGINA 5                               -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <div class="pagina">
+        <div class="wood-strip"></div>
+        <div class="pagina-header">
+            <img src="logo-letras-claras-sin-fondo-cuadrado-pescando-a-pleno.png" alt="Logo" class="logo-mini">
+            <span class="categoria-titulo">SEÑUELOS · BEAT CRANK · INNA</span>
+        </div>
+
+        <div class="productos-area">
+            
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>INNA</strong>
+                    <span>Minnow compacto, ideal dorado El INNA es un señuelo minnow diseñado para ofrecer una natación errática y profundidad controlada, ideal para predadores...</span>
+                </div>
+            <!-- Producto 4 — Inna 70 -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#4</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/17450120_1.jpg" alt="Inna 70">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 17450120</span>
+                    <h3>Inna 70</h3>
+                    <p class="descripcion marca-label">Marine Sports</p>
+                    <div class="specs">
+                        <span class="spec">7.0cm</span><span class="spec">11.0g</span><span class="spec">Media Agua</span>
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$8.300</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Producto 5 — Inna 90 -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#5</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/17450120_1.jpg" alt="Inna 90">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 17450120</span>
+                    <h3>Inna 90</h3>
+                    <p class="descripcion marca-label">Marine Sports</p>
+                    <div class="specs">
+                        <span class="spec">9.0cm</span><span class="spec">16.0g</span><span class="spec">Media Agua</span>
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$8.300</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>BEAT CRANK</strong>
+                    <span>Crankbait media agua El señuelo Beat Crank de Marine es un crankbait de media agua compacto y altamente eficiente, diseñado para pescas que exigen una...</span>
+                </div>
+            <!-- Producto 6 — Beat Crank 45 MR -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#6</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/17145011_1.jpg" alt="Beat Crank 45 MR">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 17145011</span>
+                    <h3>Beat Crank 45 MR</h3>
+                    <p class="descripcion marca-label">Marine Sports</p>
+                    <div class="specs">
+                        <span class="spec">4.5cm</span><span class="spec">6.8g</span><span class="spec">Media Agua</span>
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$7.800</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="wood-strip-bottom"></div>
+        <div class="pagina-footer">
+            <span class="contacto">+54 9 11 2249-0329 · Juan Pablo Freccero · Pescando a Pleno</span>
+            <span class="pagina-num">05</span>
+        </div>
+    </div>
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- PÁGINA 6                               -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <div class="pagina">
+        <div class="wood-strip"></div>
+        <div class="pagina-header">
+            <img src="logo-letras-claras-sin-fondo-cuadrado-pescando-a-pleno.png" alt="Logo" class="logo-mini">
+            <span class="categoria-titulo">SEÑUELOS · BEAT CRANK · REI DO RIO · SAVAGE</span>
+        </div>
+
+        <div class="productos-area">
+            
+            
+            <!-- Producto 7 — Beat Crank 45 SR -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#7</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/17145011_1.jpg" alt="Beat Crank 45 SR">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 17145011</span>
+                    <h3>Beat Crank 45 SR</h3>
+                    <p class="descripcion marca-label">Marine Sports</p>
+                    <div class="specs">
+                        <span class="spec">4.5cm</span><span class="spec">6.8g</span><span class="spec">Media Agua</span>
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$7.800</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>SAVAGE</strong>
+                    <span>Jerkbait agresivo El Savage es un jerkbait diseñado para una natación agresiva y errática. Su forma hidrodinámica permite lanzamientos largos y precis...</span>
+                </div>
+            <!-- Producto 8 — Savage 80 -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#8</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/17765024_1.jpg" alt="Savage 80">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 17765024</span>
+                    <h3>Savage 80</h3>
+                    <p class="descripcion marca-label">Marine Sports</p>
+                    <div class="specs">
+                        <span class="spec">12.0cm</span><span class="spec">19.0g</span><span class="spec">Media Agua</span>
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$9.000</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>REI DO RIO</strong>
+                    <span>Diseñado para dorado/tararira El "Rey del Río" es un clásico para la pesca de dorados y tarariras. Este señuelo de media agua destaca por su resistenc...</span>
+                </div>
+            <!-- Producto 9 — Rei do Rio 80 -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#9</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/17080014_1.jpg" alt="Rei do Rio 80">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 17080014</span>
+                    <h3>Rei do Rio 80</h3>
+                    <p class="descripcion marca-label">Marine Sports</p>
+                    <div class="specs">
+                        <span class="spec">12.0cm</span><span class="spec">20.0g</span><span class="spec">Media Agua</span>
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$8.000</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="wood-strip-bottom"></div>
+        <div class="pagina-footer">
+            <span class="contacto">+54 9 11 2249-0329 · Juan Pablo Freccero · Pescando a Pleno</span>
+            <span class="pagina-num">06</span>
+        </div>
+    </div>
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- PÁGINA 7                               -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <div class="pagina">
+        <div class="wood-strip"></div>
+        <div class="pagina-header">
+            <img src="logo-letras-claras-sin-fondo-cuadrado-pescando-a-pleno.png" alt="Logo" class="logo-mini">
+            <span class="categoria-titulo">SEÑUELOS · BRAVA · RAPTOR MINNOW · TOP GUN</span>
+        </div>
+
+        <div class="productos-area">
+            
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>RAPTOR MINNOW</strong>
+                    <span>Minnow acción errática El Raptor Minnow de Marine es un señuelo de media agua flotante diseñado para ofrecer una natación errática, largo alcance de l...</span>
+                </div>
+            <!-- Producto 10 — Raptor Minnow -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#10</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/17007014_1.jpg" alt="Raptor Minnow">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 17007014</span>
+                    <h3>Raptor Minnow</h3>
+                    <p class="descripcion marca-label">Marine Sports</p>
+                    <div class="specs">
+                        <span class="spec">12.0cm</span><span class="spec">24.5g</span><span class="spec">Media Agua</span>
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$8.500</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>TOP GUN</strong>
+                    <span>Popper/Zara de superficie El señuelo Marine Top Gun fue diseñado para pescadores que buscan precisión, naturalidad y acción eficiente en la superficie...</span>
+                </div>
+            <!-- Producto 11 — Top Gun -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#11</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/10910114_1.jpg" alt="Top Gun">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 10910114</span>
+                    <h3>Top Gun</h3>
+                    <p class="descripcion marca-label">Marine Sports</p>
+                    <div class="specs">
+                        <span class="spec">10.0cm</span><span class="spec">14.0g</span><span class="spec">Superficie</span>
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$13.100</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>BRAVA</strong>
+                    <span>Minnow media agua (sub-superficie) El Marine Brava es un señuelo tipo lipless minnow de sub-superficie y flotante, diseñado para pescadores que buscan...</span>
+                </div>
+            <!-- Producto 12 — Brava 110 -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#12</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/17077014_1.jpg" alt="Brava 110">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 17077014</span>
+                    <h3>Brava 110</h3>
+                    <p class="descripcion marca-label">Marine Sports</p>
+                    <div class="specs">
+                        <span class="spec">11.0cm</span><span class="spec">14.4g</span><span class="spec">Media Agua</span>
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$8.100</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="wood-strip-bottom"></div>
+        <div class="pagina-footer">
+            <span class="contacto">+54 9 11 2249-0329 · Juan Pablo Freccero · Pescando a Pleno</span>
+            <span class="pagina-num">07</span>
+        </div>
+    </div>
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- PÁGINA 8                               -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <div class="pagina">
+        <div class="wood-strip"></div>
+        <div class="pagina-header">
+            <img src="logo-letras-claras-sin-fondo-cuadrado-pescando-a-pleno.png" alt="Logo" class="logo-mini">
+            <span class="categoria-titulo">SEÑUELOS ARTIFICIALES</span>
+        </div>
+
+        <div class="productos-area">
+            
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>INVADER</strong>
+                    <span>Jerkbait media agua, profundidad media El Invader MR 110F de Marine es un señuelo de media agua flotante diseñado para rendir en diferentes condicione...</span>
+                </div>
+            <!-- Producto 13 — Invader -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#13</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/17110101_1.jpg" alt="Invader">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 17110101</span>
+                    <h3>Invader</h3>
+                    <p class="descripcion marca-label">Marine Sports</p>
+                    <div class="specs">
+                        <span class="spec">11.0cm</span><span class="spec">17.0g</span>
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$9.900</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>SPINNER LASER 7G</strong>
+                    <span>Cucharita clásica, rotación altísima El Spinner Laser de Marine fue diseñado para ofrecer máximo rendimiento en ríos, lagos y represas. Su cuerpo equi...</span>
+                </div>
+            <!-- Producto 14 — Spinner Laser 7g -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#14</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/10746006_1.jpg" alt="Spinner Laser 7g">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 10746006</span>
+                    <h3>Spinner Laser 7g</h3>
+                    <p class="descripcion marca-label">Marine Sports</p>
+                    <div class="specs">
+                        <span class="spec">7.0g</span><span class="spec">Fondo</span>
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$4.100</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>SPINNER LASER 12G</strong>
+                    <span>Versión más pesada Versión de 12 gramos del Spinner Laser, ideal para lanzamientos más largos o para pescar en zonas con un poco más de corriente o pr...</span>
+                </div>
+            <!-- Producto 15 — Spinner Laser 12g -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#15</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/10746006_1.jpg" alt="Spinner Laser 12g">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 10746006</span>
+                    <h3>Spinner Laser 12g</h3>
+                    <p class="descripcion marca-label">Marine Sports</p>
+                    <div class="specs">
+                        <span class="spec">12.0g</span><span class="spec">Fondo</span>
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$4.100</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="wood-strip-bottom"></div>
+        <div class="pagina-footer">
+            <span class="contacto">+54 9 11 2249-0329 · Juan Pablo Freccero · Pescando a Pleno</span>
+            <span class="pagina-num">08</span>
+        </div>
+    </div>
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- PÁGINA 9                               -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <div class="pagina">
+        <div class="wood-strip"></div>
+        <div class="pagina-header">
+            <img src="logo-letras-claras-sin-fondo-cuadrado-pescando-a-pleno.png" alt="Logo" class="logo-mini">
+            <span class="categoria-titulo">SEÑUELOS ARTIFICIALES</span>
+        </div>
+
+        <div class="productos-area">
+            
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>YO-ZURI CRYSTAL MINNOW</strong>
+                    <span>Minnow cristal, un clásico mundial El Yo-Zuri Crystal 3D Minnow es un señuelo clásico y consagrado mundialmente por su acción realista y acabado premi...</span>
+                </div>
+            <!-- Producto 16 — Yo-Zuri Crystal Minnow -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#16</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/44002387_1.png" alt="Yo-Zuri Crystal Minnow">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 44002387</span>
+                    <h3>Yo-Zuri Crystal Minnow</h3>
+                    <p class="descripcion marca-label">Yo-Zuri</p>
+                    <div class="specs">
+                        <span class="spec">11.0cm</span>
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$18.300</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>YO-ZURI 3D INSHORE</strong>
+                    <span>Costa y río, acción suspending El Yo-Zuri 3D Inshore Fingerling es un señuelo de media agua tipo "suspending", diseñado para pescas en aguas claras y ...</span>
+                </div>
+            <!-- Producto 17 — Yo-Zuri 3D Inshore -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#17</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/44002031_1.jpg" alt="Yo-Zuri 3D Inshore">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 44002031</span>
+                    <h3>Yo-Zuri 3D Inshore</h3>
+                    <p class="descripcion marca-label">Yo-Zuri</p>
+                    <div class="specs">
+                        <span class="spec">10.0cm</span>
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$17.100</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>YO-ZURI MAG MINNOW</strong>
+                    <span>Sistema magnético, gran alcance El Mag Minnow de Yo-Zuri es un señuelo de media agua diseñado para lanzamientos extremos gracias a su sistema de trans...</span>
+                </div>
+            <!-- Producto 18 — Yo-Zuri Mag Minnow -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#18</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/44002458_1.jpg" alt="Yo-Zuri Mag Minnow">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 44002458</span>
+                    <h3>Yo-Zuri Mag Minnow</h3>
+                    <p class="descripcion marca-label">Yo-Zuri</p>
+                    <div class="specs">
+                        <span class="spec">7.0cm</span>
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$16.100</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="wood-strip-bottom"></div>
+        <div class="pagina-footer">
+            <span class="contacto">+54 9 11 2249-0329 · Juan Pablo Freccero · Pescando a Pleno</span>
+            <span class="pagina-num">09</span>
+        </div>
+    </div>
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- PÁGINA 10                               -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <div class="pagina">
+        <div class="wood-strip"></div>
+        <div class="pagina-header">
+            <img src="logo-letras-claras-sin-fondo-cuadrado-pescando-a-pleno.png" alt="Logo" class="logo-mini">
+            <span class="categoria-titulo">SEÑUELOS ARTIFICIALES</span>
+        </div>
+
+        <div class="productos-area">
+            
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>DUEL HARDCORE MID DIVER</strong>
+                    <span>Crank de profundidad media El Duel Hardcore Mid Diver es un señuelo de alta tecnología japonesa, diseñado para profundizar rápidamente y mantenerse en...</span>
+                </div>
+            <!-- Producto 19 — Duel Hardcore MID DIVER -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#19</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/44002100_1.jpg" alt="Duel Hardcore MID DIVER">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 44002100</span>
+                    <h3>Duel Hardcore MID DIVER</h3>
+                    <p class="descripcion marca-label">Duel</p>
+                    <div class="specs">
+                        <span class="spec">9.5cm</span><span class="spec">14.0g</span>
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$26.200</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>DUEL HARDCORE SINKING</strong>
+                    <span>Hundimiento para pesca profunda 305 — $29.867 La versión Sinking del Hardcore de Duel permite explorar toda la columna de agua. Al ser hundido, el pes...</span>
+                </div>
+            <!-- Producto 20 — Duel Hardcore SINKING -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#20</span>
+                    <div class="no-image">Sin imagen</div>
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 44002150</span>
+                    <h3>Duel Hardcore SINKING</h3>
+                    <p class="descripcion marca-label">Duel</p>
+                    <div class="specs">
+                        <span class="spec">7.0cm</span>
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$21.000</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>OSP BOOSTER BLADE</strong>
+                    <span>Blade bait, vibración extrema El OSP Booster Blade es un "blade bait" diseñado para transformar la persecución en ataque. Con un cuerpo estilizado y c...</span>
+                </div>
+            <!-- Producto 21 — OSP Booster Blade 55 -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#21</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/10550008_1.png" alt="OSP Booster Blade 55">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 10550008</span>
+                    <h3>OSP Booster Blade 55</h3>
+                    <p class="descripcion marca-label"></p>
+                    <div class="specs">
+                        <span class="spec">OSP</span>
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$6.600</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="wood-strip-bottom"></div>
+        <div class="pagina-footer">
+            <span class="contacto">+54 9 11 2249-0329 · Juan Pablo Freccero · Pescando a Pleno</span>
+            <span class="pagina-num">10</span>
+        </div>
+    </div>
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- PÁGINA 11                               -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <div class="pagina">
+        <div class="wood-strip"></div>
+        <div class="pagina-header">
+            <img src="logo-letras-claras-sin-fondo-cuadrado-pescando-a-pleno.png" alt="Logo" class="logo-mini">
+            <span class="categoria-titulo">SEÑUELOS ARTIFICIALES</span>
+        </div>
+
+        <div class="productos-area">
+            
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>MEGABASS VISION ONETEN</strong>
+                    <span>El jerkbait legendario El Vision Oneten es, sencillamente, el jerkbait que definió la categoría. Su natación única, con un balanceo lateral marcado y ...</span>
+                </div>
+            <!-- Producto 22 — Megabass VISION ONETEN -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#22</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/10902140_1.jpg" alt="Megabass VISION ONETEN">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 10902140</span>
+                    <h3>Megabass VISION ONETEN</h3>
+                    <p class="descripcion marca-label"></p>
+                    <div class="specs">
+                        <span class="spec">Megabass</span>
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$32.000</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>MEGABASS X-80 MAGNUM SR</strong>
+                    <span>Minnow de referencia mundial</span>
+                </div>
+            <!-- Producto 23 — Megabass X-80 MAGNUM SR -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#23</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/10901864_1.jpg" alt="Megabass X-80 MAGNUM SR">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 10901864</span>
+                    <h3>Megabass X-80 MAGNUM SR</h3>
+                    <p class="descripcion marca-label"></p>
+                    <div class="specs">
+                        <span class="spec">Megabass</span>
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$33.900</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>MEGABASS IXI SHAD TYPE-</strong>
+                    <span>Shad/Crankbait compacto de élite Colaboración entre Katsutaka Imae (Imakatsu) y Yuki Ito (Megabass), el IXI Shad es un señuelo ultra-tecnológico. Su d...</span>
+                </div>
+            <!-- Producto 24 — Megabass IXI SHAD TYPE-3 -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#24</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/10901514_1.png" alt="Megabass IXI SHAD TYPE-3">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 10901514</span>
+                    <h3>Megabass IXI SHAD TYPE-3</h3>
+                    <p class="descripcion marca-label"></p>
+                    <div class="specs">
+                        <span class="spec">Megabass</span>
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$26.300</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="wood-strip-bottom"></div>
+        <div class="pagina-footer">
+            <span class="contacto">+54 9 11 2249-0329 · Juan Pablo Freccero · Pescando a Pleno</span>
+            <span class="pagina-num">11</span>
+        </div>
+    </div>
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- PÁGINA 12                               -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <div class="pagina">
+        <div class="wood-strip"></div>
+        <div class="pagina-header">
+            <img src="logo-letras-claras-sin-fondo-cuadrado-pescando-a-pleno.png" alt="Logo" class="logo-mini">
+            <span class="categoria-titulo">SEÑUELOS ARTIFICIALES</span>
+        </div>
+
+        <div class="productos-area">
+            
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>MEGABASS DOG-X</strong>
+                    <span>Walking bait premium El Megabass Dog-X es un señuelo de superficie legendario. Diseñado para un "walking the dog" ágil y con un sonido discreto pero a...</span>
+                </div>
+            <!-- Producto 25 — Megabass DOG-X -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#25</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/10901405_1.jpg" alt="Megabass DOG-X">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 10901405</span>
+                    <h3>Megabass DOG-X</h3>
+                    <p class="descripcion marca-label"></p>
+                    <div class="specs">
+                        <span class="spec">Megabass</span>
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$26.300</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>MEGABASS ONETEN R</strong>
+                    <span>Jerkbait técnico perfeccionado El Oneten R es la evolución del clásico Vision Oneten, optimizado para lanzamientos aún más largos y una acción más esp...</span>
+                </div>
+            <!-- Producto 26 — Megabass ONETEN R -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#26</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/10902105_1.png" alt="Megabass ONETEN R">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 10902105</span>
+                    <h3>Megabass ONETEN R</h3>
+                    <p class="descripcion marca-label"></p>
+                    <div class="specs">
+                        <span class="spec">Megabass</span>
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$33.400</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>MEGABASS KARASHI 60F</strong>
+                    <span>Especialidad para pesca sutil (finesse)</span>
+                </div>
+            <!-- Producto 27 — Megabass KARASHI 60F -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#27</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/10901526_1.png" alt="Megabass KARASHI 60F">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 10901526</span>
+                    <h3>Megabass KARASHI 60F</h3>
+                    <p class="descripcion marca-label"></p>
+                    <div class="specs">
+                        <span class="spec">Megabass</span>
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$23.700</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="wood-strip-bottom"></div>
+        <div class="pagina-footer">
+            <span class="contacto">+54 9 11 2249-0329 · Juan Pablo Freccero · Pescando a Pleno</span>
+            <span class="pagina-num">12</span>
+        </div>
+    </div>
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- PÁGINA 13                               -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <div class="pagina">
+        <div class="wood-strip"></div>
+        <div class="pagina-header">
+            <img src="logo-letras-claras-sin-fondo-cuadrado-pescando-a-pleno.png" alt="Logo" class="logo-mini">
+            <span class="categoria-titulo">SEÑUELOS ARTIFICIALES</span>
+        </div>
+
+        <div class="productos-area">
+            
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>MEGABASS KIRINJI</strong>
+                    <span>Popper híbrido, innovación pura El Megabass Kirinji es un señuelo de superficie revolucionario. Su diseño permite usarlo como un popper tradicional qu...</span>
+                </div>
+            <!-- Producto 28 — Megabass KIRINJI 90 -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#28</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/10901822_1.jpg" alt="Megabass KIRINJI 90">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 10901822</span>
+                    <h3>Megabass KIRINJI 90</h3>
+                    <p class="descripcion marca-label"></p>
+                    <div class="specs">
+                        <span class="spec">Megabass</span>
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$28.700</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>MARINE SPORTS SOLARA</strong>
+                    <span>La más económica y funcional La caña Solara es la opción ideal para quienes se inician en la pesca o buscan un equipo confiable a un precio inmejorabl...</span>
+                </div>
+            <!-- Producto 29 — Marine Sports SOLARA -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#29</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/20601180_1.jpg" alt="Marine Sports SOLARA">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 20601180</span>
+                    <h3>Marine Sports SOLARA</h3>
+                    <p class="descripcion marca-label"></p>
+                    <div class="specs">
+                        <span class="spec">Marine Sports</span>
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$18.500</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>MARINE SPORTS POTENZA</strong>
+                    <span>Spinning económica Diseñada específicamente para la modalidad de spinning, la Potenza ofrece una excelente relación costo-beneficio. Es una caña livia...</span>
+                </div>
+            <!-- Producto 30 — Marine Sports POTENZA -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#30</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/76004000_1.jpg" alt="Marine Sports POTENZA">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 76004000</span>
+                    <h3>Marine Sports POTENZA</h3>
+                    <p class="descripcion marca-label"></p>
+                    <div class="specs">
+                        <span class="spec">Marine Sports</span>
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$17.600</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="wood-strip-bottom"></div>
+        <div class="pagina-footer">
+            <span class="contacto">+54 9 11 2249-0329 · Juan Pablo Freccero · Pescando a Pleno</span>
+            <span class="pagina-num">13</span>
+        </div>
+    </div>
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- PÁGINA 14                               -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <div class="pagina">
+        <div class="wood-strip"></div>
+        <div class="pagina-header">
+            <img src="logo-letras-claras-sin-fondo-cuadrado-pescando-a-pleno.png" alt="Logo" class="logo-mini">
+            <span class="categoria-titulo">SEÑUELOS ARTIFICIALES</span>
+        </div>
+
+        <div class="productos-area">
+            
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>MARINE SPORTS TELESCÓPICA VERSUS</strong>
+                    <span>Viajera y práctica La Versus telescópica es la compañera ideal para el pescador que viaja. Su diseño compacto permite transportarla fácilmente en cual...</span>
+                </div>
+            <!-- Producto 31 — Marine Sports Telescópica VERSUS -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#31</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/20010300_1.jpg" alt="Marine Sports Telescópica VERSUS">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 20010300</span>
+                    <h3>Marine Sports Telescópica VERSUS</h3>
+                    <p class="descripcion marca-label"></p>
+                    <div class="specs">
+                        <span class="spec">Marine Sports</span>
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$8.200</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>MARINE SPORTS TELESCÓPICA VITÓRIA</strong>
+                    <span>Telescópica súper económica 108 — $40.165 La caña Vitória combina practicidad, resistencia y un precio imbatible. Ideal para pescas recreativas, mojar...</span>
+                </div>
+            <!-- Producto 32 — Marine Sports Telescópica VITÓRIA -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#32</span>
+                    <div class="no-image">Sin imagen</div>
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 20011040</span>
+                    <h3>Marine Sports Telescópica VITÓRIA</h3>
+                    <p class="descripcion marca-label"></p>
+                    <div class="specs">
+                        <span class="spec">Marine Sports</span>
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$11.800</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>DAIWA LAGUNA II</strong>
+                    <span>La entrada de gama de Daiwa, venta segura La Laguna II representa la calidad legendaria de Daiwa a un precio accesible. Es una caña versátil, con una ...</span>
+                </div>
+            <!-- Producto 33 — Daiwa LAGUNA II -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#33</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/76002454_1.jpg" alt="Daiwa LAGUNA II">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 76002454</span>
+                    <h3>Daiwa LAGUNA II</h3>
+                    <p class="descripcion marca-label"></p>
+                    <div class="specs">
+                        <span class="spec">Daiwa</span>
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$12.300</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="wood-strip-bottom"></div>
+        <div class="pagina-footer">
+            <span class="contacto">+54 9 11 2249-0329 · Juan Pablo Freccero · Pescando a Pleno</span>
+            <span class="pagina-num">14</span>
+        </div>
+    </div>
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- PÁGINA 15                               -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <div class="pagina">
+        <div class="wood-strip"></div>
+        <div class="pagina-header">
+            <img src="logo-letras-claras-sin-fondo-cuadrado-pescando-a-pleno.png" alt="Logo" class="logo-mini">
+            <span class="categoria-titulo">SEÑUELOS ARTIFICIALES</span>
+        </div>
+
+        <div class="productos-area">
+            
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>DAIWA STRIKEFORCE</strong>
+                    <span>Spinning Daiwa accesible La Strikeforce es una caña de spinning diseñada para ofrecer rendimiento y durabilidad. Con el respaldo tecnológico de Daiwa,...</span>
+                </div>
+            <!-- Producto 34 — Daiwa STRIKEFORCE -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#34</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/4102020_1.jpg" alt="Daiwa STRIKEFORCE">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 4102020</span>
+                    <h3>Daiwa STRIKEFORCE</h3>
+                    <p class="descripcion marca-label"></p>
+                    <div class="specs">
+                        <span class="spec">Daiwa</span>
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$28.700</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>MARINE SPORTS VERSUS (TRAMOS)</strong>
+                    <span>Buen equilibrio precio/calidad La línea Versus en tramos es una de las más equilibradas de Marine Sports. Ofrece modelos para diversas modalidades, de...</span>
+                </div>
+            <!-- Producto 35 — Marine Sports VERSUS (Tramos) -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#35</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/20010300_1.jpg" alt="Marine Sports VERSUS (Tramos)">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 20010300</span>
+                    <h3>Marine Sports VERSUS (Tramos)</h3>
+                    <p class="descripcion marca-label"></p>
+                    <div class="specs">
+                        <span class="spec">Marine Sports</span>
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$8.200</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>MARINE SPORTS VENZA</strong>
+                    <span>La más popular de Marine Sports La Venza es, sin dudas, la caña insignia de Marine Sports por su aceptación masiva. Combina un blank de carbono de alt...</span>
+                </div>
+            <!-- Producto 36 — Marine Sports VENZA -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#36</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/12101050_1.jpg" alt="Marine Sports VENZA">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 12101050</span>
+                    <h3>Marine Sports VENZA</h3>
+                    <p class="descripcion marca-label"></p>
+                    <div class="specs">
+                        <span class="spec">Marine Sports</span>
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$32.900</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="wood-strip-bottom"></div>
+        <div class="pagina-footer">
+            <span class="contacto">+54 9 11 2249-0329 · Juan Pablo Freccero · Pescando a Pleno</span>
+            <span class="pagina-num">15</span>
+        </div>
+    </div>
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- PÁGINA 16                               -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <div class="pagina">
+        <div class="wood-strip"></div>
+        <div class="pagina-header">
+            <img src="logo-letras-claras-sin-fondo-cuadrado-pescando-a-pleno.png" alt="Logo" class="logo-mini">
+            <span class="categoria-titulo">SEÑUELOS ARTIFICIALES</span>
+        </div>
+
+        <div class="productos-area">
+            
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>MARINE SPORTS POWER STICK</strong>
+                    <span>Casting media Robusta y confiable, la Power Stick está diseñada para pescas que exigen un poco más de fuerza. Su nombre lo dice todo: es un "palo" con...</span>
+                </div>
+            <!-- Producto 37 — Marine Sports POWER STICK -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#37</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/31010108_1.jpg" alt="Marine Sports POWER STICK">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 31010108</span>
+                    <h3>Marine Sports POWER STICK</h3>
+                    <p class="descripcion marca-label"></p>
+                    <div class="specs">
+                        <span class="spec">Marine Sports</span>
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$39.200</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>MARINE SPORTS RIVER POWER</strong>
+                    <span>Para río pesado La River Power es la caña definitiva para la pesca de espera en el río. Ideal para buscar grandes surubíes o patíes. Su blank reforzad...</span>
+                </div>
+            <!-- Producto 38 — Marine Sports RIVER POWER -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#38</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/76001035_1.jpg" alt="Marine Sports RIVER POWER">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 76001035</span>
+                    <h3>Marine Sports RIVER POWER</h3>
+                    <p class="descripcion marca-label"></p>
+                    <div class="specs">
+                        <span class="spec">Marine Sports</span>
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$32.900</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>MARINE SPORTS SUPER CAST</strong>
+                    <span>Para surfcasting / variada de costa</span>
+                </div>
+            <!-- Producto 39 — Marine Sports SUPER CAST -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#39</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/10908031_1.jpg" alt="Marine Sports SUPER CAST">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 10908031</span>
+                    <h3>Marine Sports SUPER CAST</h3>
+                    <p class="descripcion marca-label"></p>
+                    <div class="specs">
+                        <span class="spec">Marine Sports</span>
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$25.500</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="wood-strip-bottom"></div>
+        <div class="pagina-footer">
+            <span class="contacto">+54 9 11 2249-0329 · Juan Pablo Freccero · Pescando a Pleno</span>
+            <span class="pagina-num">16</span>
+        </div>
+    </div>
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- PÁGINA 17                               -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <div class="pagina">
+        <div class="wood-strip"></div>
+        <div class="pagina-header">
+            <img src="logo-letras-claras-sin-fondo-cuadrado-pescando-a-pleno.png" alt="Logo" class="logo-mini">
+            <span class="categoria-titulo">SEÑUELOS ARTIFICIALES</span>
+        </div>
+
+        <div class="productos-area">
+            
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>MARINE SPORTS LUBINA</strong>
+                    <span>Baitcast lograda y específica La reedición de un clásico. La Lubina 2022 es una caña técnica, diseñada para los entusiastas del baitcast que buscan pr...</span>
+                </div>
+            <!-- Producto 40 — Marine Sports LUBINA 2022 -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#40</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/12102001_1.jpg" alt="Marine Sports LUBINA 2022">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 12102001</span>
+                    <h3>Marine Sports LUBINA 2022</h3>
+                    <p class="descripcion marca-label"></p>
+                    <div class="specs">
+                        <span class="spec">Marine Sports</span>
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$85.100</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>MARINE SPORTS VENATOR</strong>
+                    <span>Alta gama de Marine Sports La serie Venator representa el tope de tecnología de Marine Sports aplicada a cañas. Increíblemente liviana y con una acció...</span>
+                </div>
+            <!-- Producto 41 — Marine Sports VENATOR -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#41</span>
+                    <div class="no-image">Sin imagen</div>
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 12104051</span>
+                    <h3>Marine Sports VENATOR</h3>
+                    <p class="descripcion marca-label"></p>
+                    <div class="specs">
+                        <span class="spec">Marine Sports</span>
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$115.900</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>MARINE SPORTS LEGACY</strong>
+                    <span>Casting profesional Legacy es sinónimo de rendimiento profesional. Una caña con un blank balanceado a la perfección que minimiza el esfuerzo en lanzam...</span>
+                </div>
+            <!-- Producto 42 — Marine Sports LEGACY -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#42</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/12101108_1.jpg" alt="Marine Sports LEGACY">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 12101108</span>
+                    <h3>Marine Sports LEGACY</h3>
+                    <p class="descripcion marca-label"></p>
+                    <div class="specs">
+                        <span class="spec">Marine Sports</span>
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$149.800</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="wood-strip-bottom"></div>
+        <div class="pagina-footer">
+            <span class="contacto">+54 9 11 2249-0329 · Juan Pablo Freccero · Pescando a Pleno</span>
+            <span class="pagina-num">17</span>
+        </div>
+    </div>
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- PÁGINA 18                               -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <div class="pagina">
+        <div class="wood-strip"></div>
+        <div class="pagina-header">
+            <img src="logo-letras-claras-sin-fondo-cuadrado-pescando-a-pleno.png" alt="Logo" class="logo-mini">
+            <span class="categoria-titulo">SEÑUELOS ARTIFICIALES</span>
+        </div>
+
+        <div class="productos-area">
+            
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>MARINE SPORTS THUNNUS</strong>
+                    <span>Para pesca pesada y embarcada Diseñada para los combates más duros. La Thunnus es una caña con una reserva de potencia descomunal, ideal para pesca de...</span>
+                </div>
+            <!-- Producto 43 — Marine Sports THUNNUS -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#43</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/76005685_1.jpg" alt="Marine Sports THUNNUS">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 76005685</span>
+                    <h3>Marine Sports THUNNUS</h3>
+                    <p class="descripcion marca-label"></p>
+                    <div class="specs">
+                        <span class="spec">Marine Sports</span>
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$73.500</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>DAIWA TOURNAMENT EVO SURF</strong>
+                    <span>El tope de gama de Daiwa para costa La Tournament Evo Surf es la máxima expresión tecnológica de Daiwa para el surfcasting competitivo. Con un blank d...</span>
+                </div>
+            <!-- Producto 44 — Daiwa TOURNAMENT EVO SURF -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#44</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/31013603_1.jpg" alt="Daiwa TOURNAMENT EVO SURF">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 31013603</span>
+                    <h3>Daiwa TOURNAMENT EVO SURF</h3>
+                    <p class="descripcion marca-label"></p>
+                    <div class="specs">
+                        <span class="spec">Daiwa</span>
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$48.800</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>MARINE SPORTS VENTURA</strong>
+                    <span>El más económico y rendidor El Ventura es la puerta de entrada al mundo del baitcast. Un reel sencillo, robusto y muy fácil de regular, ideal para qui...</span>
+                </div>
+            <!-- Producto 45 — Marine Sports VENTURA -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#45</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/12000710_1.jpg" alt="Marine Sports VENTURA">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 12000710</span>
+                    <h3>Marine Sports VENTURA</h3>
+                    <p class="descripcion marca-label"></p>
+                    <div class="specs">
+                        <span class="spec">Marine Sports</span>
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$61.100</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="wood-strip-bottom"></div>
+        <div class="pagina-footer">
+            <span class="contacto">+54 9 11 2249-0329 · Juan Pablo Freccero · Pescando a Pleno</span>
+            <span class="pagina-num">18</span>
+        </div>
+    </div>
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- PÁGINA 19                               -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <div class="pagina">
+        <div class="wood-strip"></div>
+        <div class="pagina-header">
+            <img src="logo-letras-claras-sin-fondo-cuadrado-pescando-a-pleno.png" alt="Logo" class="logo-mini">
+            <span class="categoria-titulo">SEÑUELOS ARTIFICIALES</span>
+        </div>
+
+        <div class="productos-area">
+            
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>MARINE SPORTS AVENGER</strong>
+                    <span>Entrada de gama sólido El Avenger ofrece un paso adelante en suavidad y durabilidad. Con un cuerpo más refinado y un sistema de engranajes preciso, es...</span>
+                </div>
+            <!-- Producto 46 — Marine Sports AVENGER -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#46</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/85020201_1.jpg" alt="Marine Sports AVENGER">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 85020201</span>
+                    <h3>Marine Sports AVENGER</h3>
+                    <p class="descripcion marca-label"></p>
+                    <div class="specs">
+                        <span class="spec">Marine Sports</span>
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$77.100</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>MARINE SPORTS VERSUS</strong>
+                    <span>El popular todo terreno El Versus es un reel que se adapta a todo. Con una relación de recuperación equilibrada y un drag (freno) potente, sirve tanto...</span>
+                </div>
+            <!-- Producto 47 — Marine Sports VERSUS -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#47</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/20045560_1.jpg" alt="Marine Sports VERSUS">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 20045560</span>
+                    <h3>Marine Sports VERSUS</h3>
+                    <p class="descripcion marca-label"></p>
+                    <div class="specs">
+                        <span class="spec">Marine Sports</span>
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$83.800</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Producto 64 — Marine Sports VERSUS -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#64</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/20045005_1.jpg" alt="Marine Sports VERSUS">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 20045005</span>
+                    <h3>Marine Sports VERSUS</h3>
+                    <p class="descripcion marca-label"></p>
+                    <div class="specs">
+                        <span class="spec">Marine Sports</span>
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$33.000</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="wood-strip-bottom"></div>
+        <div class="pagina-footer">
+            <span class="contacto">+54 9 11 2249-0329 · Juan Pablo Freccero · Pescando a Pleno</span>
+            <span class="pagina-num">19</span>
+        </div>
+    </div>
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- PÁGINA 20                               -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <div class="pagina">
+        <div class="wood-strip"></div>
+        <div class="pagina-header">
+            <img src="logo-letras-claras-sin-fondo-cuadrado-pescando-a-pleno.png" alt="Logo" class="logo-mini">
+            <span class="categoria-titulo">SEÑUELOS · DAIWA FIRECAST · MARINE SPORTS INTRUDER</span>
+        </div>
+
+        <div class="productos-area">
+            
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>MARINE SPORTS INTRUDER</strong>
+                    <span>Excelente relación calidad/precio El Intruder destaca por su ligereza y su capacidad de lanzamiento. Es un reel ágil, perfecto para trabajar señuelos ...</span>
+                </div>
+            <!-- Producto 48 — Marine Sports INTRUDER -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#48</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/20060032_1.jpg" alt="Marine Sports INTRUDER">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 20060032</span>
+                    <h3>Marine Sports INTRUDER</h3>
+                    <p class="descripcion marca-label"></p>
+                    <div class="specs">
+                        <span class="spec">Marine Sports</span>
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$84.200</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>DAIWA FIRECAST</strong>
+                    <span>La calidad de Daiwa al mejor precio El Firecast es la opción económica de Daiwa para baitcast. Aunque es accesible, mantiene los estándares de control...</span>
+                </div>
+            <!-- Producto 49 — Daiwa FIRECAST -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#49</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/20043001_1.jpg" alt="Daiwa FIRECAST">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 20043001</span>
+                    <h3>Daiwa FIRECAST</h3>
+                    <p class="descripcion marca-label"></p>
+                    <div class="specs">
+                        <span class="spec">Daiwa</span>
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$50.000</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Producto 60 — Daiwa FIRECAST -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#60</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/20043710_1.jpg" alt="Daiwa FIRECAST">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 20043710</span>
+                    <h3>Daiwa FIRECAST</h3>
+                    <p class="descripcion marca-label"></p>
+                    <div class="specs">
+                        <span class="spec">Daiwa</span>
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$18.400</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="wood-strip-bottom"></div>
+        <div class="pagina-footer">
+            <span class="contacto">+54 9 11 2249-0329 · Juan Pablo Freccero · Pescando a Pleno</span>
+            <span class="pagina-num">20</span>
+        </div>
+    </div>
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- PÁGINA 21                               -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <div class="pagina">
+        <div class="wood-strip"></div>
+        <div class="pagina-header">
+            <img src="logo-letras-claras-sin-fondo-cuadrado-pescando-a-pleno.png" alt="Logo" class="logo-mini">
+            <span class="categoria-titulo">SEÑUELOS ARTIFICIALES</span>
+        </div>
+
+        <div class="productos-area">
+            
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>MARINE SPORTS CASTER</strong>
+                    <span>Media gama confiable El Caster es un clásico renovado. Conocido por su durabilidad extrema, este reel es un compañero fiel para cualquier pescador. Su...</span>
+                </div>
+            <!-- Producto 50 — Marine Sports CASTER -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#50</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/12000403_1.jpg" alt="Marine Sports CASTER">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 12000403</span>
+                    <h3>Marine Sports CASTER</h3>
+                    <p class="descripcion marca-label"></p>
+                    <div class="specs">
+                        <span class="spec">Marine Sports</span>
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$82.900</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>MARINE SPORTS BRISA</strong>
+                    <span>Muy buena relación y desempeño La serie Brisa es una de las favoritas por su suavidad de giro. Equipado con múltiples rodamientos y componentes de pre...</span>
+                </div>
+            <!-- Producto 51 — Marine Sports BRISA -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#51</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/85023001_1.jpg" alt="Marine Sports BRISA">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 85023001</span>
+                    <h3>Marine Sports BRISA</h3>
+                    <p class="descripcion marca-label"></p>
+                    <div class="specs">
+                        <span class="spec">Marine Sports</span>
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$115.800</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>MARINE SPORTS TITAN BG</strong>
+                    <span>El más vendido para pesca pesada El Titan BG (Big Game) es el tanque de Marine Sports. Diseñado para pelear con dorados grandes y surubíes, cuenta con...</span>
+                </div>
+            <!-- Producto 52 — Marine Sports TITAN BG -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#52</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/20054001_1.jpg" alt="Marine Sports TITAN BG">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 20054001</span>
+                    <h3>Marine Sports TITAN BG</h3>
+                    <p class="descripcion marca-label"></p>
+                    <div class="specs">
+                        <span class="spec">Marine Sports</span>
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$79.000</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="wood-strip-bottom"></div>
+        <div class="pagina-footer">
+            <span class="contacto">+54 9 11 2249-0329 · Juan Pablo Freccero · Pescando a Pleno</span>
+            <span class="pagina-num">21</span>
+        </div>
+    </div>
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- PÁGINA 22                               -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <div class="pagina">
+        <div class="wood-strip"></div>
+        <div class="pagina-header">
+            <img src="logo-letras-claras-sin-fondo-cuadrado-pescando-a-pleno.png" alt="Logo" class="logo-mini">
+            <span class="categoria-titulo">SEÑUELOS ARTIFICIALES</span>
+        </div>
+
+        <div class="productos-area">
+            
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>DAIWA TATULA</strong>
+                    <span>El reel más deseado por los pescadores técnicos</span>
+                </div>
+            <!-- Producto 53 — Daiwa TATULA -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#53</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/4010215_1.jpg" alt="Daiwa TATULA">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 4010215</span>
+                    <h3>Daiwa TATULA</h3>
+                    <p class="descripcion marca-label"></p>
+                    <div class="specs">
+                        <span class="spec">Daiwa</span>
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$350.200</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>DAIWA SALTIST</strong>
+                    <span>Diseñado para el agua salada y condiciones extremas El Saltist está construido para durar en el ambiente más hostil: el mar. Con protecciones contra l...</span>
+                </div>
+            <!-- Producto 54 — Daiwa SALTIST -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#54</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/4002280_1.jpg" alt="Daiwa SALTIST">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 4002280</span>
+                    <h3>Daiwa SALTIST</h3>
+                    <p class="descripcion marca-label"></p>
+                    <div class="specs">
+                        <span class="spec">Daiwa</span>
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$497.500</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>MARINE SPORTS JIMMY</strong>
+                    <span>El más accesible y práctico El Jimmy es un reel frontal compacto, ideal para pescas livianas en laguna o río. Su sencillez de manejo lo hace perfecto ...</span>
+                </div>
+            <!-- Producto 55 — Marine Sports JIMMY -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#55</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/20042952_1.jpg" alt="Marine Sports JIMMY">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 20042952</span>
+                    <h3>Marine Sports JIMMY</h3>
+                    <p class="descripcion marca-label"></p>
+                    <div class="specs">
+                        <span class="spec">Marine Sports</span>
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$9.400</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="wood-strip-bottom"></div>
+        <div class="pagina-footer">
+            <span class="contacto">+54 9 11 2249-0329 · Juan Pablo Freccero · Pescando a Pleno</span>
+            <span class="pagina-num">22</span>
+        </div>
+    </div>
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- PÁGINA 23                               -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <div class="pagina">
+        <div class="wood-strip"></div>
+        <div class="pagina-header">
+            <img src="logo-letras-claras-sin-fondo-cuadrado-pescando-a-pleno.png" alt="Logo" class="logo-mini">
+            <span class="categoria-titulo">SEÑUELOS ARTIFICIALES</span>
+        </div>
+
+        <div class="productos-area">
+            
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>MARINE SPORTS STAR</strong>
+                    <span>Económico y funcional El Star es un reel básico pero robusto, diseñado para soportar el uso diario. Es la opción ideal para armar equipos de alquiler ...</span>
+                </div>
+            <!-- Producto 56 — Marine Sports STAR -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#56</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/20042981_1.jpg" alt="Marine Sports STAR">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 20042981</span>
+                    <h3>Marine Sports STAR</h3>
+                    <p class="descripcion marca-label"></p>
+                    <div class="specs">
+                        <span class="spec">Marine Sports</span>
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$12.100</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>MARINE SPORTS ARENA</strong>
+                    <span>Económico con variedad de opciones La serie Arena ofrece diferentes tamaños para adaptarse a cada necesidad. Desde el micro-spinning hasta la variada ...</span>
+                </div>
+            <!-- Producto 57 — Marine Sports ARENA -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#57</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/20043700_1.jpg" alt="Marine Sports ARENA">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 20043700</span>
+                    <h3>Marine Sports ARENA</h3>
+                    <p class="descripcion marca-label"></p>
+                    <div class="specs">
+                        <span class="spec">Marine Sports</span>
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$12.000</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>MARINE SPORTS ELITE</strong>
+                    <span>Excelente relación calidad/precio El Elite ya es un escalón superior en prestaciones. Con un cuerpo más estilizado y una mecánica más suave, este reel...</span>
+                </div>
+            <!-- Producto 58 — Marine Sports ELITE -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#58</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/20043715_1.jpg" alt="Marine Sports ELITE">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 20043715</span>
+                    <h3>Marine Sports ELITE</h3>
+                    <p class="descripcion marca-label"></p>
+                    <div class="specs">
+                        <span class="spec">Marine Sports</span>
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$16.600</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="wood-strip-bottom"></div>
+        <div class="pagina-footer">
+            <span class="contacto">+54 9 11 2249-0329 · Juan Pablo Freccero · Pescando a Pleno</span>
+            <span class="pagina-num">23</span>
+        </div>
+    </div>
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- PÁGINA 24                               -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <div class="pagina">
+        <div class="wood-strip"></div>
+        <div class="pagina-header">
+            <img src="logo-letras-claras-sin-fondo-cuadrado-pescando-a-pleno.png" alt="Logo" class="logo-mini">
+            <span class="categoria-titulo">SEÑUELOS ARTIFICIALES</span>
+        </div>
+
+        <div class="productos-area">
+            
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>MARINE SPORTS SERENA</strong>
+                    <span>El paso siguiente en rendimiento accessible El Serena destaca por su suavidad de giro y su diseño ergonómico. Con un eje principal reforzado y un sist...</span>
+                </div>
+            <!-- Producto 59 — Marine Sports SERENA -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#59</span>
+                    <div class="no-image">Sin imagen</div>
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 20047000</span>
+                    <h3>Marine Sports SERENA</h3>
+                    <p class="descripcion marca-label"></p>
+                    <div class="specs">
+                        <span class="spec">Marine Sports</span>
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$15.700</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>MARINE SPORTS FOX</strong>
+                    <span>Compacto y versátil El Fox es un reel moderno, diseñado para el pescador que busca equipos compactos pero potentes. Su relación de recuperación rápida...</span>
+                </div>
+            <!-- Producto 61 — Marine Sports FOX -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#61</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/20044090_1.jpg" alt="Marine Sports FOX">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 20044090</span>
+                    <h3>Marine Sports FOX</h3>
+                    <p class="descripcion marca-label"></p>
+                    <div class="specs">
+                        <span class="spec">Marine Sports</span>
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$25.300</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>MARINE SPORTS BETA</strong>
+                    <span>Con 3 rulemanes para mayor suavidad El Beta incorpora rodamientos adicionales que se notan en cada vuelta de manivela. Es un reel muy fluido que hace ...</span>
+                </div>
+            <!-- Producto 62 — Marine Sports BETA -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#62</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/20044050_1.jpg" alt="Marine Sports BETA">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 20044050</span>
+                    <h3>Marine Sports BETA</h3>
+                    <p class="descripcion marca-label"></p>
+                    <div class="specs">
+                        <span class="spec">Marine Sports</span>
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$29.500</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="wood-strip-bottom"></div>
+        <div class="pagina-footer">
+            <span class="contacto">+54 9 11 2249-0329 · Juan Pablo Freccero · Pescando a Pleno</span>
+            <span class="pagina-num">24</span>
+        </div>
+    </div>
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- PÁGINA 25                               -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <div class="pagina">
+        <div class="wood-strip"></div>
+        <div class="pagina-header">
+            <img src="logo-letras-claras-sin-fondo-cuadrado-pescando-a-pleno.png" alt="Logo" class="logo-mini">
+            <span class="categoria-titulo">SEÑUELOS ARTIFICIALES</span>
+        </div>
+
+        <div class="productos-area">
+            
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>MARINE SPORTS PRISMA</strong>
+                    <span>Con 5 rulemanes de precisión</span>
+                </div>
+            <!-- Producto 63 — Marine Sports PRISMA -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#63</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/20041050_1.jpg" alt="Marine Sports PRISMA">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 20041050</span>
+                    <h3>Marine Sports PRISMA</h3>
+                    <p class="descripcion marca-label"></p>
+                    <div class="specs">
+                        <span class="spec">Marine Sports</span>
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$28.000</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>MARINE SPORTS AZURA</strong>
+                    <span>Con 6 rulemanes, desempeño superior El Azura es un reel de prestaciones superiores. Con 6 rodamientos de acero inoxidable, ofrece una suavidad envidia...</span>
+                </div>
+            <!-- Producto 65 — Marine Sports AZURA -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#65</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/20044080_1.jpg" alt="Marine Sports AZURA">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 20044080</span>
+                    <h3>Marine Sports AZURA</h3>
+                    <p class="descripcion marca-label"></p>
+                    <div class="specs">
+                        <span class="spec">Marine Sports</span>
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$67.400</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>MARINE SPORTS BG (BIG GAME)</strong>
+                    <span>Robusto y potente para agua salada o río pesado El frontal BG es el equipo definitivo para grandes desafíos. Ya sea buscando grandes surubíes en el rí...</span>
+                </div>
+            <!-- Producto 66 — Marine Sports BG (Big Game) -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#66</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/4038185_1.jpg" alt="Marine Sports BG (Big Game)">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 4038185</span>
+                    <h3>Marine Sports BG (Big Game)</h3>
+                    <p class="descripcion marca-label"></p>
+                    <div class="specs">
+                        <span class="spec">Marine Sports</span>
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$260.900</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="wood-strip-bottom"></div>
+        <div class="pagina-footer">
+            <span class="contacto">+54 9 11 2249-0329 · Juan Pablo Freccero · Pescando a Pleno</span>
+            <span class="pagina-num">25</span>
+        </div>
+    </div>
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- PÁGINA 26                               -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <div class="pagina">
+        <div class="wood-strip"></div>
+        <div class="pagina-header">
+            <img src="logo-letras-claras-sin-fondo-cuadrado-pescando-a-pleno.png" alt="Logo" class="logo-mini">
+            <span class="categoria-titulo">SEÑUELOS ARTIFICIALES</span>
+        </div>
+
+        <div class="productos-area">
+            
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>COMBO TITAN 4000 + CAÑA 1.68M (12-25LB)</strong>
+                    <span>Equipo completo para pesca pesada El combo ideal para entrar al río con todo. Combina el mítico reel Titan 4000 con una caña de potencia media-pesada ...</span>
+                </div>
+            <!-- Producto 67 — Combo TITAN 4000 + Caña 1.68m (12-25lb) -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#67</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/50007642_1.jpg" alt="Combo TITAN 4000 + Caña 1.68m (12-25lb)">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 50007642</span>
+                    <h3>Combo TITAN 4000 + Caña 1.68m (12-25lb)</h3>
+                    <p class="descripcion marca-label"></p>
+                    <div class="specs">
+                        
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$118.500</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>COMBO EVOLUTION + CAÑA</strong>
+                    <span>Calidad y rendimiento superior 324 — $118.493 Este combo reúne lo mejor de la línea Evolution. Una caña de carbono macizo con un reel a la altura de l...</span>
+                </div>
+            <!-- Producto 68 — Combo EVOLUTION + Caña -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#68</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/50007640_1.jpg" alt="Combo EVOLUTION + Caña">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 50007640</span>
+                    <h3>Combo EVOLUTION + Caña</h3>
+                    <p class="descripcion marca-label"></p>
+                    <div class="specs">
+                        
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$105.300</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>COMBO ECONÓMICO INICIAL</strong>
+                    <span>Ideal para principiantes 324 — $118.493 La opción más inteligente para empezar. Incluye un reel frontal y una caña versátil que permite practicar dive...</span>
+                </div>
+            <!-- Producto 69 — Combo Económico Inicial -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#69</span>
+                    <div class="no-image">Sin imagen</div>
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 50007600</span>
+                    <h3>Combo Económico Inicial</h3>
+                    <p class="descripcion marca-label"></p>
+                    <div class="specs">
+                        
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$89.600</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="wood-strip-bottom"></div>
+        <div class="pagina-footer">
+            <span class="contacto">+54 9 11 2249-0329 · Juan Pablo Freccero · Pescando a Pleno</span>
+            <span class="pagina-num">26</span>
+        </div>
+    </div>
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- PÁGINA 27                               -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <div class="pagina">
+        <div class="wood-strip"></div>
+        <div class="pagina-header">
+            <img src="logo-letras-claras-sin-fondo-cuadrado-pescando-a-pleno.png" alt="Logo" class="logo-mini">
+            <span class="categoria-titulo">SEÑUELOS ARTIFICIALES</span>
+        </div>
+
+        <div class="productos-area">
+            
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>BEEF STICK MONOFILAMENTO (NYLON)</strong>
+                    <span>Monofilamento económico de alta rotación</span>
+                </div>
+            <!-- Producto 70 — BEEF STICK Monofilamento (Nylon) -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#70</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/76001022_1.jpg" alt="BEEF STICK Monofilamento (Nylon)">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 76001022</span>
+                    <h3>BEEF STICK Monofilamento (Nylon)</h3>
+                    <p class="descripcion marca-label"></p>
+                    <div class="specs">
+                        <span class="spec">Marine Sports</span>
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$1.800</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>VEXTER NYLON</strong>
+                    <span>Monofilamento de alta calidad Marine Sports 584 — $65.054 El nylon Vexter es sinónimo de rendimiento profesional. Con un estiramiento controlado y baj...</span>
+                </div>
+            <!-- Producto 71 — VEXTER Nylon -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#71</span>
+                    <div class="no-image">Sin imagen</div>
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 4020100</span>
+                    <h3>VEXTER Nylon</h3>
+                    <p class="descripcion marca-label"></p>
+                    <div class="specs">
+                        <span class="spec">Marine Sports</span>
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$11.900</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>VEXTER X4 MULTIFILAMENTO</strong>
+                    <span>Multifilamento accesible y resistente La entrada de gama en "multi" de Marine Sports. Con 4 hebras trenzadas de alta densidad, ofrece una resistencia ...</span>
+                </div>
+            <!-- Producto 72 — VEXTER X4 Multifilamento -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#72</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/4040200_1.jpg" alt="VEXTER X4 Multifilamento">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 4040200</span>
+                    <h3>VEXTER X4 Multifilamento</h3>
+                    <p class="descripcion marca-label"></p>
+                    <div class="specs">
+                        <span class="spec">Marine Sports</span>
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$16.100</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="wood-strip-bottom"></div>
+        <div class="pagina-footer">
+            <span class="contacto">+54 9 11 2249-0329 · Juan Pablo Freccero · Pescando a Pleno</span>
+            <span class="pagina-num">27</span>
+        </div>
+    </div>
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- PÁGINA 28                               -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <div class="pagina">
+        <div class="wood-strip"></div>
+        <div class="pagina-header">
+            <img src="logo-letras-claras-sin-fondo-cuadrado-pescando-a-pleno.png" alt="Logo" class="logo-mini">
+            <span class="categoria-titulo">SEÑUELOS ARTIFICIALES</span>
+        </div>
+
+        <div class="productos-area">
+            
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>VEXTER X8 MULTIFILAMENTO</strong>
+                    <span>Multifilamento premium de 8 hebras El tope de gama en multifilamentos. Al estar compuesto por 8 hebras trenzadas, su sección es perfectamente redonda ...</span>
+                </div>
+            <!-- Producto 73 — VEXTER X8 Multifilamento -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#73</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/4040200_1.jpg" alt="VEXTER X8 Multifilamento">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 4040200</span>
+                    <h3>VEXTER X8 Multifilamento</h3>
+                    <p class="descripcion marca-label"></p>
+                    <div class="specs">
+                        <span class="spec">Marine Sports</span>
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$16.100</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>VEXTER POWER LEADER</strong>
+                    <span>Leader de Fluorocarbono 100% Línea de fluorocarbono de origen japonés. Indispensable para armar líderes y terminales, ya que es prácticamente invisibl...</span>
+                </div>
+            <!-- Producto 74 — VEXTER POWER LEADER -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#74</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/76006200_1.jpg" alt="VEXTER POWER LEADER">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 76006200</span>
+                    <h3>VEXTER POWER LEADER</h3>
+                    <p class="descripcion marca-label"></p>
+                    <div class="specs">
+                        <span class="spec">Marine Sports</span>
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$8.700</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>DUEL HARDCORE LEADER</strong>
+                    <span>Leader premium de máxima tecnología El leader definitivo. Producido con la tecnología más avanzada de Japón por Duel, este fluorocarbono ofrece el equ...</span>
+                </div>
+            <!-- Producto 75 — DUEL HARDCORE LEADER -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#75</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/76006200_1.jpg" alt="DUEL HARDCORE LEADER">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 76006200</span>
+                    <h3>DUEL HARDCORE LEADER</h3>
+                    <p class="descripcion marca-label"></p>
+                    <div class="specs">
+                        <span class="spec">Duel</span>
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$8.700</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="wood-strip-bottom"></div>
+        <div class="pagina-footer">
+            <span class="contacto">+54 9 11 2249-0329 · Juan Pablo Freccero · Pescando a Pleno</span>
+            <span class="pagina-num">28</span>
+        </div>
+    </div>
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- PÁGINA 29                               -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <div class="pagina">
+        <div class="wood-strip"></div>
+        <div class="pagina-header">
+            <img src="logo-letras-claras-sin-fondo-cuadrado-pescando-a-pleno.png" alt="Logo" class="logo-mini">
+            <span class="categoria-titulo">SEÑUELOS ARTIFICIALES</span>
+        </div>
+
+        <div class="productos-area">
+            
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>BEEF STICK NYLON COLORES</strong>
+                    <span>Variante en colores de alta visibilidad Mismas prestaciones que el Beef Stick tradicional, pero en colores flúor que permiten al pescador visualizar p...</span>
+                </div>
+            <!-- Producto 76 — BEEF STICK Nylon Colores -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#76</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/4020016_1.jpg" alt="BEEF STICK Nylon Colores">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 4020016</span>
+                    <h3>BEEF STICK Nylon Colores</h3>
+                    <p class="descripcion marca-label"></p>
+                    <div class="specs">
+                        <span class="spec">Marine Sports</span>
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$7.500</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>SUPER CHINU</strong>
+                    <span>El #1 en ventas, multiuso avanzado El anzuelo Super Chinu Black Nickel es la elección correcta para quien busca resistencia y precisión en cada clavad...</span>
+                </div>
+            <!-- Producto 77 — SUPER CHINU -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#77</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/27043128_1.jpg" alt="SUPER CHINU">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 27043128</span>
+                    <h3>SUPER CHINU</h3>
+                    <p class="descripcion marca-label"></p>
+                    <div class="specs">
+                        <span class="spec">Marine Sports</span>
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$1.500</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>CHINU</strong>
+                    <span>Variante clásica y confiable El anzuelo Marine Chinu Black Nickel está fabricado en acero súper resistente, ofreciendo firmeza y durabilidad en difere...</span>
+                </div>
+            <!-- Producto 78 — CHINU -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#78</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/27050008_1.jpg" alt="CHINU">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 27050008</span>
+                    <h3>CHINU</h3>
+                    <p class="descripcion marca-label"></p>
+                    <div class="specs">
+                        <span class="spec">Marine Sports</span>
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$1.700</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="wood-strip-bottom"></div>
+        <div class="pagina-footer">
+            <span class="contacto">+54 9 11 2249-0329 · Juan Pablo Freccero · Pescando a Pleno</span>
+            <span class="pagina-num">29</span>
+        </div>
+    </div>
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- PÁGINA 30                               -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <div class="pagina">
+        <div class="wood-strip"></div>
+        <div class="pagina-header">
+            <img src="logo-letras-claras-sin-fondo-cuadrado-pescando-a-pleno.png" alt="Logo" class="logo-mini">
+            <span class="categoria-titulo">SEÑUELOS · AKITA KITSUNE · MARUSEIGO · SUZUKI</span>
+        </div>
+
+        <div class="productos-area">
+            
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>MARUSEIGO</strong>
+                    <span>Para pesca con carnada natural El anzuelo Marine Maruseigo Gold es producido en acero súper resistente con acabado dorado, que garantiza durabilidad y...</span>
+                </div>
+            <!-- Producto 79 — MARUSEIGO -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#79</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/27043028_1.jpg" alt="MARUSEIGO">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 27043028</span>
+                    <h3>MARUSEIGO</h3>
+                    <p class="descripcion marca-label"></p>
+                    <div class="specs">
+                        <span class="spec">Marine Sports</span>
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$1.100</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>SUZUKI</strong>
+                    <span>Ideal para mojarras, bagres y variada menor El anzuelo Marine Suzuki se produce en acero súper resistente, ofreciendo firmeza y rendimiento confiable....</span>
+                </div>
+            <!-- Producto 80 — SUZUKI -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#80</span>
+                    <div class="no-image">Sin imagen</div>
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 28103020</span>
+                    <h3>SUZUKI</h3>
+                    <p class="descripcion marca-label"></p>
+                    <div class="specs">
+                        <span class="spec">Marine Sports</span>
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$2.400</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>AKITA KITSUNE</strong>
+                    <span>Diseñado para pesca fina y de competición El anzuelo Marine Akita-Kitsune Gold garantiza firmeza y durabilidad en situaciones de pesca sutil. Su acaba...</span>
+                </div>
+            <!-- Producto 81 — AKITA KITSUNE -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#81</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/27071002_1.jpg" alt="AKITA KITSUNE">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 27071002</span>
+                    <h3>AKITA KITSUNE</h3>
+                    <p class="descripcion marca-label"></p>
+                    <div class="specs">
+                        <span class="spec">Marine Sports</span>
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$2.900</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="wood-strip-bottom"></div>
+        <div class="pagina-footer">
+            <span class="contacto">+54 9 11 2249-0329 · Juan Pablo Freccero · Pescando a Pleno</span>
+            <span class="pagina-num">30</span>
+        </div>
+    </div>
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- PÁGINA 31                               -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <div class="pagina">
+        <div class="wood-strip"></div>
+        <div class="pagina-header">
+            <img src="logo-letras-claras-sin-fondo-cuadrado-pescando-a-pleno.png" alt="Logo" class="logo-mini">
+            <span class="categoria-titulo">SEÑUELOS · LIVE BAIT · MOD. 4330 NICKEL · WIDE GAP</span>
+        </div>
+
+        <div class="productos-area">
+            
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>WIDE GAP</strong>
+                    <span>Para señuelos blandos y montajes Texas/Carolina Diseñado específicamente para el uso con señuelos de silicona. Su amplia apertura (wide gap) permite q...</span>
+                </div>
+            <!-- Producto 82 — WIDE GAP -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#82</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/28042006_1.jpg" alt="WIDE GAP">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 28042006</span>
+                    <h3>WIDE GAP</h3>
+                    <p class="descripcion marca-label"></p>
+                    <div class="specs">
+                        <span class="spec">Marine Sports</span>
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$2.900</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>LIVE BAIT</strong>
+                    <span>Para pesca pesada con carnada viva El anzuelo Marine Live Bait está fabricado en acero al carbono súper resistente con acabado Black Nickel. Reforzado...</span>
+                </div>
+            <!-- Producto 83 — LIVE BAIT -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#83</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/10904710_1.jpg" alt="LIVE BAIT">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 10904710</span>
+                    <h3>LIVE BAIT</h3>
+                    <p class="descripcion marca-label"></p>
+                    <div class="specs">
+                        <span class="spec">Marine Sports</span>
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$4.600</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>MOD. 4330 NICKEL</strong>
+                    <span>El clásico de pata larga multiuso El modelo 4330 es probablemente el anzuelo más conocido del mundo. Su diseño de pata larga con rebabas en el vástago...</span>
+                </div>
+            <!-- Producto 84 — Mod. 4330 Nickel -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#84</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/31028750_1.jpg" alt="Mod. 4330 Nickel">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 31028750</span>
+                    <h3>Mod. 4330 Nickel</h3>
+                    <p class="descripcion marca-label"></p>
+                    <div class="specs">
+                        <span class="spec">Marine Sports</span>
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$1.200</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="wood-strip-bottom"></div>
+        <div class="pagina-footer">
+            <span class="contacto">+54 9 11 2249-0329 · Juan Pablo Freccero · Pescando a Pleno</span>
+            <span class="pagina-num">31</span>
+        </div>
+    </div>
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- PÁGINA 32                               -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <div class="pagina">
+        <div class="wood-strip"></div>
+        <div class="pagina-header">
+            <img src="logo-letras-claras-sin-fondo-cuadrado-pescando-a-pleno.png" alt="Logo" class="logo-mini">
+            <span class="categoria-titulo">SEÑUELOS ARTIFICIALES</span>
+        </div>
+
+        <div class="productos-area">
+            
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>GIRADOR BBS NICKEL</strong>
+                    <span>Rotación suave y máxima resistencia Fabricado en latón de alta calidad, este girador garantiza una rotación fluida que evita los enredos de la línea. ...</span>
+                </div>
+            <!-- Producto 97 — Girador BBS Nickel -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#97</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/1540211_1.jpg" alt="Girador BBS Nickel">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 1540211</span>
+                    <h3>Girador BBS Nickel</h3>
+                    <p class="descripcion marca-label"></p>
+                    <div class="specs">
+                        
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$2.400</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>GIRADOR BSS CON SNAP</strong>
+                    <span>Práctico y seguro para cambios rápidos Combina la rotación de un girador de calidad con un snap (broche) reforzado. Permite cambiar de señuelo en segu...</span>
+                </div>
+            <!-- Producto 98 — Girador BSS con Snap -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#98</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/1540107_1.jpg" alt="Girador BSS con Snap">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 1540107</span>
+                    <h3>Girador BSS con Snap</h3>
+                    <p class="descripcion marca-label"></p>
+                    <div class="specs">
+                        
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$2.800</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>QUICK LOCK SNAP</strong>
+                    <span>El broche más rápido y seguro Diseño de bloqueo rápido que asegura que el señuelo no se suelte accidentalmente, pero permite un cambio ultra-veloz. Fa...</span>
+                </div>
+            <!-- Producto 99 — Quick Lock Snap -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#99</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/10901007_1.jpg" alt="Quick Lock Snap">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 10901007</span>
+                    <h3>Quick Lock Snap</h3>
+                    <p class="descripcion marca-label"></p>
+                    <div class="specs">
+                        
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$1.100</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="wood-strip-bottom"></div>
+        <div class="pagina-footer">
+            <span class="contacto">+54 9 11 2249-0329 · Juan Pablo Freccero · Pescando a Pleno</span>
+            <span class="pagina-num">32</span>
+        </div>
+    </div>
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- PÁGINA 33                               -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <div class="pagina">
+        <div class="wood-strip"></div>
+        <div class="pagina-header">
+            <img src="logo-letras-claras-sin-fondo-cuadrado-pescando-a-pleno.png" alt="Logo" class="logo-mini">
+            <span class="categoria-titulo">SEÑUELOS ARTIFICIALES</span>
+        </div>
+
+        <div class="productos-area">
+            
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>SPLIT RING INOX</strong>
+                    <span>Anillas de acero inoxidable para señuelos Anillas de alta resistencia para conectar triples a tus señuelos. El acero inoxidable asegura que no se degr...</span>
+                </div>
+            <!-- Producto 100 — Split Ring INOX -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#100</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/10900201_1.jpg" alt="Split Ring INOX">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 10900201</span>
+                    <h3>Split Ring INOX</h3>
+                    <p class="descripcion marca-label"></p>
+                    <div class="specs">
+                        
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$1.200</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>BAJO DE LÍNEA / LEADER ACERO NICKEL</strong>
+                    <span>Protección contra dientes afilados Ideal para la pesca de dorados y tarariras. El cable de acero evita los cortes por dentelladas, mientras que el gir...</span>
+                </div>
+            <!-- Producto 101 — Bajo de Línea / Leader Acero Nickel -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#101</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/29010104_1.jpg" alt="Bajo de Línea / Leader Acero Nickel">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 29010104</span>
+                    <h3>Bajo de Línea / Leader Acero Nickel</h3>
+                    <p class="descripcion marca-label"></p>
+                    <div class="specs">
+                        
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$7.100</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>TRIPLE NICKEL STANDARD</strong>
+                    <span>Reemplazo confiable para tus señuelos Anzuelos triples clásicos de alta penetración. Ideales para renovar los anzuelos gastados o doblados de tus señu...</span>
+                </div>
+            <!-- Producto 102 — Triple NICKEL Standard -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#102</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/10904010_1.png" alt="Triple NICKEL Standard">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 10904010</span>
+                    <h3>Triple NICKEL Standard</h3>
+                    <p class="descripcion marca-label"></p>
+                    <div class="specs">
+                        
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$19.700</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="wood-strip-bottom"></div>
+        <div class="pagina-footer">
+            <span class="contacto">+54 9 11 2249-0329 · Juan Pablo Freccero · Pescando a Pleno</span>
+            <span class="pagina-num">33</span>
+        </div>
+    </div>
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- PÁGINA 34                               -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <div class="pagina">
+        <div class="wood-strip"></div>
+        <div class="pagina-header">
+            <img src="logo-letras-claras-sin-fondo-cuadrado-pescando-a-pleno.png" alt="Logo" class="logo-mini">
+            <span class="categoria-titulo">SEÑUELOS ARTIFICIALES</span>
+        </div>
+
+        <div class="productos-area">
+            
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>TRIPLE SANKEN SHORT SHANK</strong>
+                    <span>Triple técnico de pata corta Diseñado para evitar que los triples se enreden entre sí en señuelos de cuerpo corto. Su diseño Sanken de máxima tecnolog...</span>
+                </div>
+            <!-- Producto 103 — Triple SANKEN SHORT SHANK -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#103</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/20905001_1.jpg" alt="Triple SANKEN SHORT SHANK">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 20905001</span>
+                    <h3>Triple SANKEN SHORT SHANK</h3>
+                    <p class="descripcion marca-label"></p>
+                    <div class="specs">
+                        
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$4.700</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>ALICATE BIG GAME PLIERS</strong>
+                    <span>Herramienta reforzada para pescadores exigentes Alicate multifunción de alta resistencia, diseñado para soportar las tareas más duras: cortar cables, ...</span>
+                </div>
+            <!-- Producto 85 — Alicate BIG GAME PLIERS -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#85</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/10911010_1.jpg" alt="Alicate BIG GAME PLIERS">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 10911010</span>
+                    <h3>Alicate BIG GAME PLIERS</h3>
+                    <p class="descripcion marca-label"></p>
+                    <div class="specs">
+                        
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$44.600</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>ALICATE SPLIT RING MS</strong>
+                    <span>Especial para cambio de triples Diseñado con una punta especial para abrir anillas (split rings) de forma rápida y sencilla sin dañarlas. Ideal para e...</span>
+                </div>
+            <!-- Producto 86 — Alicate Split Ring MS -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#86</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/10800615_1.jpg" alt="Alicate Split Ring MS">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 10800615</span>
+                    <h3>Alicate Split Ring MS</h3>
+                    <p class="descripcion marca-label"></p>
+                    <div class="specs">
+                        
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$10.700</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="wood-strip-bottom"></div>
+        <div class="pagina-footer">
+            <span class="contacto">+54 9 11 2249-0329 · Juan Pablo Freccero · Pescando a Pleno</span>
+            <span class="pagina-num">34</span>
+        </div>
+    </div>
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- PÁGINA 35                               -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <div class="pagina">
+        <div class="wood-strip"></div>
+        <div class="pagina-header">
+            <img src="logo-letras-claras-sin-fondo-cuadrado-pescando-a-pleno.png" alt="Logo" class="logo-mini">
+            <span class="categoria-titulo">SEÑUELOS ARTIFICIALES</span>
+        </div>
+
+        <div class="productos-area">
+            
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>CUCHILLO FILLET 9" TEFLON</strong>
+                    <span>Cuchillo de filetear profesional Hoja de acero inoxidable con revestimiento de teflón para un deslizamiento suave y máxima protección contra el óxido....</span>
+                </div>
+            <!-- Producto 87 — Cuchillo FILLET 9" TEFLON -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#87</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/10800770_1.jpg" alt="Cuchillo FILLET 9" TEFLON">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 10800770</span>
+                    <h3>Cuchillo FILLET 9" TEFLON</h3>
+                    <p class="descripcion marca-label"></p>
+                    <div class="specs">
+                        
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$13.500</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>BALANZA DIGITAL SCALE 50KG</strong>
+                    <span>Para registrar tus capturas con precisión Balanza digital compacta y precisa. Permite pesar capturas de hasta 50 kg con facilidad. Cuenta con función ...</span>
+                </div>
+            <!-- Producto 88 — Balanza DIGITAL SCALE 50kg -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#88</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/10800261_1.jpg" alt="Balanza DIGITAL SCALE 50kg">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 10800261</span>
+                    <h3>Balanza DIGITAL SCALE 50kg</h3>
+                    <p class="descripcion marca-label"></p>
+                    <div class="specs">
+                        
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$9.300</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>CAJA ORGANIZADORA MS</strong>
+                    <span>Varios tamaños y configuraciones 923 — $230.112 Cajas plásticas de alta calidad con compartimentos ajustables. Ideales para mantener tus señuelos, anz...</span>
+                </div>
+            <!-- Producto 89 — Caja Organizadora MS -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#89</span>
+                    <div class="no-image">Sin imagen</div>
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 10800315</span>
+                    <h3>Caja Organizadora MS</h3>
+                    <p class="descripcion marca-label"></p>
+                    <div class="specs">
+                        
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$11.900</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="wood-strip-bottom"></div>
+        <div class="pagina-footer">
+            <span class="contacto">+54 9 11 2249-0329 · Juan Pablo Freccero · Pescando a Pleno</span>
+            <span class="pagina-num">35</span>
+        </div>
+    </div>
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- PÁGINA 36                               -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <div class="pagina">
+        <div class="wood-strip"></div>
+        <div class="pagina-header">
+            <img src="logo-letras-claras-sin-fondo-cuadrado-pescando-a-pleno.png" alt="Logo" class="logo-mini">
+            <span class="categoria-titulo">SEÑUELOS ARTIFICIALES</span>
+        </div>
+
+        <div class="productos-area">
+            
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>BOLSA ESTANCA</strong>
+                    <span>Protección total para tus pertenencias Fabricada en PVC 500D impermeable de alta resistencia. Ideal para mantener celulares, documentos y ropa seca en...</span>
+                </div>
+            <!-- Producto 90 — Bolsa Estanca -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#90</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/17375010_1.jpg" alt="Bolsa Estanca">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 17375010</span>
+                    <h3>Bolsa Estanca</h3>
+                    <p class="descripcion marca-label"></p>
+                    <div class="specs">
+                        
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$20.400</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>TIJERA MINI LINE CUTTER</strong>
+                    <span>Corte preciso para multifilamento Tijera compacta diseñada específicamente para cortar líneas trenzadas (multifilamento) sin que se deshilachen. Un ac...</span>
+                </div>
+            <!-- Producto 91 — Tijera MINI LINE CUTTER -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#91</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/29079030_1.jpg" alt="Tijera MINI LINE CUTTER">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 29079030</span>
+                    <h3>Tijera MINI LINE CUTTER</h3>
+                    <p class="descripcion marca-label"></p>
+                    <div class="specs">
+                        
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$12.800</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>OXIGENADOR 12V / PILAS</strong>
+                    <span>Mantené tu carnada viva y activa Oxigenador compacto y resistente, ideal para baldes o viveros de lancha. Puede conectarse a 12V o usarse con pilas. A...</span>
+                </div>
+            <!-- Producto 92 — Oxigenador 12V / Pilas -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#92</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/10800400_1.jpg" alt="Oxigenador 12V / Pilas">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 10800400</span>
+                    <h3>Oxigenador 12V / Pilas</h3>
+                    <p class="descripcion marca-label"></p>
+                    <div class="specs">
+                        
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$24.300</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="wood-strip-bottom"></div>
+        <div class="pagina-footer">
+            <span class="contacto">+54 9 11 2249-0329 · Juan Pablo Freccero · Pescando a Pleno</span>
+            <span class="pagina-num">36</span>
+        </div>
+    </div>
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- PÁGINA 37                               -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <div class="pagina">
+        <div class="wood-strip"></div>
+        <div class="pagina-header">
+            <img src="logo-letras-claras-sin-fondo-cuadrado-pescando-a-pleno.png" alt="Logo" class="logo-mini">
+            <span class="categoria-titulo">SEÑUELOS ARTIFICIALES</span>
+        </div>
+
+        <div class="productos-area">
+            
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>MOTOR PHANTOM FW 34LB</strong>
+                    <span>Motor eléctrico de entrada confiable El motor eléctrico Phantom de 34lb es ideal para maniobras silenciosas en lagunas y ríos lentos. Bajo consumo y g...</span>
+                </div>
+            <!-- Producto 93 — Motor PHANTOM FW 34lb -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#93</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/24003034_1.jpg" alt="Motor PHANTOM FW 34lb">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 24003034</span>
+                    <h3>Motor PHANTOM FW 34lb</h3>
+                    <p class="descripcion marca-label"></p>
+                    <div class="specs">
+                        
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$362.400</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+            
+                <!-- Family intro -->
+                <div class="familia-banner">
+                    <strong>MOTOR PHANTOM FW 54LB</strong>
+                    <span>Potencia eléctrica para mayores desafíos Versión más potente del Phantom, ideal para embarcaciones medianas o lugares con un poco de viento o corrient...</span>
+                </div>
+            <!-- Producto 94 — Motor PHANTOM FW 54lb -->
+            <div class="producto">
+                <div class="diagonal-accent"></div>
+                <div class="producto-foto">
+                    <span class="id-tag">#94</span>
+                    <img src="analisis-catalogo-proveedor/imagenes-catalogo/24003054_1.jpg" alt="Motor PHANTOM FW 54lb">
+                </div>
+                <div class="producto-detalle">
+                    <span class="codigo">CÓD. 24003054</span>
+                    <h3>Motor PHANTOM FW 54lb</h3>
+                    <p class="descripcion marca-label"></p>
+                    <div class="specs">
+                        
+                    </div>
+                    <div class="precio-zona">
+                        <span class="precio">$459.600</span>
+                        <span class="precio-label">Precio mayorista</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="wood-strip-bottom"></div>
+        <div class="pagina-footer">
+            <span class="contacto">+54 9 11 2249-0329 · Juan Pablo Freccero · Pescando a Pleno</span>
+            <span class="pagina-num">37</span>
+        </div>
+    </div>
+
+</body>
+
+</html>

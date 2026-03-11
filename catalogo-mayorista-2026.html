@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Catálogo de Productos — Pescando a Pleno</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700;800&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Barlow', sans-serif; color: #2a2a2a; background: #555; }
+        @page { size: A4; margin: 0; }
+        .pg {
+            width: 210mm; height: 297mm;
+            position: relative; overflow: hidden;
+            page-break-after: always; background: white;
+        }
+        .pg:last-child { page-break-after: auto; }
+        @media print {
+            body { background: white; }
+            .pg { -webkit-print-color-adjust: exact; print-color-adjust: exact; box-shadow: none; margin: 0; }
+        }
+        @media screen {
+            body { display: flex; flex-direction: column; align-items: center; gap: 15mm; padding: 15mm; }
+            .pg { box-shadow: 0 8px 40px rgba(0,0,0,0.45); }
+        }
+
+        :root {
+            --forest: #2D4A3E;
+            --forest-dark: #1B3129;
+            --olive: #5A7247;
+            --tan: #C4A96A;
+            --earth: #8B7355;
+        }
+
+        /* ═══ PORTADA ═══ */
+        .cover { background: url('bg-pesca2.jpg') center/cover; }
+        .cover-overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.15), rgba(27,49,41,0.6) 45%, rgba(27,49,41,0.85));
+        }
+        .cover-content {
+            position: relative; z-index: 2; width: 100%; height: 100%;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            padding: 20mm; text-align: center; color: white;
+        }
+        .cover-logo { width: 75mm; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.5)); margin-bottom: 10mm; }
+        .cover h1 { font-family: 'Bebas Neue', sans-serif; font-size: 5rem; letter-spacing: 8px; line-height: 1; }
+        .cover h2 { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; letter-spacing: 5px; color: #d4be8a; margin-top: 3mm; }
+        .cover .tagline { font-family: 'Barlow', sans-serif; font-weight: 300; font-style: italic; font-size: 1.4rem; color: #ccc; margin-top: 12mm; }
+        .cover-products {
+            position: absolute; bottom: 22mm; left: 15mm; right: 15mm; z-index: 2;
+            display: flex; justify-content: center; gap: 8mm;
+        }
+        .cover-products img { height: 55mm; object-fit: contain; filter: drop-shadow(2px 4px 10px rgba(0,0,0,0.5)); transform: rotate(-15deg); }
+        .cover-products img:nth-child(2) { transform: rotate(-5deg); height: 50mm; }
+        .cover-products img:nth-child(3) { transform: rotate(10deg); height: 48mm; }
+        .cover .contact-bar {
+            position: absolute; bottom: 0; left: 0; right: 0;
+            background: rgba(0,0,0,0.5); padding: 4mm 10mm;
+            display: flex; align-items: center; justify-content: space-between; z-index: 3;
+        }
+        .cover .contact-bar span { font-size: 0.95rem; color: rgba(255,255,255,0.7); letter-spacing: 1px; }
+        .cover .contact-bar strong { color: #d4be8a; }
+
+        /* ═══ COMMONS ═══ */
+        .strip { position: absolute; top: 0; left: 0; right: 0; height: 4mm; background: linear-gradient(90deg, var(--forest-dark), var(--olive), var(--tan)); }
+        .hdr { display: flex; align-items: center; justify-content: space-between; padding: 7mm 12mm 0; }
+        .hdr img { height: 10mm; }
+        .hdr span { font-family: 'Barlow Condensed', sans-serif; font-size: 0.95rem; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: #aaa; }
+        .stitle { padding: 5mm 12mm 4mm; }
+        .stitle h2 { font-family: 'Bebas Neue', sans-serif; font-size: 3.5rem; color: var(--forest-dark); letter-spacing: 2px; line-height: 1; }
+        .stitle p { font-size: 1rem; font-weight: 300; color: #777; line-height: 1.5; margin-top: 2mm; }
+        .ftr {
+            position: absolute; bottom: 0; left: 0; right: 0; padding: 3mm 12mm;
+            display: flex; align-items: center; justify-content: space-between; border-top: 1px solid #e5e0d8;
+        }
+        .ftr span { font-size: 0.85rem; color: #bbb; }
+        .ftr .pn { font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; color: var(--earth); letter-spacing: 2px; }
+
+        /* ═══ PRODUCT ATOMS ═══ */
+        .ref { font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; font-weight: 700; color: var(--olive); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 1mm; }
+        .pname { font-family: 'Bebas Neue', sans-serif; color: var(--forest-dark); letter-spacing: 1px; line-height: 1.1; margin-bottom: 1.5mm; }
+        .psub { font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; font-weight: 600; color: var(--earth); letter-spacing: 0.5px; margin-bottom: 2mm; }
+        .pdesc { font-family: 'Barlow', sans-serif; font-size: 0.95rem; font-weight: 300; color: #555; line-height: 1.55; margin-bottom: 3mm; }
+        .pspecs { font-family: 'Barlow Condensed', sans-serif; font-size: 0.95rem; font-weight: 600; color: #888; letter-spacing: 0.5px; margin-bottom: 2.5mm; }
+        .pspecs span { margin-right: 2.5mm; }
+        .pspecs span::after { content: '|'; margin-left: 2.5mm; color: #ddd; }
+        .pspecs span:last-child::after { content: ''; }
+        .pprice { font-family: 'Bebas Neue', sans-serif; color: var(--forest-dark); letter-spacing: 1px; }
+        .pprice-lbl { font-family: 'Barlow Condensed', sans-serif; font-size: 0.85rem; font-weight: 600; color: var(--olive); letter-spacing: 1px; text-transform: uppercase; }
+        .pcode { font-family: 'Barlow Condensed', sans-serif; font-size: 0.85rem; color: #c0b8a8; letter-spacing: 1.5px; margin-top: 1mm; }
+
+        /* ═══ LAYOUT: 1 hero top + 2 bottom ═══ */
+        .lay-hero-top {
+            display: flex; gap: 6mm; padding: 2mm 12mm;
+            align-items: center;
+            height: 55%;
+        }
+        .lay-hero-top .img-w { width: 50%; flex-shrink: 0; height: 100%; display: flex; align-items: center; justify-content: center; }
+        .lay-hero-top .img-w img { max-width: 100%; max-height: 100%; object-fit: contain; filter: drop-shadow(1px 3px 8px rgba(0,0,0,0.08)); }
+        .lay-hero-top .info { flex: 1; }
+        .lay-hero-top .pname { font-size: 2.2rem; }
+        .lay-hero-top .psub { font-size: 1.1rem; }
+        .lay-hero-top .pdesc { font-size: 1rem; }
+        .lay-hero-top .pspecs { font-size: 1rem; }
+        .lay-hero-top .pprice { font-size: 2.5rem; }
+        .lay-hero-top .pprice-lbl { font-size: 0.9rem; }
+        .lay-hero-top .pcode { font-size: 0.85rem; }
+
+        .lay-duo-bottom {
+            display: flex; gap: 0; padding: 0 12mm;
+            flex: 1;
+            border-top: 1px solid #eee;
+        }
+        .lay-duo-item {
+            flex: 1; display: flex; gap: 4mm; padding: 4mm 5mm;
+            align-items: center;
+        }
+        .lay-duo-item:first-child { border-right: 1px solid #f0ebe4; padding-left: 0; }
+        .lay-duo-item:last-child { padding-right: 0; }
+        .lay-duo-item .img-w { width: 45%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+        .lay-duo-item .img-w img { max-width: 100%; object-fit: contain; filter: drop-shadow(1px 2px 5px rgba(0,0,0,0.06)); }
+        .lay-duo-item .pname { font-size: 1.6rem; }
+        .lay-duo-item .psub { font-size: 0.95rem; }
+        .lay-duo-item .pdesc { font-size: 0.9rem; }
+        .lay-duo-item .pspecs { font-size: 0.9rem; }
+        .lay-duo-item .pprice { font-size: 1.8rem; }
+        .lay-duo-item .pprice-lbl { font-size: 0.8rem; }
+        .lay-duo-item .pcode { font-size: 0.8rem; }
+
+        /* ═══ LAYOUT: 3 rows horizontal ═══ */
+        .lay-3rows { flex: 1; display: flex; flex-direction: column; padding: 2mm 12mm 10mm; }
+        .lay-3row-item { flex: 1; display: flex; gap: 6mm; align-items: center; }
+        .lay-3row-item + .lay-3row-item { border-top: 1px solid #f0ebe4; }
+        .lay-3row-item .img-w { width: 42%; flex-shrink: 0; height: 90%; display: flex; align-items: center; justify-content: center; }
+        .lay-3row-item .img-w img { max-width: 100%; max-height: 100%; object-fit: contain; filter: drop-shadow(1px 3px 6px rgba(0,0,0,0.07)); }
+        .lay-3row-item .pname { font-size: 1.8rem; }
+        .lay-3row-item .psub { font-size: 1rem; }
+        .lay-3row-item .pdesc { font-size: 0.95rem; }
+        .lay-3row-item .pspecs { font-size: 0.95rem; }
+        .lay-3row-item .pprice { font-size: 2rem; }
+        .lay-3row-item .pprice-lbl { font-size: 0.85rem; }
+        .lay-3row-item .pcode { font-size: 0.8rem; }
+
+        /* ═══ LAYOUT: 2x2 grid ═══ */
+        .lay-grid { flex: 1; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; padding: 0 12mm 10mm; }
+        .lay-grid-cell { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 3mm 5mm; }
+        .lay-grid-cell:nth-child(1) { border-right: 1px solid #f0ebe4; border-bottom: 1px solid #f0ebe4; }
+        .lay-grid-cell:nth-child(2) { border-bottom: 1px solid #f0ebe4; }
+        .lay-grid-cell:nth-child(3) { border-right: 1px solid #f0ebe4; }
+        .lay-grid-cell .gc-img { flex: 1; display: flex; align-items: center; justify-content: center; width: 100%; min-height: 0; margin-bottom: 2mm; }
+        .lay-grid-cell .gc-img img { max-width: 80%; max-height: 100%; object-fit: contain; filter: drop-shadow(1px 3px 6px rgba(0,0,0,0.07)); }
+        .lay-grid-cell .pname { font-size: 1.6rem; }
+        .lay-grid-cell .psub { font-size: 0.9rem; }
+        .lay-grid-cell .pdesc { font-size: 0.85rem; text-align: center; margin-bottom: 2mm; }
+        .lay-grid-cell .pspecs { font-size: 0.85rem; }
+        .lay-grid-cell .pprice { font-size: 1.7rem; }
+        .lay-grid-cell .pcode { font-size: 0.75rem; }
+
+        /* ═══ LAYOUT: 2 rows big ═══ */
+        .lay-2big { flex: 1; display: flex; flex-direction: column; padding: 2mm 12mm 10mm; }
+        .lay-2big-item { flex: 1; display: flex; gap: 6mm; align-items: center; }
+        .lay-2big-item + .lay-2big-item { border-top: 1px solid #f0ebe4; }
+        .lay-2big-item .img-w { width: 48%; flex-shrink: 0; height: 90%; display: flex; align-items: center; justify-content: center; }
+        .lay-2big-item .img-w img { max-width: 100%; max-height: 100%; object-fit: contain; filter: drop-shadow(1px 3px 8px rgba(0,0,0,0.08)); }
+        .lay-2big-item .pname { font-size: 2rem; }
+        .lay-2big-item .psub { font-size: 1.05rem; }
+        .lay-2big-item .pdesc { font-size: 1rem; }
+        .lay-2big-item .pspecs { font-size: 1rem; }
+        .lay-2big-item .pprice { font-size: 2.2rem; }
+        .lay-2big-item .pprice-lbl { font-size: 0.9rem; }
+        .lay-2big-item .pcode { font-size: 0.85rem; }
+    </style>
+</head>
+<body>
+
+<!-- ═══ PORTADA ═══ -->
+<div class="pg cover">
+    <div class="cover-overlay"></div>
+    <div class="cover-content">
+        <img src="logo-letras-claras-sin-fondo-cuadrado-pescando-a-pleno.png" alt="Pescando a Pleno" class="cover-logo">
+        <h1>CATÁLOGO DE PRODUCTOS</h1>
+        <h2>TEMPORADA MARZO 2026</h2>
+        <p class="tagline">Tus próximas capturas empiezan aquí.</p>
+    </div>
+    <div class="cover-products">
+        <img src="analisis-catalogo-proveedor/imagenes-catalogo/17010014_1.jpg" alt="">
+        <img src="analisis-catalogo-proveedor/imagenes-catalogo/17079014_1.jpg" alt="">
+        <img src="analisis-catalogo-proveedor/imagenes-catalogo/17007014_1.jpg" alt="">
+    </div>
+    <div class="contact-bar">
+        <span><strong>Juan Pablo Freccero</strong> · +54 9 11 2249-0329</span>
+        <span>Precios exclusivos mayoristas</span>
+    </div>
+</div>
+
+<!-- ═══ PÁG 2 — SEÑUELOS DE ÉXITO — 1 hero + 2 abajo ═══ -->
+<div class="pg" style="display:flex; flex-direction:column;">
+    <div class="strip"></div>
+    <div class="hdr">
+        <img src="logo-sin-fondo-cuadrado-pescando-a-pleno.png" alt="">
+        <span>Pescando a Pleno · Mayorista 2026</span>
+    </div>
+    <div class="stitle">
+        <h2>SEÑUELOS DE ÉXITO</h2>
+        <p>Señuelos de élite con transferencia de peso, sonoridad calibrada y natación precisa. Herramientas que garantizan rotación en tu local.</p>
+    </div>
+
+    <!-- Animal 100 — hero -->
+    <div class="lay-hero-top">
+        <div class="img-w">
+            <img src="analisis-catalogo-proveedor/imagenes-catalogo/17010014_1.jpg" alt="Animal 100">
+        </div>
+        <div class="info">
+            <div class="ref">ref. 01</div>
+            <div class="pname">SEÑUELO "ANIMAL 100"</div>
+            <div class="psub">Marine Sports · Walking Bait de Superficie · 10cm</div>
+            <p class="pdesc">Firmado por Johnny Hoffmann. Acción tipo zara con rattlin interno que genera sonidos atractivos y amplía la detección. Triples de alta calidad para clavadas precisas. Plástico ABS de alta resistencia.</p>
+            <div class="pspecs"><span>10.0 cm</span><span>14.0 g</span><span>Superficie</span><span>ABS c/ Rattlin</span></div>
+            <div style="display:flex; align-items:baseline; gap:3mm;">
+                <span class="pprice">$8.400</span>
+                <span class="pprice-lbl">precio mayorista</span>
+            </div>
+            <div class="pcode">CÓD. 17010014</div>
+        </div>
+    </div>
+
+    <!-- Animal 130 + Bay Hunter — duo bottom -->
+    <div class="lay-duo-bottom">
+        <div class="lay-duo-item">
+            <div class="img-w">
+                <img src="analisis-catalogo-proveedor/imagenes-catalogo/17010022_1.jpg" alt="Animal 130">
+            </div>
+            <div class="info">
+                <div class="ref">ref. 02</div>
+                <div class="pname">SEÑUELO "ANIMAL 130"</div>
+                <div class="psub">Marine Sports · 13cm Superficie</div>
+                <p class="pdesc">Versión de 13cm del clásico Animal. Mayor presencia en el agua con la misma acción irresistible.</p>
+                <div class="pspecs"><span>13.0 cm</span><span>29.0 g</span><span>Superficie</span></div>
+                <div style="display:flex; align-items:baseline; gap:2mm;">
+                    <span class="pprice">$8.400</span>
+                    <span class="pprice-lbl">mayorista</span>
+                </div>
+                <div class="pcode">CÓD. 17010014</div>
+            </div>
+        </div>
+        <div class="lay-duo-item">
+            <div class="img-w">
+                <img src="analisis-catalogo-proveedor/imagenes-catalogo/17079014_1.jpg" alt="Bay Hunter 70">
+            </div>
+            <div class="info">
+                <div class="ref">ref. 03</div>
+                <div class="pname">BAY HUNTER 70</div>
+                <div class="psub">Marine Sports · Minnow Media Agua</div>
+                <p class="pdesc">High Floating para predadores de pequeño y mediano porte. Profundidad 30–60cm.</p>
+                <div class="pspecs"><span>7.0 cm</span><span>7.0 g</span><span>Media Agua</span></div>
+                <div style="display:flex; align-items:baseline; gap:2mm;">
+                    <span class="pprice">$8.400</span>
+                    <span class="pprice-lbl">mayorista</span>
+                </div>
+                <div class="pcode">CÓD. 17079014</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ftr">
+        <span>PDF disponible en www.pescandoapleno.com</span>
+        <span class="pn">Pág. 2</span>
+    </div>
+</div>
+
+<!-- ═══ PÁG 3 — MINNOW & CRANKBAIT — 3 horizontal ═══ -->
+<div class="pg" style="display:flex; flex-direction:column;">
+    <div class="strip"></div>
+    <div class="hdr">
+        <img src="logo-sin-fondo-cuadrado-pescando-a-pleno.png" alt="">
+        <span>Señuelos · Minnow & Crankbait</span>
+    </div>
+
+    <div class="lay-3rows">
+        <div class="lay-3row-item">
+            <div class="img-w">
+                <img src="analisis-catalogo-proveedor/imagenes-catalogo/17450120_1.jpg" alt="Inna 70">
+            </div>
+            <div class="info">
+                <div class="ref">ref. 04</div>
+                <div class="pname">INNA 70 — MINNOW COMPACTO</div>
+                <div class="psub">Marine Sports · Ideal Dorado & Tararira</div>
+                <p class="pdesc">Natación errática y profundidad controlada. ABS de alta resistencia con comportamiento flotante. Un verdadero imán de dorados y tarariras.</p>
+                <div class="pspecs"><span>7.0 cm</span><span>11.0 g</span><span>Media Agua</span><span>Flotante</span></div>
+                <div style="display:flex; align-items:baseline; gap:3mm;">
+                    <span class="pprice">$8.300</span>
+                    <span class="pprice-lbl">precio mayorista</span>
+                </div>
+                <div class="pcode">CÓD. 17450120</div>
+            </div>
+        </div>
+        <div class="lay-3row-item">
+            <div class="img-w">
+                <img src="analisis-catalogo-proveedor/imagenes-catalogo/17450121_1.jpg" alt="Inna 90">
+            </div>
+            <div class="info">
+                <div class="ref">ref. 05</div>
+                <div class="pname">INNA 90 — VERSIÓN 9CM</div>
+                <div class="psub">Marine Sports · Mayor Porte, Misma Precisión</div>
+                <p class="pdesc">Versión de 9cm con más presencia y peso extra para zonas profundas. Misma calidad de natación errática. Perfecto para dorados de buen porte.</p>
+                <div class="pspecs"><span>9.0 cm</span><span>16.0 g</span><span>Media Agua</span><span>Flotante</span></div>
+                <div style="display:flex; align-items:baseline; gap:3mm;">
+                    <span class="pprice">$8.300</span>
+                    <span class="pprice-lbl">precio mayorista</span>
+                </div>
+                <div class="pcode">CÓD. 17450120</div>
+            </div>
+        </div>
+        <div class="lay-3row-item">
+            <div class="img-w">
+                <img src="analisis-catalogo-proveedor/imagenes-catalogo/17145011_1.jpg" alt="Beat Crank 45 MR">
+            </div>
+            <div class="info">
+                <div class="ref">ref. 06</div>
+                <div class="pname">BEAT CRANK 45 MR — CRANKBAIT</div>
+                <div class="psub">Marine Sports · Media Agua · Acción Vibrante</div>
+                <p class="pdesc">Crankbait compacto con natación vibrante y acción errática. Vibración intensa para despertar ataques instintivos. ABS de alta resistencia.</p>
+                <div class="pspecs"><span>4.5 cm</span><span>6.8 g</span><span>Media Agua</span><span>Flotante</span></div>
+                <div style="display:flex; align-items:baseline; gap:3mm;">
+                    <span class="pprice">$7.800</span>
+                    <span class="pprice-lbl">precio mayorista</span>
+                </div>
+                <div class="pcode">CÓD. 17145011</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ftr">
+        <span>PDF disponible en www.pescandoapleno.com</span>
+        <span class="pn">Pág. 3</span>
+    </div>
+</div>
+
+<!-- ═══ PÁG 4 — CLÁSICOS — GRILLA 2x2 ═══ -->
+<div class="pg" style="display:flex; flex-direction:column;">
+    <div class="strip"></div>
+    <div class="hdr">
+        <img src="logo-sin-fondo-cuadrado-pescando-a-pleno.png" alt="">
+        <span>Señuelos · Jerkbait & Clásicos</span>
+    </div>
+    <div class="stitle">
+        <h2>CLÁSICOS QUE NUNCA FALLAN</h2>
+        <p>Señuelos probados en mil batallas. Jerkbaits agresivos y minnows erráticos que garantizan resultados.</p>
+    </div>
+
+    <div class="lay-grid">
+        <div class="lay-grid-cell">
+            <div class="gc-img">
+                <img src="analisis-catalogo-proveedor/imagenes-catalogo/17145014_1.jpg" alt="Beat Crank 45 SR">
+            </div>
+            <div class="ref">ref. 07</div>
+            <div class="pname">BEAT CRANK 45 SR</div>
+            <div class="psub">Marine Sports · Shallow Runner</div>
+            <p class="pdesc">Versión SR para capas superficiales. Misma vibración intensa y acción errática.</p>
+            <div class="pspecs"><span>4.5 cm</span><span>6.8 g</span><span>Media Agua</span></div>
+            <span class="pprice" style="font-size:1.7rem;">$7.800</span>
+            <div class="pcode">CÓD. 17145011</div>
+        </div>
+        <div class="lay-grid-cell">
+            <div class="gc-img">
+                <img src="analisis-catalogo-proveedor/imagenes-catalogo/17765024_1.jpg" alt="Savage 80">
+            </div>
+            <div class="ref">ref. 08</div>
+            <div class="pname">SAVAGE 80</div>
+            <div class="psub">Marine Sports · Jerkbait Agresivo</div>
+            <p class="pdesc">Natación agresiva y errática. Forma hidrodinámica para lanzamientos largos.</p>
+            <div class="pspecs"><span>12.0 cm</span><span>19.0 g</span><span>Media Agua</span></div>
+            <span class="pprice" style="font-size:1.7rem;">$9.000</span>
+            <div class="pcode">CÓD. 17765024</div>
+        </div>
+        <div class="lay-grid-cell">
+            <div class="gc-img">
+                <img src="analisis-catalogo-proveedor/imagenes-catalogo/17080014_1.jpg" alt="Rei do Rio 80">
+            </div>
+            <div class="ref">ref. 09</div>
+            <div class="pname">REI DO RIO 80</div>
+            <div class="psub">Marine Sports · El Rey del Río</div>
+            <p class="pdesc">Clásico para dorados y tarariras. Resistente en corrientes con rattlin irresistible.</p>
+            <div class="pspecs"><span>12.0 cm</span><span>20.0 g</span><span>Media Agua</span></div>
+            <span class="pprice" style="font-size:1.7rem;">$8.000</span>
+            <div class="pcode">CÓD. 17080014</div>
+        </div>
+        <div class="lay-grid-cell">
+            <div class="gc-img">
+                <img src="analisis-catalogo-proveedor/imagenes-catalogo/17007014_1.jpg" alt="Raptor Minnow">
+            </div>
+            <div class="ref">ref. 10</div>
+            <div class="pname">RAPTOR MINNOW</div>
+            <div class="psub">Marine Sports · Sistema Magnético XLC</div>
+            <p class="pdesc">Minnow flotante con sistema XLC. Lanzamientos precisos y movimientos realistas.</p>
+            <div class="pspecs"><span>12.0 cm</span><span>24.5 g</span><span>Media Agua</span></div>
+            <span class="pprice" style="font-size:1.7rem;">$8.500</span>
+            <div class="pcode">CÓD. 17007014</div>
+        </div>
+    </div>
+
+    <div class="ftr">
+        <span>PDF disponible en www.pescandoapleno.com</span>
+        <span class="pn">Pág. 4</span>
+    </div>
+</div>
+
+<!-- ═══ PÁG 5 — SUPERFICIE — 2 grandes ═══ -->
+<div class="pg" style="display:flex; flex-direction:column;">
+    <div class="strip"></div>
+    <div class="hdr">
+        <img src="logo-sin-fondo-cuadrado-pescando-a-pleno.png" alt="">
+        <span>Señuelos · Superficie & Sub-Superficie</span>
+    </div>
+    <div class="stitle">
+        <h2>ATAQUES EXPLOSIVOS</h2>
+        <p>Señuelos de superficie y sub-superficie diseñados para provocar ataques visuales y espectaculares.</p>
+    </div>
+
+    <div class="lay-2big">
+        <div class="lay-2big-item">
+            <div class="img-w">
+                <img src="analisis-catalogo-proveedor/imagenes-catalogo/10910114_1.jpg" alt="Top Gun">
+            </div>
+            <div class="info">
+                <div class="ref">ref. 11</div>
+                <div class="pname">TOP GUN — POPPER / ZARA</div>
+                <div class="psub">Marine Sports · Acción Explosiva en Superficie</div>
+                <p class="pdesc">Natación clásica tipo zara y stick que provoca ataques explosivos y muy visuales. Cuerpo flotante para trabajo continuo, controlado y extremadamente natural.</p>
+                <div class="pspecs"><span>10.0 cm</span><span>14.0 g</span><span>Superficie</span><span>Flotante</span></div>
+                <div style="display:flex; align-items:baseline; gap:3mm;">
+                    <span class="pprice">$13.100</span>
+                    <span class="pprice-lbl">precio mayorista</span>
+                </div>
+                <div class="pcode">CÓD. 10910114</div>
+            </div>
+        </div>
+        <div class="lay-2big-item">
+            <div class="img-w">
+                <img src="analisis-catalogo-proveedor/imagenes-catalogo/17077014_1.jpg" alt="Brava 110">
+            </div>
+            <div class="info">
+                <div class="ref">ref. 12</div>
+                <div class="pname">BRAVA 110 — LIPLESS MINNOW</div>
+                <div class="psub">Marine Sports · Sub-Superficie · Para Peces Desconfiados</div>
+                <p class="pdesc">Lipless minnow flotante con movimiento errático y acción natural. Imita con realismo un pez herido, provocando ataques instintivos justo debajo de la superficie.</p>
+                <div class="pspecs"><span>11.0 cm</span><span>14.4 g</span><span>Sub-superficie</span><span>Flotante</span></div>
+                <div style="display:flex; align-items:baseline; gap:3mm;">
+                    <span class="pprice">$8.100</span>
+                    <span class="pprice-lbl">precio mayorista</span>
+                </div>
+                <div class="pcode">CÓD. 17077014</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ftr">
+        <span>PDF disponible en www.pescandoapleno.com</span>
+        <span class="pn">Pág. 5</span>
+    </div>
+</div>
+
+</body>
+</html>

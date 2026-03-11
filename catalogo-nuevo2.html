@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Catálogo de Productos — Pescando a Pleno</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&family=Roboto:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Impact&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Helvetica&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Gobold&display=swap" rel="stylesheet">
+    <style>
+        /* ── Reset & Base ── */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --azul: #1A3A5C;
+            --teal: #6BADA0;
+            --arena: #CBB68E;
+            --negro: #1C1C1C;
+            --crema: #F5F0EB;
+            --blanco: #FFFFFF;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: var(--negro);
+            background: #000;
+        }
+
+        /* ── Print / Page Setup ── */
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        .portada {
+            width: 210mm;
+            height: 297mm;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #b2a18d;
+            color: #c4b6a2;
+            
+            text-align: center;
+            background-image: url('bg-pesca2.jpg');
+            background-size: cover;
+            background-position: right;
+            page-break-after: always;
+        }
+
+        .portada:last-child {
+            page-break-after: auto;
+        }
+
+        /* Overlay oscuro con gradiente */
+        .background-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.70) 100%);
+            z-index: 1;
+        }
+
+        .contenido {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* ── Logo ── */
+        .logo-container {
+            margin-bottom: 25px;
+        }
+
+        .logo {
+            width: 450px;
+            filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.5));
+        }
+
+        /* ── Textos ── */
+        .textos {
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .separador {
+            width: 60px;
+            height: 3px;
+            background-color: var(--arena);
+            margin: 0 auto 20px;
+        }
+
+        .titulo-catalogo  {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 5rem;
+            font-weight: 400;
+            letter-spacing: 2px;
+            text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.6);
+        }
+
+        .subtitulo-catalogo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 4.5rem;
+            font-weight: 400;
+            letter-spacing: 2px;
+            margin-bottom: 60px;
+            text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.6);
+        }
+
+        .slogan {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 4px;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 15px 0;
+            display: inline-block;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+            line-height: 1.8;
+        }
+
+        /* ── Print-specific ── */
+        @media print {
+            body {
+                background: white;
+            }
+
+            .portada {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                box-shadow: none;
+                margin: 0;
+            }
+        }
+
+        /* ── Screen preview ── */
+        @media screen {
+            body {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 10mm;
+                padding: 10mm;
+                background: #555;
+            }
+
+            .portada {
+                box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="portada">
+
+        <div class="background-overlay"></div>
+
+        <div class="contenido">
+            <div class="logo-container">
+                <img src="logo-letras-claras-sin-fondo-cuadrado-pescando-a-pleno.png" alt="Pescando a Pleno"
+                    class="logo">
+            </div>
+
+            <div class="textos">
+                <div class="separador"></div>
+
+                <h2 class="titulo-catalogo">CATÁLOGO DE PRODUCTOS</h2>
+                <h3 class="subtitulo-catalogo">MARZO 2026</h3>
+
+                <p class="slogan">JUAN PABLO FRECCERO<br>+54 9 11 2249-0329</p>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
