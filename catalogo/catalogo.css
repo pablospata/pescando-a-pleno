@@ -1,17 +1,28 @@
 /* ============================================================
    CATÁLOGO PESCANDO A PLENO — Estilos con Guía de Marca
+   Paleta basada en el logo oficial
    ============================================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Roboto:wght@400;500&display=swap');
 
-/* ——— Variables de marca ——— */
+/* ——— Variables de marca (basadas en logo) ——— */
 :root {
-    --azul-marino: #1A3A5C;
-    --verde-agua: #6BADA0;
+    --teal: #4A8B7F;
+    /* Primario — del pez, títulos y acentos fuertes */
+    --caramelo: #B08544;
+    /* Secundario — de la caña, bordes y badges */
+    --teal-claro: #A8D4C8;
+    /* Acento claro — barriga del pez, separadores */
     --arena: #CBB68E;
-    --negro-carbon: #1C1C1C;
-    --crema: #F5F0EB;
+    /* Detalles suaves — olas del logo */
+    --carbon: #2D2A26;
+    /* Texto principal — cálido, del texto del logo */
+    --texto-secundario: #5C5650;
+    /* Texto secundario — descripciones */
     --blanco: #FFFFFF;
+    /* Fondo página (impresión) */
+    --card-bg: #FAFAF8;
+    /* Fondo cards — blanco hueso sutil */
 
     --font-titulo: 'Montserrat', sans-serif;
     --font-cuerpo: 'Roboto', sans-serif;
@@ -30,8 +41,8 @@
 
 body {
     font-family: var(--font-cuerpo);
-    background: #c8c3bd;
-    color: var(--negro-carbon);
+    background: #e0e0e0;
+    color: var(--carbon);
 }
 
 /* ——— Página base A4 ——— */
@@ -39,8 +50,8 @@ body {
     width: 210mm;
     height: 297mm;
     margin: 20px auto;
-    background: var(--crema);
-    padding: 12mm;
+    background: var(--blanco);
+    padding: 8mm 12mm 8mm 12mm;
     position: relative;
     overflow: hidden;
     page-break-after: always;
@@ -48,22 +59,35 @@ body {
     flex-direction: column;
 }
 
+/* ——— Marca de agua (logo pescado) ——— */
+.page-watermark {
+    position: absolute;
+    top: 4mm;
+    right: 12mm;
+    width: 10mm;
+    height: 10mm;
+    object-fit: contain;
+    opacity: 0.2;
+    filter: grayscale(100%);
+    pointer-events: none;
+}
+
 /* ——— Encabezado de página (label del patrón) ——— */
 .page-label {
     font-family: var(--font-titulo);
-    font-size: 10px;
+    font-size: 11px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 2.5px;
-    color: var(--verde-agua);
+    color: var(--caramelo);
     margin-bottom: 5mm;
     padding-bottom: 3mm;
-    border-bottom: 2px solid var(--arena);
+    border-bottom: 2px solid var(--teal-claro);
 }
 
 .page-label span {
-    color: var(--azul-marino);
-    font-size: 13px;
+    color: var(--teal);
+    font-size: 14px;
     font-weight: 900;
 }
 
@@ -77,29 +101,29 @@ body {
 
 /* ——— Card de producto ——— */
 .product {
-    background: var(--blanco);
-    border: 1px solid rgba(26, 58, 92, 0.1);
+    background: var(--card-bg);
+    border: 1px solid rgba(74, 139, 127, 0.12);
     border-radius: 6px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 1px 4px rgba(26, 58, 92, 0.08);
+    box-shadow: 0 1px 3px rgba(45, 42, 38, 0.06);
 }
 
 /* ——— Imagen placeholder ——— */
 .product-img {
-    background: linear-gradient(145deg, #e8e4df, #ddd8d2);
+    background: linear-gradient(145deg, #eceae6, #e2dfd9);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--arena);
+    color: var(--teal-claro);
     font-family: var(--font-titulo);
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 2px;
     text-transform: uppercase;
     min-height: 60px;
-    border-bottom: 2px solid var(--arena);
+    border-bottom: 2px solid var(--teal-claro);
     position: relative;
 }
 
@@ -108,67 +132,66 @@ body {
     display: block;
     width: 36px;
     height: 36px;
-    border: 2px solid var(--arena);
+    border: 2px solid var(--teal-claro);
     border-radius: 4px;
     margin-right: 8px;
     background:
-        linear-gradient(45deg, transparent 46%, var(--arena) 46%, var(--arena) 54%, transparent 54%),
-        linear-gradient(-45deg, transparent 46%, var(--arena) 46%, var(--arena) 54%, transparent 54%);
-    opacity: 0.6;
+        linear-gradient(45deg, transparent 46%, var(--teal-claro) 46%, var(--teal-claro) 54%, transparent 54%),
+        linear-gradient(-45deg, transparent 46%, var(--teal-claro) 46%, var(--teal-claro) 54%, transparent 54%);
+    opacity: 0.5;
 }
 
 /* ——— Info del producto ——— */
 .product-info {
-    padding: 3mm 4mm;
+    padding: 4mm 5mm;
 }
 
 .product-info h3 {
     font-family: var(--font-titulo);
-    font-size: 11px;
+    font-size: 15px;
     font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-bottom: 2px;
-    color: var(--azul-marino);
+    letter-spacing: 0.3px;
+    margin-bottom: 3px;
+    color: var(--teal);
 }
 
 .product-info .code {
     font-family: var(--font-cuerpo);
-    font-size: 8px;
+    font-size: 10px;
     font-weight: 500;
-    color: var(--verde-agua);
+    color: var(--caramelo);
     letter-spacing: 0.5px;
-    margin-bottom: 4px;
+    margin-bottom: 5px;
 }
 
 .product-info p {
-    font-size: 9px;
+    font-size: 11px;
     font-weight: 400;
-    color: #555;
+    color: var(--texto-secundario);
     line-height: 1.5;
 }
 
 .product-info .price {
     font-family: var(--font-titulo);
-    font-size: 12px;
+    font-size: 17px;
     font-weight: 900;
-    color: var(--negro-carbon);
-    margin-top: 3px;
+    color: var(--carbon);
+    margin-top: 5px;
 }
 
 /* ——— Badge (Nuevo / Oferta) ——— */
 .badge {
     display: inline-block;
     font-family: var(--font-titulo);
-    font-size: 8px;
+    font-size: 9px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
-    padding: 2px 8px;
+    padding: 3px 10px;
     border-radius: 3px;
-    background: var(--arena);
+    background: var(--caramelo);
     color: var(--blanco);
-    margin-bottom: 4px;
+    margin-bottom: 5px;
 }
 
 /* ——— Row helpers ——— */
@@ -177,7 +200,7 @@ body {
     gap: 4mm;
 }
 
-.row > * {
+.row>* {
     flex: 1;
 }
 
@@ -187,10 +210,10 @@ body {
 }
 
 .product.horizontal .product-img {
-    width: 40%;
-    min-width: 40%;
+    width: 36%;
+    min-width: 36%;
     border-bottom: none;
-    border-right: 2px solid var(--arena);
+    border-right: 2px solid var(--teal-claro);
 }
 
 .product.horizontal .product-info {
@@ -206,10 +229,10 @@ body {
 }
 
 .product.horizontal-reverse .product-img {
-    width: 40%;
-    min-width: 40%;
+    width: 36%;
+    min-width: 36%;
     border-bottom: none;
-    border-left: 2px solid var(--arena);
+    border-left: 2px solid var(--teal-claro);
 }
 
 .product.horizontal-reverse .product-info {
@@ -221,72 +244,72 @@ body {
 
 /* ——— Hero (producto destacado a página completa) ——— */
 .product.hero .product-img {
-    min-height: 160mm;
+    min-height: 135mm;
 }
 
 .product.hero .product-info {
-    padding: 5mm 6mm;
+    padding: 6mm 8mm;
 }
 
 .product.hero .product-info h3 {
-    font-size: 18px;
+    font-size: 26px;
     font-weight: 900;
     letter-spacing: 1px;
 }
 
 .product.hero .product-info p {
-    font-size: 11px;
+    font-size: 13px;
 }
 
 .product.hero .product-info .price {
-    font-size: 16px;
+    font-size: 22px;
 }
 
 /* ——— Tamaños de imagen ——— */
 .product.medium .product-img {
-    min-height: 80mm;
+    min-height: 55mm;
 }
 
 .product.small .product-img {
-    min-height: 50mm;
+    min-height: 35mm;
 }
 
 .product.tall .product-img {
-    min-height: 110mm;
+    min-height: 80mm;
 }
 
 .product.horizontal .product-img,
 .product.horizontal-reverse .product-img {
-    min-height: 50mm;
+    min-height: 40mm;
 }
 
 /* ——— Header de sección (para separar categorías) ——— */
 .section-header {
     text-align: center;
-    padding: 8mm 0 4mm;
+    padding: 8mm 0 5mm;
 }
 
 .section-header h2 {
     font-family: var(--font-titulo);
-    font-size: 22px;
+    font-size: 28px;
     font-weight: 900;
     text-transform: uppercase;
     letter-spacing: 3px;
-    color: var(--azul-marino);
-    margin-bottom: 2mm;
+    color: var(--teal);
+    margin-bottom: 3mm;
 }
 
 .section-header .divider {
     width: 40mm;
     height: 3px;
-    background: var(--verde-agua);
-    margin: 0 auto 2mm;
+    background: var(--caramelo);
+    margin: 0 auto 3mm;
     border-radius: 2px;
 }
 
 .section-header p {
-    font-size: 10px;
-    color: #777;
+    font-size: 12px;
+    color: #888;
     font-weight: 400;
 }
 
@@ -295,33 +318,134 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-top: 3mm;
-    margin-top: auto;
-    border-top: 1px solid rgba(26, 58, 92, 0.15);
-    font-size: 8px;
-    color: var(--azul-marino);
+    margin-top: 4mm;
+    padding-top: 5mm;
+    border-top: 1px solid rgba(74, 139, 127, 0.25);
+    font-size: 10px;
+    color: var(--teal);
     font-weight: 500;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.3px;
 }
 
 .page-footer .brand {
     font-family: var(--font-titulo);
+    font-size: 10px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1.5px;
+    white-space: nowrap;
+    flex: 1;
+}
+
+.page-footer .contact {
+    font-family: var(--font-cuerpo);
+    font-size: 11px;
+    color: var(--texto-secundario);
+    text-align: center;
+    flex: 1;
+}
+
+.page-footer .contact .sep {
+    display: inline-block;
+    margin: 0 5px;
+    color: var(--teal-claro);
 }
 
 .page-footer .page-number {
     font-family: var(--font-cuerpo);
-    color: var(--verde-agua);
+    font-size: 12px;
+    color: var(--caramelo);
     font-weight: 500;
+    flex: 1;
+    text-align: right;
+}
+
+/* ——— Carátula interna (divisor de sección) ——— */
+.divider-page .content {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 0;
+}
+
+.divider-page .divider-top-band {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6mm;
+    background: linear-gradient(135deg, var(--teal), var(--teal-claro));
+}
+
+.divider-page .divider-deco {
+    width: 60mm;
+    height: 60mm;
+    object-fit: contain;
+    opacity: 0.40;
+    margin-bottom: 10mm;
+}
+
+.divider-page .divider-line {
+    width: 50mm;
+    height: 3px;
+    background: var(--caramelo);
+    border-radius: 2px;
+    margin: 0 auto 8mm;
+}
+
+.divider-page .divider-title {
+    font-family: var(--font-titulo);
+    font-size: 42px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 6px;
+    color: var(--teal);
+    margin-bottom: 5mm;
+}
+
+.divider-page .divider-subtitle {
+    font-family: var(--font-cuerpo);
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--texto-secundario);
+    max-width: 130mm;
+    line-height: 1.6;
+    margin-bottom: 10mm;
+}
+
+.divider-page .divider-line-bottom {
+    width: 30mm;
+    height: 2px;
+    background: var(--teal-claro);
+    border-radius: 2px;
+    margin: 0 auto;
+}
+
+.divider-page .divider-section-number {
+    font-family: var(--font-titulo);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--caramelo);
+    margin-bottom: 6mm;
+}
+
+.divider-page .divider-bottom-band {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3mm;
+    background: var(--caramelo);
 }
 
 /* ——— Print ——— */
 @media print {
     body {
-        background: var(--crema);
+        background: var(--blanco);
     }
+
     .page {
         margin: 0;
         box-shadow: none;
