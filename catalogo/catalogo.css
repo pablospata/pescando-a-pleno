@@ -1,0 +1,329 @@
+/* ============================================================
+   CATÁLOGO PESCANDO A PLENO — Estilos con Guía de Marca
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Roboto:wght@400;500&display=swap');
+
+/* ——— Variables de marca ——— */
+:root {
+    --azul-marino: #1A3A5C;
+    --verde-agua: #6BADA0;
+    --arena: #CBB68E;
+    --negro-carbon: #1C1C1C;
+    --crema: #F5F0EB;
+    --blanco: #FFFFFF;
+
+    --font-titulo: 'Montserrat', sans-serif;
+    --font-cuerpo: 'Roboto', sans-serif;
+}
+
+@page {
+    size: A4;
+    margin: 0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-cuerpo);
+    background: #c8c3bd;
+    color: var(--negro-carbon);
+}
+
+/* ——— Página base A4 ——— */
+.page {
+    width: 210mm;
+    height: 297mm;
+    margin: 20px auto;
+    background: var(--crema);
+    padding: 12mm;
+    position: relative;
+    overflow: hidden;
+    page-break-after: always;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ——— Encabezado de página (label del patrón) ——— */
+.page-label {
+    font-family: var(--font-titulo);
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    color: var(--verde-agua);
+    margin-bottom: 5mm;
+    padding-bottom: 3mm;
+    border-bottom: 2px solid var(--arena);
+}
+
+.page-label span {
+    color: var(--azul-marino);
+    font-size: 13px;
+    font-weight: 900;
+}
+
+/* ——— Contenedor flexible ——— */
+.content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4mm;
+}
+
+/* ——— Card de producto ——— */
+.product {
+    background: var(--blanco);
+    border: 1px solid rgba(26, 58, 92, 0.1);
+    border-radius: 6px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 1px 4px rgba(26, 58, 92, 0.08);
+}
+
+/* ——— Imagen placeholder ——— */
+.product-img {
+    background: linear-gradient(145deg, #e8e4df, #ddd8d2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--arena);
+    font-family: var(--font-titulo);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    min-height: 60px;
+    border-bottom: 2px solid var(--arena);
+    position: relative;
+}
+
+.product-img::before {
+    content: '';
+    display: block;
+    width: 36px;
+    height: 36px;
+    border: 2px solid var(--arena);
+    border-radius: 4px;
+    margin-right: 8px;
+    background:
+        linear-gradient(45deg, transparent 46%, var(--arena) 46%, var(--arena) 54%, transparent 54%),
+        linear-gradient(-45deg, transparent 46%, var(--arena) 46%, var(--arena) 54%, transparent 54%);
+    opacity: 0.6;
+}
+
+/* ——— Info del producto ——— */
+.product-info {
+    padding: 3mm 4mm;
+}
+
+.product-info h3 {
+    font-family: var(--font-titulo);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+    color: var(--azul-marino);
+}
+
+.product-info .code {
+    font-family: var(--font-cuerpo);
+    font-size: 8px;
+    font-weight: 500;
+    color: var(--verde-agua);
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+}
+
+.product-info p {
+    font-size: 9px;
+    font-weight: 400;
+    color: #555;
+    line-height: 1.5;
+}
+
+.product-info .price {
+    font-family: var(--font-titulo);
+    font-size: 12px;
+    font-weight: 900;
+    color: var(--negro-carbon);
+    margin-top: 3px;
+}
+
+/* ——— Badge (Nuevo / Oferta) ——— */
+.badge {
+    display: inline-block;
+    font-family: var(--font-titulo);
+    font-size: 8px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 2px 8px;
+    border-radius: 3px;
+    background: var(--arena);
+    color: var(--blanco);
+    margin-bottom: 4px;
+}
+
+/* ——— Row helpers ——— */
+.row {
+    display: flex;
+    gap: 4mm;
+}
+
+.row > * {
+    flex: 1;
+}
+
+/* ——— Producto horizontal (imagen izquierda) ——— */
+.product.horizontal {
+    flex-direction: row;
+}
+
+.product.horizontal .product-img {
+    width: 40%;
+    min-width: 40%;
+    border-bottom: none;
+    border-right: 2px solid var(--arena);
+}
+
+.product.horizontal .product-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* ——— Producto horizontal invertido (imagen derecha) ——— */
+.product.horizontal-reverse {
+    flex-direction: row-reverse;
+}
+
+.product.horizontal-reverse .product-img {
+    width: 40%;
+    min-width: 40%;
+    border-bottom: none;
+    border-left: 2px solid var(--arena);
+}
+
+.product.horizontal-reverse .product-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* ——— Hero (producto destacado a página completa) ——— */
+.product.hero .product-img {
+    min-height: 160mm;
+}
+
+.product.hero .product-info {
+    padding: 5mm 6mm;
+}
+
+.product.hero .product-info h3 {
+    font-size: 18px;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.product.hero .product-info p {
+    font-size: 11px;
+}
+
+.product.hero .product-info .price {
+    font-size: 16px;
+}
+
+/* ——— Tamaños de imagen ——— */
+.product.medium .product-img {
+    min-height: 80mm;
+}
+
+.product.small .product-img {
+    min-height: 50mm;
+}
+
+.product.tall .product-img {
+    min-height: 110mm;
+}
+
+.product.horizontal .product-img,
+.product.horizontal-reverse .product-img {
+    min-height: 50mm;
+}
+
+/* ——— Header de sección (para separar categorías) ——— */
+.section-header {
+    text-align: center;
+    padding: 8mm 0 4mm;
+}
+
+.section-header h2 {
+    font-family: var(--font-titulo);
+    font-size: 22px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--azul-marino);
+    margin-bottom: 2mm;
+}
+
+.section-header .divider {
+    width: 40mm;
+    height: 3px;
+    background: var(--verde-agua);
+    margin: 0 auto 2mm;
+    border-radius: 2px;
+}
+
+.section-header p {
+    font-size: 10px;
+    color: #777;
+    font-weight: 400;
+}
+
+/* ——— Footer de página ——— */
+.page-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 3mm;
+    margin-top: auto;
+    border-top: 1px solid rgba(26, 58, 92, 0.15);
+    font-size: 8px;
+    color: var(--azul-marino);
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+.page-footer .brand {
+    font-family: var(--font-titulo);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.page-footer .page-number {
+    font-family: var(--font-cuerpo);
+    color: var(--verde-agua);
+    font-weight: 500;
+}
+
+/* ——— Print ——— */
+@media print {
+    body {
+        background: var(--crema);
+    }
+    .page {
+        margin: 0;
+        box-shadow: none;
+    }
+}

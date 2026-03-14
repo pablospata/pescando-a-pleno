@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patrones de Diseño — Pescando a Pleno</title>
+    <link rel="stylesheet" href="catalogo.css">
+</head>
+<body>
+
+<!-- ============================================================
+     PATRÓN 1: HERO — 1 producto destacado (página completa)
+     ============================================================ -->
+<div class="page">
+    <div class="page-label">Patrón 1 — <span>Hero / Producto Destacado</span></div>
+    <div class="content">
+        <div class="product hero" style="flex:1;">
+            <div class="product-img" style="flex:1;">IMAGEN PRODUCTO</div>
+            <div class="product-info">
+                <span class="badge">Nuevo</span>
+                <h3>Nombre del Producto Destacado</h3>
+                <div class="code">CÓD: ABC-1234</div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+                <div class="price">USD $12.50</div>
+            </div>
+        </div>
+    </div>
+    <div class="page-footer">
+        <div class="brand">Pescando a Pleno</div>
+        <div class="page-number">01</div>
+    </div>
+</div>
+
+<!-- ============================================================
+     PATRÓN 2: 1 ARRIBA + 2 ABAJO
+     ============================================================ -->
+<div class="page">
+    <div class="page-label">Patrón 2 — <span>1 Arriba + 2 Abajo</span></div>
+    <div class="content">
+        <div class="product tall" style="flex:1.2;">
+            <div class="product-img" style="flex:1;">IMAGEN PRODUCTO</div>
+            <div class="product-info">
+                <h3>Producto Principal</h3>
+                <div class="code">CÓD: DEF-5678</div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <div class="price">USD $8.90</div>
+            </div>
+        </div>
+        <div class="row" style="flex:1;">
+            <div class="product" style="flex:1;">
+                <div class="product-img" style="flex:1;">IMAGEN</div>
+                <div class="product-info">
+                    <h3>Producto Secundario A</h3>
+                    <div class="code">CÓD: GHI-9012</div>
+                    <p>Lorem ipsum dolor sit amet.</p>
+                    <div class="price">USD $5.40</div>
+                </div>
+            </div>
+            <div class="product" style="flex:1;">
+                <div class="product-img" style="flex:1;">IMAGEN</div>
+                <div class="product-info">
+                    <h3>Producto Secundario B</h3>
+                    <div class="code">CÓD: JKL-3456</div>
+                    <p>Lorem ipsum dolor sit amet.</p>
+                    <div class="price">USD $6.20</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page-footer">
+        <div class="brand">Pescando a Pleno</div>
+        <div class="page-number">02</div>
+    </div>
+</div>
+
+<!-- ============================================================
+     PATRÓN 3: 2 ARRIBA + 1 ABAJO
+     ============================================================ -->
+<div class="page">
+    <div class="page-label">Patrón 3 — <span>2 Arriba + 1 Abajo</span></div>
+    <div class="content">
+        <div class="row" style="flex:1;">
+            <div class="product" style="flex:1;">
+                <div class="product-img" style="flex:1;">IMAGEN</div>
+                <div class="product-info">
+                    <h3>Producto A</h3>
+                    <div class="code">CÓD: MNO-7890</div>
+                    <p>Lorem ipsum dolor sit amet consectetur.</p>
+                    <div class="price">USD $7.80</div>
+                </div>
+            </div>
+            <div class="product" style="flex:1;">
+                <div class="product-img" style="flex:1;">IMAGEN</div>
+                <div class="product-info">
+                    <span class="badge">Oferta</span>
+                    <h3>Producto B</h3>
+                    <div class="code">CÓD: PQR-1234</div>
+                    <p>Lorem ipsum dolor sit amet consectetur.</p>
+                    <div class="price">USD $9.10</div>
+                </div>
+            </div>
+        </div>
+        <div class="product tall" style="flex:1.2;">
+            <div class="product-img" style="flex:1;">IMAGEN PRODUCTO</div>
+            <div class="product-info">
+                <h3>Producto Destacado Inferior</h3>
+                <div class="code">CÓD: STU-5678</div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempor incididunt.</p>
+                <div class="price">USD $11.30</div>
+            </div>
+        </div>
+    </div>
+    <div class="page-footer">
+        <div class="brand">Pescando a Pleno</div>
+        <div class="page-number">03</div>
+    </div>
+</div>
+
+<!-- ============================================================
+     PATRÓN 4: 3 EN FILA (columna vertical, horizontal)
+     ============================================================ -->
+<div class="page">
+    <div class="page-label">Patrón 4 — <span>3 Productos en Columna</span></div>
+    <div class="content">
+        <div class="product horizontal" style="flex:1;">
+            <div class="product-img" style="flex:1;">IMAGEN</div>
+            <div class="product-info">
+                <h3>Producto Uno</h3>
+                <div class="code">CÓD: VWX-1111</div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam.</p>
+                <div class="price">USD $4.50</div>
+            </div>
+        </div>
+        <div class="product horizontal" style="flex:1;">
+            <div class="product-img" style="flex:1;">IMAGEN</div>
+            <div class="product-info">
+                <h3>Producto Dos</h3>
+                <div class="code">CÓD: YZA-2222</div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam.</p>
+                <div class="price">USD $5.80</div>
+            </div>
+        </div>
+        <div class="product horizontal" style="flex:1;">
+            <div class="product-img" style="flex:1;">IMAGEN</div>
+            <div class="product-info">
+                <h3>Producto Tres</h3>
+                <div class="code">CÓD: BCD-3333</div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam.</p>
+                <div class="price">USD $6.70</div>
+            </div>
+        </div>
+    </div>
+    <div class="page-footer">
+        <div class="brand">Pescando a Pleno</div>
+        <div class="page-number">04</div>
+    </div>
+</div>
+
+<!-- ============================================================
+     PATRÓN 5: ZIGZAG (alternando imagen izq/der)
+     ============================================================ -->
+<div class="page">
+    <div class="page-label">Patrón 5 — <span>Zigzag</span></div>
+    <div class="content">
+        <div class="product horizontal" style="flex:1;">
+            <div class="product-img" style="flex:1;">IMAGEN</div>
+            <div class="product-info">
+                <h3>Producto Zigzag A</h3>
+                <div class="code">CÓD: EFG-4444</div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute irure dolor.</p>
+                <div class="price">USD $7.20</div>
+            </div>
+        </div>
+        <div class="product horizontal-reverse" style="flex:1;">
+            <div class="product-img" style="flex:1;">IMAGEN</div>
+            <div class="product-info">
+                <h3>Producto Zigzag B</h3>
+                <div class="code">CÓD: HIJ-5555</div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute irure dolor.</p>
+                <div class="price">USD $8.40</div>
+            </div>
+        </div>
+        <div class="product horizontal" style="flex:1;">
+            <div class="product-img" style="flex:1;">IMAGEN</div>
+            <div class="product-info">
+                <h3>Producto Zigzag C</h3>
+                <div class="code">CÓD: KLM-6666</div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute irure dolor.</p>
+                <div class="price">USD $9.60</div>
+            </div>
+        </div>
+    </div>
+    <div class="page-footer">
+        <div class="brand">Pescando a Pleno</div>
+        <div class="page-number">05</div>
+    </div>
+</div>
+
+<!-- ============================================================
+     PATRÓN 6: GRILLA 2×2 (4 productos)
+     ============================================================ -->
+<div class="page">
+    <div class="page-label">Patrón 6 — <span>Grilla 2×2 (4 Productos)</span></div>
+    <div class="content">
+        <div class="row" style="flex:1;">
+            <div class="product" style="flex:1;">
+                <div class="product-img" style="flex:1;">IMAGEN</div>
+                <div class="product-info">
+                    <h3>Producto 1</h3>
+                    <div class="code">CÓD: NOP-0001</div>
+                    <p>Lorem ipsum dolor sit amet.</p>
+                    <div class="price">USD $3.20</div>
+                </div>
+            </div>
+            <div class="product" style="flex:1;">
+                <div class="product-img" style="flex:1;">IMAGEN</div>
+                <div class="product-info">
+                    <h3>Producto 2</h3>
+                    <div class="code">CÓD: NOP-0002</div>
+                    <p>Lorem ipsum dolor sit amet.</p>
+                    <div class="price">USD $3.50</div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="flex:1;">
+            <div class="product" style="flex:1;">
+                <div class="product-img" style="flex:1;">IMAGEN</div>
+                <div class="product-info">
+                    <h3>Producto 3</h3>
+                    <div class="code">CÓD: NOP-0003</div>
+                    <p>Lorem ipsum dolor sit amet.</p>
+                    <div class="price">USD $4.10</div>
+                </div>
+            </div>
+            <div class="product" style="flex:1;">
+                <div class="product-img" style="flex:1;">IMAGEN</div>
+                <div class="product-info">
+                    <h3>Producto 4</h3>
+                    <div class="code">CÓD: NOP-0004</div>
+                    <p>Lorem ipsum dolor sit amet.</p>
+                    <div class="price">USD $4.80</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page-footer">
+        <div class="brand">Pescando a Pleno</div>
+        <div class="page-number">06</div>
+    </div>
+</div>
+
+<!-- ============================================================
+     PATRÓN 7: GRILLA 2×3 (6 productos)
+     ============================================================ -->
+<div class="page">
+    <div class="page-label">Patrón 7 — <span>Grilla 2×3 (6 Productos)</span></div>
+    <div class="content">
+        <div class="row" style="flex:1;">
+            <div class="product" style="flex:1;">
+                <div class="product-img" style="flex:1;">IMAGEN</div>
+                <div class="product-info">
+                    <h3>Producto 1</h3>
+                    <div class="code">CÓD: QRS-0001</div>
+                    <div class="price">USD $2.90</div>
+                </div>
+            </div>
+            <div class="product" style="flex:1;">
+                <div class="product-img" style="flex:1;">IMAGEN</div>
+                <div class="product-info">
+                    <h3>Producto 2</h3>
+                    <div class="code">CÓD: QRS-0002</div>
+                    <div class="price">USD $3.10</div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="flex:1;">
+            <div class="product" style="flex:1;">
+                <div class="product-img" style="flex:1;">IMAGEN</div>
+                <div class="product-info">
+                    <h3>Producto 3</h3>
+                    <div class="code">CÓD: QRS-0003</div>
+                    <div class="price">USD $3.40</div>
+                </div>
+            </div>
+            <div class="product" style="flex:1;">
+                <div class="product-img" style="flex:1;">IMAGEN</div>
+                <div class="product-info">
+                    <h3>Producto 4</h3>
+                    <div class="code">CÓD: QRS-0004</div>
+                    <div class="price">USD $3.70</div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="flex:1;">
+            <div class="product" style="flex:1;">
+                <div class="product-img" style="flex:1;">IMAGEN</div>
+                <div class="product-info">
+                    <h3>Producto 5</h3>
+                    <div class="code">CÓD: QRS-0005</div>
+                    <div class="price">USD $4.00</div>
+                </div>
+            </div>
+            <div class="product" style="flex:1;">
+                <div class="product-img" style="flex:1;">IMAGEN</div>
+                <div class="product-info">
+                    <h3>Producto 6</h3>
+                    <div class="code">CÓD: QRS-0006</div>
+                    <div class="price">USD $4.30</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page-footer">
+        <div class="brand">Pescando a Pleno</div>
+        <div class="page-number">07</div>
+    </div>
+</div>
+
+<!-- ============================================================
+     PATRÓN 8: 1 GRANDE + 2 PEQUEÑOS (lateral)
+     ============================================================ -->
+<div class="page">
+    <div class="page-label">Patrón 8 — <span>1 Grande + 2 Pequeños (lateral)</span></div>
+    <div class="content">
+        <div class="row" style="flex:1;">
+            <div class="product" style="flex:2;">
+                <div class="product-img" style="flex:1;">IMAGEN GRANDE</div>
+                <div class="product-info">
+                    <span class="badge">Destacado</span>
+                    <h3>Producto Destacado</h3>
+                    <div class="code">CÓD: TUV-0001</div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.</p>
+                    <div class="price">USD $15.00</div>
+                </div>
+            </div>
+            <div style="flex:1; display:flex; flex-direction:column; gap:4mm;">
+                <div class="product" style="flex:1;">
+                    <div class="product-img" style="flex:1;">IMAGEN</div>
+                    <div class="product-info">
+                        <h3>Producto Pequeño A</h3>
+                        <div class="code">CÓD: TUV-0002</div>
+                        <p>Lorem ipsum dolor.</p>
+                        <div class="price">USD $4.50</div>
+                    </div>
+                </div>
+                <div class="product" style="flex:1;">
+                    <div class="product-img" style="flex:1;">IMAGEN</div>
+                    <div class="product-info">
+                        <h3>Producto Pequeño B</h3>
+                        <div class="code">CÓD: TUV-0003</div>
+                        <p>Lorem ipsum dolor.</p>
+                        <div class="price">USD $5.20</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page-footer">
+        <div class="brand">Pescando a Pleno</div>
+        <div class="page-number">08</div>
+    </div>
+</div>
+
+<!-- ============================================================
+     PATRÓN 9: 3 COLUMNAS IGUALES
+     ============================================================ -->
+<div class="page">
+    <div class="page-label">Patrón 9 — <span>3 Columnas Iguales</span></div>
+    <div class="content">
+        <div class="section-header">
+            <h2>Señuelos</h2>
+            <div class="divider"></div>
+            <p>Los mejores señuelos para cada técnica de pesca</p>
+        </div>
+        <div class="row" style="flex:1;">
+            <div class="product" style="flex:1;">
+                <div class="product-img" style="flex:1;">IMAGEN</div>
+                <div class="product-info">
+                    <h3>Producto A</h3>
+                    <div class="code">CÓD: WXY-0001</div>
+                    <p>Lorem ipsum dolor sit amet consectetur.</p>
+                    <div class="price">USD $6.00</div>
+                </div>
+            </div>
+            <div class="product" style="flex:1;">
+                <div class="product-img" style="flex:1;">IMAGEN</div>
+                <div class="product-info">
+                    <h3>Producto B</h3>
+                    <div class="code">CÓD: WXY-0002</div>
+                    <p>Lorem ipsum dolor sit amet consectetur.</p>
+                    <div class="price">USD $6.50</div>
+                </div>
+            </div>
+            <div class="product" style="flex:1;">
+                <div class="product-img" style="flex:1;">IMAGEN</div>
+                <div class="product-info">
+                    <h3>Producto C</h3>
+                    <div class="code">CÓD: WXY-0003</div>
+                    <p>Lorem ipsum dolor sit amet consectetur.</p>
+                    <div class="price">USD $7.00</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page-footer">
+        <div class="brand">Pescando a Pleno</div>
+        <div class="page-number">09</div>
+    </div>
+</div>
+
+<!-- ============================================================
+     PATRÓN 10: 2 ARRIBA + 3 ABAJO
+     ============================================================ -->
+<div class="page">
+    <div class="page-label">Patrón 10 — <span>2 Arriba + 3 Abajo</span></div>
+    <div class="content">
+        <div class="row" style="flex:1.2;">
+            <div class="product" style="flex:1;">
+                <div class="product-img" style="flex:1;">IMAGEN</div>
+                <div class="product-info">
+                    <h3>Producto Grande A</h3>
+                    <div class="code">CÓD: ZAB-0001</div>
+                    <p>Lorem ipsum dolor sit amet.</p>
+                    <div class="price">USD $8.00</div>
+                </div>
+            </div>
+            <div class="product" style="flex:1;">
+                <div class="product-img" style="flex:1;">IMAGEN</div>
+                <div class="product-info">
+                    <h3>Producto Grande B</h3>
+                    <div class="code">CÓD: ZAB-0002</div>
+                    <p>Lorem ipsum dolor sit amet.</p>
+                    <div class="price">USD $8.50</div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="flex:1;">
+            <div class="product" style="flex:1;">
+                <div class="product-img" style="flex:1;">IMAGEN</div>
+                <div class="product-info">
+                    <h3>Producto Chico 1</h3>
+                    <div class="code">CÓD: ZAB-0003</div>
+                    <div class="price">USD $3.00</div>
+                </div>
+            </div>
+            <div class="product" style="flex:1;">
+                <div class="product-img" style="flex:1;">IMAGEN</div>
+                <div class="product-info">
+                    <h3>Producto Chico 2</h3>
+                    <div class="code">CÓD: ZAB-0004</div>
+                    <div class="price">USD $3.30</div>
+                </div>
+            </div>
+            <div class="product" style="flex:1;">
+                <div class="product-img" style="flex:1;">IMAGEN</div>
+                <div class="product-info">
+                    <h3>Producto Chico 3</h3>
+                    <div class="code">CÓD: ZAB-0005</div>
+                    <div class="price">USD $3.60</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page-footer">
+        <div class="brand">Pescando a Pleno</div>
+        <div class="page-number">10</div>
+    </div>
+</div>
+
+<!-- ============================================================
+     PATRÓN 11: GRILLA 3×2 (6 productos, 3 columnas)
+     ============================================================ -->
+<div class="page">
+    <div class="page-label">Patrón 11 — <span>Grilla 3×2 (6 Productos, 3 Columnas)</span></div>
+    <div class="content">
+        <div class="row" style="flex:1;">
+            <div class="product" style="flex:1;">
+                <div class="product-img" style="flex:1;">IMAGEN</div>
+                <div class="product-info">
+                    <h3>Producto 1</h3>
+                    <div class="code">CÓD: CDE-0001</div>
+                    <div class="price">USD $2.50</div>
+                </div>
+            </div>
+            <div class="product" style="flex:1;">
+                <div class="product-img" style="flex:1;">IMAGEN</div>
+                <div class="product-info">
+                    <h3>Producto 2</h3>
+                    <div class="code">CÓD: CDE-0002</div>
+                    <div class="price">USD $2.80</div>
+                </div>
+            </div>
+            <div class="product" style="flex:1;">
+                <div class="product-img" style="flex:1;">IMAGEN</div>
+                <div class="product-info">
+                    <h3>Producto 3</h3>
+                    <div class="code">CÓD: CDE-0003</div>
+                    <div class="price">USD $3.10</div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="flex:1;">
+            <div class="product" style="flex:1;">
+                <div class="product-img" style="flex:1;">IMAGEN</div>
+                <div class="product-info">
+                    <h3>Producto 4</h3>
+                    <div class="code">CÓD: CDE-0004</div>
+                    <div class="price">USD $3.40</div>
+                </div>
+            </div>
+            <div class="product" style="flex:1;">
+                <div class="product-img" style="flex:1;">IMAGEN</div>
+                <div class="product-info">
+                    <h3>Producto 5</h3>
+                    <div class="code">CÓD: CDE-0005</div>
+                    <div class="price">USD $3.70</div>
+                </div>
+            </div>
+            <div class="product" style="flex:1;">
+                <div class="product-img" style="flex:1;">IMAGEN</div>
+                <div class="product-info">
+                    <h3>Producto 6</h3>
+                    <div class="code">CÓD: CDE-0006</div>
+                    <div class="price">USD $4.00</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page-footer">
+        <div class="brand">Pescando a Pleno</div>
+        <div class="page-number">11</div>
+    </div>
+</div>
+
+<!-- ============================================================
+     PATRÓN 12: ZIGZAG COMPACTO — 4 productos
+     ============================================================ -->
+<div class="page">
+    <div class="page-label">Patrón 12 — <span>Zigzag Compacto (4 Productos)</span></div>
+    <div class="content">
+        <div class="product horizontal" style="flex:1;">
+            <div class="product-img" style="flex:1;">IMAGEN</div>
+            <div class="product-info">
+                <h3>Producto Zig A</h3>
+                <div class="code">CÓD: FGH-0001</div>
+                <p>Lorem ipsum dolor sit amet.</p>
+                <div class="price">USD $5.00</div>
+            </div>
+        </div>
+        <div class="product horizontal-reverse" style="flex:1;">
+            <div class="product-img" style="flex:1;">IMAGEN</div>
+            <div class="product-info">
+                <h3>Producto Zag B</h3>
+                <div class="code">CÓD: FGH-0002</div>
+                <p>Lorem ipsum dolor sit amet.</p>
+                <div class="price">USD $5.30</div>
+            </div>
+        </div>
+        <div class="product horizontal" style="flex:1;">
+            <div class="product-img" style="flex:1;">IMAGEN</div>
+            <div class="product-info">
+                <h3>Producto Zig C</h3>
+                <div class="code">CÓD: FGH-0003</div>
+                <p>Lorem ipsum dolor sit amet.</p>
+                <div class="price">USD $5.60</div>
+            </div>
+        </div>
+        <div class="product horizontal-reverse" style="flex:1;">
+            <div class="product-img" style="flex:1;">IMAGEN</div>
+            <div class="product-info">
+                <h3>Producto Zag D</h3>
+                <div class="code">CÓD: FGH-0004</div>
+                <p>Lorem ipsum dolor sit amet.</p>
+                <div class="price">USD $5.90</div>
+            </div>
+        </div>
+    </div>
+    <div class="page-footer">
+        <div class="brand">Pescando a Pleno</div>
+        <div class="page-number">12</div>
+    </div>
+</div>
+
+</body>
+</html>
