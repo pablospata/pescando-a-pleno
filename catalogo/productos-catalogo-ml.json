@@ -1,0 +1,79 @@
+{
+  "23": {
+    "cod": 23,
+    "producto": "Caña Cannon CNKW-3903 3,90m 100-200g",
+    "categoria": "Cañas",
+    "fuente": "MercadoLibre",
+    "url": "https://www.mercadolibre.com.ar/cana-marine-sports-cannon-cnkw3903-390m-100200g/up/MLAU3428654973",
+    "descripcion": "La caña Cannon es la opción ideal para pescadores que buscan eficiencia y potencia al lanzar desde la orilla, garantizando el máximo alcance sin sacrificar la sensibilidad. Fabricada con un blank de carbono MT2400 de 24 toneladas, ofrece resistencia para lances largos y precisión al detectar picadas, incluso en mares agitados.",
+    "caracteristicas": {
+      "longitud": "3,90 m",
+      "accion_lance": "100 a 200 g",
+      "diseño": "3 piezas para facilitar el transporte",
+      "anillas": "Tipo KW que reducen la fricción y mejoran el lance",
+      "extras": "Puntera híbrida de alta sensibilidad, portacarretes DPS y sistema de equilibrado mediante contrapesos",
+      "uso_recomendado": "Pesca costera de especies como corvina, pámpano y róbalo"
+    },
+    "imagenes": [
+      "https://http2.mlstatic.com/D_NQ_NP_706452-MLA92616784144_092025-O.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_719721-MLA93027869085_092025-O.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_919310-MLA92616870814_092025-O.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_880643-MLA93027770557_092025-O.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_714119-MLA93027968465_092025-O.webp"
+    ]
+  },
+  "4": {
+    "cod": 4,
+    "producto": "Reel Arena 2000 FD 1 Rol 5.1:1",
+    "aplica_tambien_a": [5, 7],
+    "nota": "Misma info aplica a COD 5 (Arena Blue 2000) y COD 7 (Arena Red 2000)",
+    "categoria": "Reel",
+    "fuente": "MercadoLibre",
+    "url": "https://www.mercadolibre.com.ar/reel-frontal-marine-sports-arena-2000-fd-plateado-521-derechoizquierdo/p/MLA16123472",
+    "descripcion": "Marine Sports se destaca en el mercado de la pesca deportiva desde 1988 por la calidad e innovación constante de sus productos. Reel frontal con freno magnético que permite regular del 1 al 10 el giro del reel, ofreciendo control total sobre los lanzamientos.",
+    "caracteristicas": {
+      "arrastre_maximo": "4,5 kg",
+      "rulemanes": "1",
+      "capacidad_linea": "0.30mm/175m, 0.35mm/130m",
+      "color": "Plateado",
+      "manija": "Derecho/Izquierdo",
+      "material_cuerpo": "Grafito",
+      "peso": "270 g",
+      "relacion_transmision": "5.2:1",
+      "tipo": "Frontal",
+      "freno": "Magnético"
+    },
+    "imagenes": [
+      "https://http2.mlstatic.com/D_NQ_NP_2X_647967-MLA99472154516_112025-O.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_671222-MLA91218466179_082025-O.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_660552-MLA48800121443_012022-O.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_831601-MLA48800081745_012022-O.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_992884-MLA84214568230_052025-O.webp"
+    ]
+  },
+  "7": {
+    "cod": 7,
+    "producto": "Reel Arena Red 2000 FD 1 Rol 5.1:1",
+    "categoria": "Reel",
+    "fuente": "MercadoLibre",
+    "url": "https://www.mercadolibre.com.ar/reel-frontal-marine-sports-arena-red-2000-fd-1rol-511/up/MLAU3839122899",
+    "descripcion": "El reel giratorio Arena Red FD está diseñado para pescadores que buscan un equipo funcional y duradero. Su estructura (cuerpo, rotor y tapa lateral) está fabricada en grafito de alta densidad para mayor ligereza, mientras que el bastidor y el eje principal (4,5 mm) son de acero inoxidable para resistir la corrosión. Cuenta con un sistema de freno delantero ajustable punto a punto y un piñón de latón soportado por rodamiento para un funcionamiento suave y estable.",
+    "caracteristicas": {
+      "arrastre_maximo": "4,5 kg",
+      "rulemanes": "1",
+      "relacion_transmision": "5.1:1",
+      "peso": "255 g",
+      "material_cuerpo": "Grafito de alta densidad",
+      "color": "Rojo",
+      "manija": "Intercambiable Derecho/Izquierdo",
+      "tipo": "Frontal",
+      "tipo_agua": "Agua dulce"
+    },
+    "imagenes": [
+      "https://http2.mlstatic.com/D_NQ_NP_955195-MLA108760894667_032026-O.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_961666-MLA108759522065_032026-O.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_616915-MLA108761071667_032026-O.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_840102-MLA108759432743_032026-O.webp"
+    ]
+  }
+}
